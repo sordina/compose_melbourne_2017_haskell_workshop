@@ -1,15 +1,7 @@
 
 
-Melbourne Haskell Workshop 2013
+Melbourne Haskell Workshop 2015
 ===============================
-
-<div class="note important">
-The workshop has been completed and ran on 21/09/2013.
-
-See the [Post-Mortem](#post-mortem) for an analysis of what we learned from
-running the workshop.
-</div>
-
 
 <!-- Trickery to conditionally display the alternate format link -->
 
@@ -35,14 +27,12 @@ Press "t" to toggle showing the table of contents
 
 <div class="center important">
 
-A 6-hour workshop intended to introduce and provide resources for working with Haskell.
+A single-day workshop intended to introduce Haskell to newcomers to functional-programming.
 
 </div>
 
 <!-- http://upload.wikimedia.org/wikipedia/commons/0/0c/Potter's_workshop_VA.jpg -->
 <div class="center nopad"> ![Workshop](resources/images/workshop.png) </div>
-
-This workshop is based around a central concept of domain modeling with Haskell.
 
 Outcomes include...
 
@@ -54,7 +44,7 @@ Outcomes include...
 <div class="important note">
 
 If you are attending the workshop, make sure that you RSVP via
-[Meetup](http://www.meetup.com/Melbourne-Functional-User-Group-MFUG/events/132307572/).
+[Meetup](http://www.meetup.com/Melbourne-Haskell-Users-Group/events/219493786/).
 Please also attempt to have the required items
 from the ['Resources'](#resources) section available for your use during the workshop.
 

@@ -23,15 +23,13 @@ Press "t" to toggle showing the table of contents
 
 </div>
 
------
-
 <div class="center important">
 
 A single-day workshop intended to introduce Haskell to newcomers to functional-programming.
 
 </div>
 
-<!-- http://upload.wikimedia.org/wikipedia/commons/0/0c/Potter's_workshop_VA.jpg -->
+<!-- https://www.flickr.com/photos/fatmandy/4221136071/in/photolist-7r1qG8-4Ew9ka-7GmuKi-7GH1pP-65YZoM-nGeWhj-7KAY7X-nS3L1Y-j1TkSn-8Ef3BW-6CHTcd-9QVtVW-oDN5ak-4BMnsd-cUC6HY-9QSD52-hseG5J-9vPTiH-CkmeT-bQZgze -->
 <div class="center nopad"> ![Workshop](resources/images/workshop.png) </div>
 
 Outcomes include...
@@ -48,7 +46,8 @@ If you are attending the workshop, make sure that you RSVP via
 Please also attempt to have the required items
 from the ['Resources'](#resources) section available for your use during the workshop.
 
-If you would like to volunteer, please subscribe to the [mhw2013](http://www.reddit.com/r/mhw2013/)
-sub-reddit and list yourself on the wiki.
+If you would like to volunteer, please send an email to the
+[mailing list](mailto:melb-haskell-workshop-organisers@googlegroups.com),
+or contact us via the meetup.
 
 </div>

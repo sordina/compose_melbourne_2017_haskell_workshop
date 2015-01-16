@@ -20,6 +20,7 @@ display: html
 	@ ./resources/scripts/chromereload index.html
 
 devel:
+	open index.html
 	commando -p cat -q -j                     \
 	| grep --line-buffered -v 'dependencies/' \
 	| grep --line-buffered -v 'dot/'          \

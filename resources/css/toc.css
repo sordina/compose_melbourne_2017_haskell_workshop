@@ -1,5 +1,41 @@
 
 
+#expand-content, #expand-toc {
+	position: fixed;
+	z-index: 100;
+	bottom: 10px;
+	left: 10px;
+	width: 30px;
+	height: 30px;
+	background: red;
+	padding: 0;
+	cursor: pointer;
+	background: rgba(250,250,250,0.8) url(../images/expand.png);
+	border-radius: 2px;
+	text-indent: -500em;
+	background-position: 15px 15px;
+}
+
+#expand-toc {
+	left: 50px;
+	text-indent: 4px;
+	background-image: none;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+#expand-toc::before {
+	content: " T+";
+}
+
+body.floating-toc #expand-toc::before {
+	content: " T-";
+}
+
+body.small #expand-content {
+	background-position: 0px 0px;
+}
+
 #floating-toc {
 	display: none;
 	position: fixed;
@@ -23,6 +59,7 @@
 	display: inline;
 }
 
+/* TODO: What? */
 #floating-toc td:nth-child(2), #floating-toc td:nth-child(3) {
 	display: none;
 }

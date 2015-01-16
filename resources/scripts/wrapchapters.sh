@@ -10,7 +10,7 @@ do
 	echo "<div class='chapter'>"
 	echo "<div class='content'>"
 	echo
-	"$command" < "$i" | sed 's/^\\startmode.*//;s/^\\stopmode.*//'
+	sed 's/^\\startmode.*//;s/^\\stopmode.*//' "$i" | "$command"
 	echo
 	echo "</div>"
 	echo "</div>"

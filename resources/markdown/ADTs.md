@@ -11,7 +11,7 @@ ADTs (Algebraic Data Types)
 Algebraic Data Types are THE bread and butter of Haskell programs.
 
 * Functions evaluate data by pattern-matching against ADTs
-* Domains are modeled using ADTs
+* Problem-domains are modeled using ADTs
 * Laziness is linked to ADTs
 * Types can be derived from ADT definitions
 
@@ -38,7 +38,7 @@ enum MyBool { MyTrue, MyFalse, MyNotSure };
 
 With the added bonus of not having out-of-bounds casting ruin your day.
 
-If your problem space can be moddeled using various discrete values,
+If your problem space can be modeled using various discrete values,
 then this form of ADT will allow you to create a program that mirrors
 your problem!
 ```

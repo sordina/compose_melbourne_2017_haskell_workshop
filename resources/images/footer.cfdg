@@ -1,32 +1,19 @@
-startshape Baz
+startshape box
+ 
 
-# KFM
-
-rule Baz {
-	Bar {sat 1 b 0.5}
-}
-
-rule Bar {
-	Foo {}
-	Bar [s 0.8 y 2 x 4 f 90 h 23]
-}
-
-rule Foo {
-	CIRCLE[]
-	Foo [s 0.93 x 1.2 h 12]
-}
-
-rule Foo 0.1 {
-	Foo []
-	Foo [r 92]
-}
-
-rule Foo 0.002 {
-	Foo []
-	Quux {}
-}
-
-rule Quux {
+rule box {
 	CIRCLE []
-	Quux [s 0.99 x 0.5 y 0.5 b 0.01 h 2]
+	box [s .5 b 0.1 x -0.5]
+	box [s .5 b 0.15 x  0.5]
+	box [s .5 b 0.1	5 y  0.5]
+}
+
+rule box {
+	CIRCLE []
+	box [x .011 y .011]
+}
+
+rule box {
+	CIRCLE []
+	box [f 40]
 }

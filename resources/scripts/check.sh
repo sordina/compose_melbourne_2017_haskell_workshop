@@ -17,6 +17,11 @@ then
 	exit 0
 fi
 
+if [[ "$HW_NOCHECK" ]]
+then
+	exit 0
+fi
+
 # echo "Processing Example $PANDOCTOR_COUNT" 1>&2
 
 grep '^main =' /tmp/haskell_workshop_check.hs > /dev/null

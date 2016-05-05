@@ -46,9 +46,10 @@ Press &quot;t&quot; to toggle showing the table of contents</code></pre>
 <p>If you would like to volunteer, please send an email to the <script type="text/javascript">
 <!--
 h='&#x67;&#x6f;&#x6f;&#x67;&#108;&#x65;&#x67;&#114;&#x6f;&#x75;&#112;&#x73;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x6d;&#x65;&#108;&#98;&#x2d;&#104;&#x61;&#x73;&#x6b;&#x65;&#108;&#108;&#x2d;&#x77;&#x6f;&#114;&#x6b;&#x73;&#104;&#x6f;&#112;&#x2d;&#x6f;&#114;&#x67;&#x61;&#110;&#x69;&#x73;&#x65;&#114;&#x73;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'mailing list'+'<\/'+'a'+'>');
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x6d;&#x61;&#x69;&#108;&#x69;&#110;&#x67;&#32;&#108;&#x69;&#x73;&#116;'+'<\/'+'a'+'>');
 // -->
 </script><noscript>&#x6d;&#x61;&#x69;&#108;&#x69;&#110;&#x67;&#32;&#108;&#x69;&#x73;&#116;&#32;&#40;&#x6d;&#x65;&#108;&#98;&#x2d;&#104;&#x61;&#x73;&#x6b;&#x65;&#108;&#108;&#x2d;&#x77;&#x6f;&#114;&#x6b;&#x73;&#104;&#x6f;&#112;&#x2d;&#x6f;&#114;&#x67;&#x61;&#110;&#x69;&#x73;&#x65;&#114;&#x73;&#32;&#x61;&#116;&#32;&#x67;&#x6f;&#x6f;&#x67;&#108;&#x65;&#x67;&#114;&#x6f;&#x75;&#112;&#x73;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;&#x29;</noscript>, or contact us via the meetup.</p>
+<p>Workshop development is tracked on <a href="https://trello.com/b/c1jhkXh9/haskell-workshop-2015">Trello</a>.</p>
 </div>
 
 </div>
@@ -176,7 +177,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'mail
 <h1 id="required-resources">Required Resources</h1>
 <p>Before you begin you will require the following...</p>
 <h2 id="a-text-editor" class="important">A Text-Editor</h2>
-<p>We are assuming previous programming experience, however, if you would like a recommendation, have a look at <a href="http://notepad-plus-plus.org/">Notepad++</a>, <a href="http://www.sublimetext.com/">Sublime Text</a>, or the ever-popular <a href="http://www.gnu.org/software/emacs/">Emacs</a> and <a href="http://www.vim.org/">Vim</a>. Just make sure that you are fluent enough to embark on exercises as they appear in the workshop.</p>
+<p>We are assuming previous programming experience, however, if you would like a recommendation, have a look at <a href="https://atom.io/">Atom</a>, <a href="http://notepad-plus-plus.org/">Notepad++</a>, <a href="http://www.sublimetext.com/">Sublime Text</a>, or the ever-popular <a href="http://www.gnu.org/software/emacs/">Emacs</a> and <a href="http://www.vim.org/">Vim</a>. Just make sure that you are fluent enough to embark on exercises as they appear in the workshop.</p>
 <h2 id="the-haskell-platform" class="important"><a href="http://www.haskell.org/platform/">The Haskell Platform</a></h2>
 <p>In order to run the programs written during this workshop you will need a Haskell installation. The easiest way to get up and running is to install the latest Haskell Platform. This is a &quot;batteries included&quot; installation of GHC and Cabal that includes many of the most useful packages available in the Hackage ecosystem.</p>
 <h2 id="a-copy-of-the-workshop-scaffold-project" class="important"><a href="https://github.com/sordina/haskell_workshop_2015">A Copy of the Workshop Scaffold Project</a></h2>
@@ -219,7 +220,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'mail
 <hr />
 <h1 id="welcome">Welcome</h1>
 <div class="important">
-<p>Welcome to the Melbourne Haskell Workshop 2013.</p>
+<p>Welcome to the Melbourne Haskell Workshop 2015.</p>
 <p>This intent of this workshop is to provide a working introduction to Haskell for programmers in Melbourne who have not yet used the language in anger.</p>
 <p>The workshop is split into chapters. The chapters will start with a few trivial introductory exercises to get your fingers warmed up, then the meat - exercises that should be able to be solved using the material introduced up to that point (with help and hints available if needed).</p>
 <p>Each chapter will conclude with an open-question. This question should provide inspiration for further consideration of how harder problems could be solved using Haskell, and for more advanced attendees, can be attacked instead of twiddling your thumbs after finishing the main exercise.</p>
@@ -430,7 +431,7 @@ What are some of the current issues with the Haskell ecosystem?</code></pre>
 </div>
 <h2 id="primitives">Primitives</h2>
 <p>Haskell comes pre-packaged with many primitives available in the <code>Prelude</code> module that is included by default, but you should at least make yourself familiar with the following types, and literal syntax:</p>
-<table>
+<table style="width:54%;">
 <colgroup>
 <col width="16%" />
 <col width="18%" />
@@ -1432,6 +1433,28 @@ myRoute = get &quot;/hello&quot; $ do
   liftIO $ putStrLn &quot;What is your name?&quot;
   myName &lt;- liftIO readLn
   html $ mconcat [&quot;Your name is &quot;, myName, &quot;... Thanks!&quot;]
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=1 data_language=haskell data_filter=./resources/scripts/check.sh
+
+~~~&gt; {-# LANGUAGE OverloadedStrings #-}
+~~~&gt; 
+~~~&gt; import Web.Scotty
+~~~&gt; import Control.Monad.IO.Class
+~~~&gt; import Data.Monoid
+~~~&gt; 
+~~~&gt; 
+~~~&gt; myRoute = get &quot;/hello&quot; $ do
+~~~&gt;   liftIO $ putStrLn &quot;What is your name?&quot;
+~~~&gt;   myName &lt;- liftIO readLn
+~~~&gt;   html $ mconcat [&quot;Your name is &quot;, myName, &quot;... Thanks!&quot;]
+~~~&gt; main = undefined
+
+
+/tmp/haskell_workshop_check.hs:3:8:
+    Could not find module ‘Web.Scotty’
+    Use -v to see a list of the files searched for.
 </code></pre>
 <pre class="instruction"><code>Make a simple website using Scotty that shows the current time.</code></pre>
 <pre class="hint"><code>Check out the website project in the scaffold folder for an

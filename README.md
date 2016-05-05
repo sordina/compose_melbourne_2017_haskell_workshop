@@ -50,4 +50,6 @@ If you would like to volunteer, please send an email to the
 [mailing list](mailto:melb-haskell-workshop-organisers@googlegroups.com),
 or contact us via the meetup.
 
+Workshop development is tracked on [Trello](https://trello.com/b/c1jhkXh9/haskell-workshop-2015).
+
 </div>

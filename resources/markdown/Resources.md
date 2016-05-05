@@ -10,6 +10,7 @@ Before you begin you will require the following...
 
 We are assuming previous programming experience, however, if you would like a
 recommendation, have a look at
+[Atom](https://atom.io/),
 [Notepad++](http://notepad-plus-plus.org/),
 [Sublime Text](http://www.sublimetext.com/), or the ever-popular
 [Emacs](http://www.gnu.org/software/emacs/) and

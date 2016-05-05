@@ -5,7 +5,7 @@ CHAPTERS := README.md dependencies/TOC.md \
 	$(shell sed -n '/^[^ ;].*|/ s|^\([^ ]*\).*|resources/markdown/\1.md|p' \
 	resources/markdown/TOC.md)
 
-all: dependencies html pdf todo
+all: html pdf todo
 
 html:
 	@ grep -v '^;' resources/markdown/TOC.md | sed 's/.*|//'     > dependencies/TOC.md

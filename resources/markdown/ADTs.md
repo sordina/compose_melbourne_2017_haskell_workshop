@@ -99,7 +99,7 @@ Variable     := [a-z] + [a-z'_]*
 ```
 
 ConcreteType can't be defined syntactically, but it means that your type is
-"Fully Applied" (in Haskell terms, has a kind of `*`). An example of some concrete types
+"Fully Applied" (in Haskell terms, of **kind** `*`). An example of some concrete types
 are:
 
 * `String`

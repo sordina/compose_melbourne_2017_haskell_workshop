@@ -49,6 +49,7 @@ body.small #expand-content {
 }
 
 #floating-toc table {
+	display: block;
 	padding: 4px 30px;
 	margin: 0;
 	border: 0;

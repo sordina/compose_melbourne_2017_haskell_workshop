@@ -12,11 +12,7 @@ CHAPTERS := README.md dependencies/TOC.md \
 	$(shell sed -n '/^[^ ;].*|/ s|^\([^ ]*\).*|resources/markdown/\1.md|p' \
 	resources/markdown/TOC.md)
 
-all: mkdependencies html todo
-
-.PHONY: mkdependencies
-mkdependencies:
-	mkdir -p dependencies
+all: dependencies html todo standalone
 
 html:
 	@ grep -v '^;' resources/markdown/TOC.md | sed 's/.*|//'     > dependencies/TOC.md
@@ -24,7 +20,10 @@ html:
 	@ resources/scripts/wrapchapters.sh pandoctor $(CHAPTERS)   >> index.html
 	@ cat  resources/html/footer.html                           >> index.html
 
-standalone: html
+.PHONY: standalone
+standalone: compose_melbourne_2016_haskell_workshop_standalone.html
+
+compose_melbourne_2016_haskell_workshop_standalone.html: html
 	inliner -m 'index.html' > compose_melbourne_2016_haskell_workshop_standalone.html
 
 display: html
@@ -54,14 +53,6 @@ publish:
 
 dependencies:
 	mkdir -p dependencies
-	git clone git@github.com:sordina/Commando.git  dependencies/commando
-	git clone git@github.com:sordina/Conscript.git dependencies/conscript
-	git clone git@github.com:sordina/pandoctor.git dependencies/pandoctor
-	git clone git@github.com:sordina/uniqhash.git  dependencies/uniqhash
-	cd dependencies/commando  && cabal install
-	cd dependencies/conscript && cabal install
-	cd dependencies/pandoctor && cabal install
-	cd dependencies/uniqhash  && cabal install
 
 clean:
 	rm -rf dependencies

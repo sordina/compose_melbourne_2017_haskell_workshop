@@ -40,7 +40,7 @@ publish:
 	@ read message; \
 	git commit -m "Publishing - $$message"
 	git push
-	git push origin master:gh-pages
+	git push origin gh-pages
 
 dependencies:
 	mkdir -p dependencies

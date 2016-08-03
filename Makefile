@@ -1,4 +1,11 @@
 
+#
+# Compose :: Melbourne 2016 Haskell Workshop
+#
+# * http://composeconference.github.io/compose_haskell_workshop/
+# * https://github.com/composeconference/compose_haskell_workshop
+#
+
 WHITELIST := 'README\|Makefile\|resources/'
 
 CHAPTERS := README.md dependencies/TOC.md \

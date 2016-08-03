@@ -1065,7 +1065,7 @@ Why is it a good idea to make side effects explicit?</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Function</th>
+<th align="left">Tool</th>
 <th align="left">Details</th>
 </tr>
 </thead>
@@ -1076,10 +1076,7 @@ Why is it a good idea to make side effects explicit?</code></pre>
 </tr>
 </tbody>
 </table>
-<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>{-# LANGUAGE MultiWayIf #-}
-
-module Main where
-
+<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>
 import System.Random
 
 main :: IO ()
@@ -1092,9 +1089,10 @@ game :: Int -&gt; IO ()
 game n = do
     print &quot;Enter a number&quot;
     g &lt;- readLn
-    if | g &lt;  n -&gt; print &quot;Too low :(&quot;  &gt;&gt; game n
-       | g &gt;  n -&gt; print &quot;Too high :(&quot; &gt;&gt; game n
-       | g == n -&gt; print &quot;You win!&quot;
+    case compare g n of LT -&gt; print &quot;Too low :(&quot;  &gt;&gt; game n
+                        GT -&gt; print &quot;Too high :(&quot; &gt;&gt; game n
+                        EQ -&gt; print &quot;You win!&quot;
+
 </code></pre>
 
 </div>

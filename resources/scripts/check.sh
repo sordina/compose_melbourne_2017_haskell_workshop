@@ -31,7 +31,7 @@ then
 	echo "main = undefined" >> /tmp/haskell_workshop_check.hs
 fi
 
-ghc /tmp/haskell_workshop_check.hs &> /tmp/ghc_results_$PANDOCTOR_COUNT
+stack exec ghc /tmp/haskell_workshop_check.hs &> /tmp/ghc_results_$PANDOCTOR_COUNT
 
 status=$?
 if [ $status -ne 0 ]

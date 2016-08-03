@@ -5,7 +5,7 @@ CHAPTERS := README.md dependencies/TOC.md \
 	$(shell sed -n '/^[^ ;].*|/ s|^\([^ ]*\).*|resources/markdown/\1.md|p' \
 	resources/markdown/TOC.md)
 
-all: mkdependencies html pdf todo
+all: mkdependencies html todo
 
 .PHONY: mkdependencies
 mkdependencies:
@@ -16,9 +16,6 @@ html:
 	@ cat  resources/html/head.html                              > index.html
 	@ resources/scripts/wrapchapters.sh pandoctor $(CHAPTERS)   >> index.html
 	@ cat  resources/html/footer.html                           >> index.html
-
-pdf:
-	@ sed 's/^----$$/\\pagebreak/' $(CHAPTERS) | pandoc -V geometry:margin=1.5in -o workshop.pdf
 
 display: html
 	@ ./resources/scripts/chromereload index.html
@@ -58,6 +55,11 @@ dependencies:
 
 clean:
 	rm -rf dependencies
+	mkdir dependencies
+	rm -f /tmp/haskell_workshop_md5_*
+	rm -f /tmp/haskell_workshop.*.cache
+	rm -f /tmp/ghc_results_*
+	rm -f /tmp/haskell_workshop_check.*
 
 unchecked_examples:
 	@ grep -n 'data-language=haskell' $(CHAPTERS) | grep -v check | cat

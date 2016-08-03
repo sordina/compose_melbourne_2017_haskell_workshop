@@ -5,7 +5,7 @@
 
 <div class="important">
 
-Welcome to the Melbourne Haskell Workshop 2015.
+Welcome to the Compose :: Melbourne 2016 Haskell Workshop.
 
 This intent of this workshop is to provide a working introduction to Haskell
 for programmers in Melbourne who have not yet used the language in anger.

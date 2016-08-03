@@ -10,7 +10,7 @@ then
   exit 1
 fi
 
-pf=/tmp/hw2015
+pf=/tmp/haskell_workshop
 
 tf=$pf.$$.tmp
 

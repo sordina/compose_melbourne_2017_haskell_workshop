@@ -17,5 +17,6 @@ Then you can build the workshop by issuing the command `make`.
 
 ## Links
 
+* [Compose Conference](http://www.composeconference.org/)
 * [Github Pages Site](http://composeconference.github.io/compose_haskell_workshop/)
 * [Stand-Alone Version](http://composeconference.github.io/compose_haskell_workshop/compose_melbourne_2016_haskell_workshop_standalone.html)

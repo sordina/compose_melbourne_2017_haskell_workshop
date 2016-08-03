@@ -129,14 +129,14 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 <h1 id="required-resources">Required Resources</h1>
 <p>Before you begin you will require the following...</p>
 <h2 id="a-text-editor" class="important">A Text-Editor</h2>
-<p>We are assuming previous programming experience, however, if you would like a recommendation, have a look at <a href="https://atom.io/">Atom</a>, <a href="http://notepad-plus-plus.org/">Notepad++</a>, <a href="http://www.sublimetext.com/">Sublime Text</a>, or the ever-popular <a href="http://www.gnu.org/software/emacs/">Emacs</a> and <a href="http://www.vim.org/">Vim</a>. Just make sure that you are fluent enough to embark on exercises as they appear in the workshop.</p>
-<h2 id="the-haskell-platform" class="important"><a href="http://www.haskell.org/platform/">The Haskell Platform</a></h2>
-<p>In order to run the programs written during this workshop you will need a Haskell installation. The easiest way to get up and running is to install the latest Haskell Platform. This is a &quot;batteries included&quot; installation of GHC and Cabal that includes many of the most useful packages available in the Hackage ecosystem.</p>
-<h2 id="a-copy-of-the-workshop-scaffold-project" class="important"><a href="https://github.com/composeconference/compose_haskell_workshop">A Copy of the Workshop Scaffold Project</a></h2>
-<p><a href="https://github.com/composeconference/compose_haskell_workshop" class="uri">https://github.com/composeconference/compose_haskell_workshop</a></p>
-<p>Either clone with git:</p>
+<p>We are assuming previous programming experience, however, if you would like a recommendation, have a look at <a href="https://atom.io/">Atom</a>, <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="http://www.gnu.org/software/emacs/">Emacs</a> or <a href="http://www.vim.org/">Vim</a>. Just make sure that you are fluent enough to embark on exercises as they appear in the workshop.</p>
+<h2 id="stack" class="important"><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a></h2>
+<p>In order to run the programs written during this workshop you will need a Haskell installation. The easiest way to get up and running is to install Stack.</p>
+<h2 id="a-copy-of-the-workshop-github-project"><a href="https://github.com/composeconference/compose_haskell_workshop">A Copy of the Workshop Github Project</a></h2>
+<p>The exercises in the project are available in runnable form in the workshop source.</p>
+<p>You can grab the source from GitHub:</p>
 <pre class="shell"><code>git clone https://github.com/composeconference/compose_haskell_workshop.git</code></pre>
-<h1 id="useful-resources" class="collapse">Useful Resources</h1>
+<h1 id="other-useful-resources" class="collapse">Other Useful Resources</h1>
 <p>These resources are available to help you with any issues you face when learning Haskell:</p>
 <h2 id="haskell-on-freenode">#haskell on <a href="http://freenode.net/">Freenode</a></h2>
 <p>An IRC channel dedicated to discussion of Haskell. This is often the easiest place to fire off a one-off question that is simple enough not to warrant a permanent listing on the internet.</p>
@@ -158,6 +158,8 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 <p>Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell.</p>
 <h2 id="real-world-haskell"><a href="http://book.realworldhaskell.org/">Real World Haskell</a></h2>
 <p>Real World Haskell aims to focus on solving real problems with Haskell. Several chapters of the book are somewhat dated in terms of the libraries used, but it still serves as a useful example of getting real work done with Haskell.</p>
+<h2 id="haskell-programming-from-first-principles"><a href="http://haskellbook.com/">Haskell Programming from First Principles</a></h2>
+<p>The latest and greatest comprehensive text for learning Haskell.</p>
 
 </div>
 </div>
@@ -175,58 +177,6 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 <p>This intent of this workshop is to provide a working introduction to Haskell for programmers in Melbourne who have not yet used the language in anger.</p>
 <p>The workshop is split into chapters. The chapters will start with a few trivial introductory exercises to get your fingers warmed up, then the meat - exercises that should be able to be solved using the material introduced up to that point (with help and hints available if needed).</p>
 <p>Each chapter will conclude with an open-question. This question should provide inspiration for further consideration of how harder problems could be solved using Haskell, and for more advanced attendees, can be attacked instead of twiddling your thumbs after finishing the main exercise.</p>
-<p>The workshop will be split into pre, and post lunch parts, with additional exercises available for busy beavers following the <a href="#moar">MOAR</a> section of the table of contents.</p>
-</div>
-<h2 id="why-run-a-free-haskell-workshop">Why run a free haskell workshop?</h2>
-<p>There are a few kinds of benefits that we anticipate will result as an outcome of the workshop:</p>
-<ul>
-<li>Benefits to Individuals</li>
-<li>Benefits to the Community</li>
-<li>Benefits to the Volunteers</li>
-<li>Benefits to the Organisers</li>
-<li>Benefits to Industry</li>
-<li>Benefits to Relationships</li>
-</ul>
-<h3 id="benefits-to-individuals">Benefits to Individuals</h3>
-<ul>
-<li>New Tools</li>
-<li>Experience writing Haskell</li>
-<li>An Introduction to the Wider Community</li>
-</ul>
-<p>What do we hope that an individual attendee will gain by coming to the workshop?</p>
-<p>Since this workshop is targeted towards beginners, we want an attendee to come away from the workshop with new tools at their disposal. Yes, a new language to reimplement existing knowledge with various platform benefits, but more importantly, a new tool for dissecting problems.</p>
-<p>Learning a new problem-solving approach will almost certainly be the most challenging part of the workshop, but through the consistent delivery of exercises that benefit from domain modelling, we hope that the attendee will walk away with the confidence to attack new problems from the &quot;Haskell Mindset&quot;.</p>
-<p>Although there won't be time to work on any large-scale problems, we hope that the approaches we demonstrate will be able to be applied with confidence to problems of any size.</p>
-<p>Aside from the technical benefits, the workshop should provide a great opportunity for attendees to meet many other members of the Melbourne Haskell using community.</p>
-<h3 id="benefits-to-the-community">Benefits to the Community</h3>
-<ul>
-<li>Haskell as a Tool for Communication</li>
-<li>Local Network Effects</li>
-<li>Consolidation</li>
-</ul>
-<p>Often, Haskell (especially the type-system) can be an extremely effective means of communication of certain kinds of behaviors, requirements, and problems. If this workshop can help advance Haskell as a common language for inter-personal discussion of technical topics, then the barriers of communication will be lowered and the community as a whole should become more productive.</p>
-<p>Often, it isn't until a particular community reaches a critical mass that it comes into its own. Currently the Melbourne Haskell community is reasonably disparate and unconnected (especially outside of MFUG). If the various groups of people using Haskell can be consolidated, then we would consider starting a regular Melbourne Haskell meetup. Just having the ability to ask questions in person can go a long way to advancing confidence in a particular topic, therefore, as the number of Haskell users increases locally, so to will the overall skill of individuals and the community as a whole.</p>
-<h3 id="benefits-to-the-volunteers">Benefits to the Volunteers</h3>
-<ul>
-<li>Experience</li>
-<li>Networking</li>
-</ul>
-<p>We hope that for the volunteers, providing administrative and in-person assistance will be a rewarding experience. We are very open to people of any skill level helping out and this could be a great opportunity for newcomers to the community to get their fingers dirty by providing assistance at the workshop.</p>
-<p>The workshop should also be a good networking opportunity for volunteers, as a stratified group of Haskellers of this size has not yet convened in Melbourne.</p>
-<h3 id="benefits-to-industry">Benefits to Industry</h3>
-<p>It has been said that once you are comfortable programming Haskell, you become spoiled, and won't want to go back to your previous languages. Rather than quit your day-job, if Haskell's presence can be advanced in industry, then the Joy of programming haskell will become a possibility in your day-to-day work-life. A longer-term goal to be sure.</p>
-<p>This benefit may be the most tenuous outcome of the workshop, but as the mindshare of Haskell grows, the chances of it being used for projects within industry increases.</p>
-<ul>
-<li>As an understanding of the language's strengths and weaknesses emerges, decision makers are empowered to weigh up if the language is a suitable candidate for solving the technical problems at hand.</li>
-<li>Confidence is gained that there are enough people using the language that hiring a programmer will not be a problem if this is required.</li>
-</ul>
-<p>The technical benefits to industry will have the most impact where a rigorous solution to a problem is necessary. In the financial sector, Haskell is beginning to become more popular as the cost of bugs can be very high. Technical benefits, however, are a moot point if Haskell does not see adoption.</p>
-<p>If this workshop can give project-leaders in industry, making programming-language choices, the confidence to consider Haskell as a real candidate, then it will have gone a long way towards making Melbourne a more attractive place to be for people who wish to use Haskell in day-to-day work.</p>
-<h3 id="benefits-to-the-organisers">Benefits to the Organisers</h3>
-<p>Last-but-not-least -</p>
-<div class="important">
-<p>For us, the organisers, running this workshop will be a great opportunity to see the Melbourne Haskell community in action. We're looking forward to working with you all and expect that, above all else, we will have a lot of...</p>
-<h2 id="fun"><em>Fun!</em></h2>
 </div>
 
 </div>
@@ -242,24 +192,23 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 <h1 id="setup">Setup</h1>
 <div class="important">
 <p>Ensure that you have the following programs installed and functioning correctly:</p>
-<h2 id="ghci">GHCi</h2>
+<h2 id="stack"><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a></h2>
+<p>Check that you have stack installed:</p>
+<pre class="shell"><code>stack --version</code></pre>
+<p>This should output something similar to:</p>
+<pre><code>Version 1.1.2 x86_64 hpack-0.14.0</code></pre>
+<p>Otherwise, install it!</p>
+<pre class="shell"><code>curl -sSL https://get.haskellstack.org/ | sh
+stack setup
+stack ghci
+&gt; 1 + 1</code></pre>
+<p>This should output:</p>
+<pre><code>2</code></pre>
 </div>
-<p>At a command prompt, enter the following command:</p>
-<pre class="shell"><code>ghci</code></pre>
-<p>This should launch the GHC Haskell REPL.</p>
-<p>Type the following to ensure that you have a functioning REPL:</p>
-<pre data-language="haskell"><code>1 + 1</code></pre>
-<p>This should yield the result:</p>
-<pre class="text"><code>2</code></pre>
 <pre class="real"><code>You can use GHCi to perform calculations other than just &quot;1 + 1&quot;.
 
 Here is an example session:
 
-&gt; ghci
-GHCi, version 7.6.2: http://www.haskell.org/ghc/  :? for help
-Loading package ghc-prim ... linking ... done.
-Loading package integer-gmp ... linking ... done.
-Loading package base ... linking ... done.
 [Prelude] &gt; 1 + 2 + 3
 6
 [Prelude] &gt; 100 / 2
@@ -273,6 +222,12 @@ Leaving GHCi.</code></pre>
 Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.</code></pre>
 <pre class="answer"><code>[Prelude] 42 * 13 * 3
 1638</code></pre>
+<pre class="note"><code>If ghci is on your PATH, then you can invoke it directly,
+however, if you have just installed stack, then you will
+need to invoke ghci indirectly by calling
+
+&gt; stack exec -- ghci [ARGS]
+</code></pre>
 <h2 id="loading-files-in-ghci" class="important">Loading files in GHCi</h2>
 <p>There are many ways to load and execute Haskell code. For the purposes of this workshop, if you do not already have a workflow you are comfortable with, then we suggest the following steps:</p>
 <ul>
@@ -280,11 +235,11 @@ Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.</code></pre>
 <li>When you are ready to test your program, load it into GHCi</li>
 <li>After making modifications to your program, reload the program in GHCi</li>
 </ul>
-<p>Say you had written the following program <code>test.hs</code> in your home directory:</p>
+<p>Say you had written the following program <code>test.hs</code>:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>main = print &quot;hello world&quot;
 </code></pre>
 <p>Load the file in GHCi to see it in action:</p>
-<pre class="shell"><code>&gt; ghci test.hs
+<pre class="shell"><code>&gt; stack exec -- ghci test.hs
 GHCi, version 7.6.2: http://www.haskell.org/ghc/  :? for help
 Loading package ghc-prim ... linking ... done.
 Loading package integer-gmp ... linking ... done.
@@ -314,7 +269,7 @@ the `:type` command:
 
 ghci&gt; :type main
 main :: IO ()</code></pre>
-<pre class="instruction"><code>  
+<pre class="instruction"><code>
 
 * Define a new numeric function in a source file
 * Load it in GHCi

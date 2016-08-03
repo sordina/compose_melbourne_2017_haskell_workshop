@@ -7,39 +7,38 @@ Setup
 <div class="important">
 Ensure that you have the following programs installed and functioning correctly:
 
-## GHCi
-</div>
+## [Stack](https://docs.haskellstack.org/en/stable/README/)
 
-At a command prompt, enter the following command:
+Check that you have stack installed:
 
 ```shell
-ghci
+stack --version
 ```
 
-This should launch the GHC Haskell REPL.
+This should output something similar to:
 
-Type the following to ensure that you have a functioning REPL:
+    Version 1.1.2 x86_64 hpack-0.14.0
 
-~~~{data-language="haskell"}
-1 + 1
-~~~
+Otherwise, install it!
 
-This should yield the result:
-
-```text
-2
+```shell
+curl -sSL https://get.haskellstack.org/ | sh
+stack setup
+stack ghci
+> 1 + 1
 ```
+
+This should output:
+
+    2
+
+</div>
 
 ```real
 You can use GHCi to perform calculations other than just "1 + 1".
 
 Here is an example session:
 
-> ghci
-GHCi, version 7.6.2: http://www.haskell.org/ghc/  :? for help
-Loading package ghc-prim ... linking ... done.
-Loading package integer-gmp ... linking ... done.
-Loading package base ... linking ... done.
 [Prelude] > 1 + 2 + 3
 6
 [Prelude] > 100 / 2
@@ -61,6 +60,16 @@ Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.
 1638
 ```
 
+```note
+If ghci is on your PATH, then you can invoke it directly,
+however, if you have just installed stack, then you will
+need to invoke ghci indirectly by calling
+
+> stack exec -- ghci [ARGS]
+
+```
+
+
 ## Loading files in GHCi {.important}
 
 There are many ways to load and execute Haskell code. For the purposes of this workshop,
@@ -71,7 +80,7 @@ following steps:
 * When you are ready to test your program, load it into GHCi
 * After making modifications to your program, reload the program in GHCi
 
-Say you had written the following program `test.hs` in your home directory:
+Say you had written the following program `test.hs`:
 
 ~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
 main = print "hello world"
@@ -80,7 +89,7 @@ main = print "hello world"
 Load the file in GHCi to see it in action:
 
 ```shell
-> ghci test.hs
+> stack exec -- ghci test.hs
 GHCi, version 7.6.2: http://www.haskell.org/ghc/  :? for help
 Loading package ghc-prim ... linking ... done.
 Loading package integer-gmp ... linking ... done.
@@ -125,7 +134,7 @@ main :: IO ()
 ```
 
 ```instruction
-  
+
 
 * Define a new numeric function in a source file
 * Load it in GHCi

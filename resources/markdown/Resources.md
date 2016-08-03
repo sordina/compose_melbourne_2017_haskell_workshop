@@ -11,33 +11,29 @@ Before you begin you will require the following...
 We are assuming previous programming experience, however, if you would like a
 recommendation, have a look at
 [Atom](https://atom.io/),
-[Notepad++](http://notepad-plus-plus.org/),
-[Sublime Text](http://www.sublimetext.com/), or the ever-popular
-[Emacs](http://www.gnu.org/software/emacs/) and
+[Visual Studio Code](https://code.visualstudio.com/),
+[Emacs](http://www.gnu.org/software/emacs/) or
 [Vim](http://www.vim.org/). Just make sure that you are fluent enough to embark
 on exercises as they appear in the workshop.
 
-## [The Haskell Platform](http://www.haskell.org/platform/) {.important}
+## [Stack](https://docs.haskellstack.org/en/stable/README/) {.important}
 
 In order to run the programs written during this workshop you will need a Haskell
-installation. The easiest way to get up and running is to install the latest
-Haskell Platform. This is a "batteries included" installation of GHC and Cabal
-that includes many of the most useful packages available in the Hackage ecosystem.
+installation. The easiest way to get up and running is to install Stack.
 
-## [A Copy of the Workshop Scaffold Project](https://github.com/composeconference/compose_haskell_workshop) {.important}
+## [A Copy of the Workshop Github Project](https://github.com/composeconference/compose_haskell_workshop)
 
-<https://github.com/composeconference/compose_haskell_workshop>
+The exercises in the project are available in runnable form in the workshop source.
 
-Either clone with git:
+You can grab the source from GitHub:
 
 ```shell
 git clone https://github.com/composeconference/compose_haskell_workshop.git
 ```
 
 
-
-Useful Resources {.collapse}
-================
+Other Useful Resources {.collapse}
+==================================
 
 These resources are available to help you with any issues you face when learning Haskell:
 
@@ -100,3 +96,7 @@ Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell
 Real World Haskell aims to focus on solving real problems with Haskell. Several
 chapters of the book are somewhat dated in terms of the libraries used, but
 it still serves as a useful example of getting real work done with Haskell.
+
+## [Haskell Programming from First Principles](http://haskellbook.com/)
+
+The latest and greatest comprehensive text for learning Haskell.

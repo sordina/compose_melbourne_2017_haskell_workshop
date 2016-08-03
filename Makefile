@@ -6,9 +6,9 @@
 # * https://github.com/composeconference/compose_haskell_workshop
 #
 
-WHITELIST := 'README\|Makefile\|resources/'
+WHITELIST := 'Makefile\|resources/'
 
-CHAPTERS := README.md dependencies/TOC.md \
+CHAPTERS := resources/markdown/Title.md dependencies/TOC.md \
 	$(shell sed -n '/^[^ ;].*|/ s|^\([^ ]*\).*|resources/markdown/\1.md|p' \
 	resources/markdown/TOC.md)
 

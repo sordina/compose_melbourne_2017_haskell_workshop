@@ -48,9 +48,9 @@ publish:
 	git add -A .
 	@ echo "Commit Message:"
 	@ read message; \
-	git commit -m "Publishing - $$message"
-	git push
-	git push origin gh-pages
+	git commit -m "Publishing - $$message" || echo "No commit required"
+	git push || echo "No master push required"
+	git push origin gh-pages || echo "No gh-pages push required"
 
 dependencies:
 	mkdir -p dependencies

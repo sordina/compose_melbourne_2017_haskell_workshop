@@ -3,3 +3,4 @@ dependencies/
 *.o
 dist/
 hugsin
+compose_melbourne_2016_haskell_workshop_standalone.html

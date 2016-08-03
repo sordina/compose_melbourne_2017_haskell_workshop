@@ -17,6 +17,9 @@ html:
 	@ resources/scripts/wrapchapters.sh pandoctor $(CHAPTERS)   >> index.html
 	@ cat  resources/html/footer.html                           >> index.html
 
+standalone: html
+	inliner -m 'index.html' > compose_melbourne_2016_haskell_workshop_standalone.html
+
 display: html
 	@ ./resources/scripts/chromereload index.html
 

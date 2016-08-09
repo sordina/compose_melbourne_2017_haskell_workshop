@@ -251,7 +251,7 @@ Ok, modules loaded: Main.
 <p>... Unfortunately there is a bug in the program, so in your editor you make the change required to print &quot;hello, world&quot; with the mandated comma:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>main = print &quot;hello, world&quot;
 </code></pre>
-<p>Now, back in GHCi, you can reload the program without exiting the REPL:</p>
+<p>Now, back in GHCi, you can reload the program without exiting the REPL (Read Eval Print Loop):</p>
 <pre class="shell"><code>[*Main] &gt; :reload
 [1 of 1] Compiling Main             ( test.hs, interpreted )
 Ok, modules loaded: Main.
@@ -271,7 +271,9 @@ ghci&gt; :type main
 main :: IO ()</code></pre>
 <pre class="instruction"><code>
 
-* Define a new numeric function in a source file
+* In the previous example, you defined a function &#39;main&#39;
+  that printed &quot;hello, world&quot;...
+* .. Now, define a new numeric function that prints something else
 * Load it in GHCi
 * Test your function in GHCi
 * Make a modification
@@ -281,7 +283,7 @@ main :: IO ()</code></pre>
 <p>Create the following source file (program.hs):</p>
 <pre data-language="haskell"><code>main = print &quot;hello world&quot;</code></pre>
 <p>Compile the program as follows:</p>
-<pre class="shell"><code>ghc --make program.hs</code></pre>
+<pre class="shell"><code>stack exec -- ghc --make program.hs</code></pre>
 <p>Run the program with the following command:</p>
 <pre class="shell"><code>./program</code></pre>
 <p>The output should look as follows:</p>
@@ -293,27 +295,20 @@ optimisation settings for GHC.</code></pre>
 
 Compile and run hello-world.</code></pre>
 <pre class="answer"><code>&gt; echo &#39;main = print &quot;hello friends&quot;&#39; &gt; main.hs
-&gt; ghc --make main.hs
+&gt; stack exec -- ghc --make main.hs
 [1 of 1] Compiling Main             ( main.hs, main.o )
 Linking main ...
 &gt; ./main
 &quot;hello friends&quot;</code></pre>
-<h2 id="cabal" class="important">Cabal</h2>
-<p>You should have access to a Cabal installation if you have installed the Haskell Platform.</p>
-<p>Check that you have cabal by running:</p>
-<pre class="shell"><code>cabal --version</code></pre>
+<h2 id="stack-1" class="important">Stack</h2>
+<p>You should have access to a the <code>stack</code> command if you have installed stack.</p>
+<p>Check that you have Stack by running:</p>
+<pre class="shell"><code>stack --version</code></pre>
 <p>This should output something similar to:</p>
-<pre class="text"><code>cabal-install version &lt;VERSION&gt;
-using version &lt;VERSION&gt; of the Cabal library</code></pre>
-<pre class="instruction"><code>Install the QuickCheck package using cabal.</code></pre>
-<pre class="note"><code>On OS X, The Haskell-Platform will install binaries in
-$HOME/Library/Haskell/bin
-
-Make sure that this is on your path.</code></pre>
-<pre class="answer"><code>&gt; cabal update # not required if done recently
-Downloading the latest package list from hackage.haskell.org
-&gt; cabal install quickcheck
-...</code></pre>
+<pre class="text"><code>Version 1.1.2 x86_64 hpack-0.14.0</code></pre>
+<p>Stack can install packages by running <code>stack install PACKAGE_NAME</code>.</p>
+<pre class="instruction"><code>Install the &#39;pointfree&#39; package using stack.</code></pre>
+<pre class="answer"><code>&gt; stack install pointfree</code></pre>
 <pre class="open"><code>An open-ended question:
 
 Given that GHC is largely written in Haskell, how was GHC first compiled?</code></pre>

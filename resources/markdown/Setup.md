@@ -107,7 +107,8 @@ make the change required to print "hello, world" with the mandated comma:
 main = print "hello, world"
 ~~~
 
-Now, back in GHCi, you can reload the program without exiting the REPL:
+Now, back in GHCi, you can reload the program without exiting the
+REPL (Read Eval Print Loop):
 
 ```shell
 [*Main] > :reload
@@ -136,7 +137,9 @@ main :: IO ()
 ```instruction
 
 
-* Define a new numeric function in a source file
+* In the previous example, you defined a function 'main'
+  that printed "hello, world"...
+* .. Now, define a new numeric function that prints something else
 * Load it in GHCi
 * Test your function in GHCi
 * Make a modification
@@ -155,7 +158,7 @@ main = print "hello world"
 Compile the program as follows:
 
 ```shell
-ghc --make program.hs
+stack exec -- ghc --make program.hs
 ```
 
 Run the program with the following command:
@@ -184,46 +187,37 @@ Compile and run hello-world.
 
 ```answer
 > echo 'main = print "hello friends"' > main.hs
-> ghc --make main.hs
+> stack exec -- ghc --make main.hs
 [1 of 1] Compiling Main             ( main.hs, main.o )
 Linking main ...
 > ./main
 "hello friends"
 ```
 
-## Cabal {.important}
+## Stack {.important}
 
-You should have access to a Cabal installation if you have installed the Haskell Platform.
+You should have access to a the `stack` command if you have installed stack.
 
-Check that you have cabal by running:
+Check that you have Stack by running:
 
 ```shell
-cabal --version
+stack --version
 ```
 
 This should output something similar to:
 
 ```text
-cabal-install version <VERSION>
-using version <VERSION> of the Cabal library
+Version 1.1.2 x86_64 hpack-0.14.0
 ```
+
+Stack can install packages by running `stack install PACKAGE_NAME`.
 
 ```instruction
-Install the QuickCheck package using cabal.
-```
-
-```note
-On OS X, The Haskell-Platform will install binaries in
-$HOME/Library/Haskell/bin
-
-Make sure that this is on your path.
+Install the 'pointfree' package using stack.
 ```
 
 ```answer
-> cabal update # not required if done recently
-Downloading the latest package list from hackage.haskell.org
-> cabal install quickcheck
-...
+> stack install pointfree
 ```
 
 ```open

@@ -3,18 +3,20 @@
 Compose :: Melbourne 2016 Haskell Workshop
 ==========================================
 
+<div class="center important">
+
+An workshop intended to introduce Haskell to newcomers to functional-programming.
+
+Running on Day-Two of [Compose :: Melbourne.](http://www.composeconference.org)
+
+</div>
+
 <div class="important">
 
 ~~~{.note .notitle}
 Press "o" to toggle only showing the most important content
 Press "t" to toggle showing the table of contents
 ~~~
-
-</div>
-
-<div class="center important">
-
-A single-day workshop intended to introduce Haskell to newcomers to functional-programming.
 
 </div>
 

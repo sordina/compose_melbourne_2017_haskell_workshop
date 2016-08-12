@@ -7,6 +7,8 @@
 
 Welcome to the Compose :: Melbourne 2016 Haskell Workshop.
 
+Running on Day-Two of [Compose :: Melbourne.](http://www.composeconference.org)
+
 This intent of this workshop is to provide a working introduction to Haskell
 for programmers in Melbourne who have not yet used the language in anger.
 

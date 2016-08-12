@@ -43,7 +43,6 @@ These resources are available to help you with any issues you face when learning
 An IRC channel dedicated to discussion of Haskell. This is often the easiest place to fire off
 a one-off question that is simple enough not to warrant a permanent listing on the internet.
 
-
 ## [Hackage](http://hackage.haskell.org/packages/hackage.html)
 
 Hackage is the primary repository for Haskell packages. It is public,
@@ -63,39 +62,15 @@ for function-names, but for function type-signatures.
 
 For example, have a look for the function with signature [Text -> ByteString](http://www.haskell.org/hoogle/?hoogle=Text+-%3E+ByteString).
 
-
-## [MFUG](http://www.meetup.com/Melbourne-Functional-User-Group-MFUG/)
-
-MFUG is the Melbourne Functional Programmer's User Group. This group discusses
-many topics, including Haskell.
-
 ## [/r/haskell](http://www.reddit.com/r/haskell)
 
 For Reddit users, /r/haskell is a very useful resource with a great deal of
 information regarding recent developments in the Haskell ecosystem and community.
 This is a good place to ask some more advanced questions or start a flame-war.
 
-## [Haskell News](http://haskellnews.org/)
-
-Haskell News is a firehose-style haskell news aggregator taking information from
-sources as varied as academic-journals, and GitHub accounts.
-
-
-## [HLint](http://hackage.haskell.org/package/hlint)
-
-HLint is a [linting tool](http://en.wikipedia.org/wiki/Lint_(software))
-for Haskell source - It can often provide some
-useful hints about refactoring avenues for your code.
-
 ## [Learn You a Haskell (For Great Good)](http://learnyouahaskell.com/)
 
 Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell.
-
-## [Real World Haskell](http://book.realworldhaskell.org/)
-
-Real World Haskell aims to focus on solving real problems with Haskell. Several
-chapters of the book are somewhat dated in terms of the libraries used, but
-it still serves as a useful example of getting real work done with Haskell.
 
 ## [Haskell Programming from First Principles](http://haskellbook.com/)
 

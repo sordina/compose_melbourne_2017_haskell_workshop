@@ -9,6 +9,8 @@ An workshop intended to introduce Haskell to newcomers to functional-programming
 
 Running on Day-Two of [Compose :: Melbourne.](http://www.composeconference.org)
 
+If you wish to attend on the day, then [please register via Eventbrite.](https://www.eventbrite.com.au/e/haskell-workshop-compose-conference-melbourne-2016-tickets-26654564520)
+
 </div>
 
 <div class="important">

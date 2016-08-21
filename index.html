@@ -20,6 +20,7 @@
 <div class="center important">
 <p>An workshop intended to introduce Haskell to newcomers to functional-programming.</p>
 <p>Running on Day-Two of <a href="http://www.composeconference.org">Compose :: Melbourne.</a></p>
+<p>If you wish to attend on the day, then <a href="https://www.eventbrite.com.au/e/haskell-workshop-compose-conference-melbourne-2016-tickets-26654564520">please register via Eventbrite.</a></p>
 </div>
 <div class="important">
 <pre class="note notitle"><code>Press &quot;o&quot; to toggle only showing the most important content
@@ -1000,8 +1001,27 @@ Why is it a good idea to make side effects explicit?</code></pre>
 
 <hr />
 <h1 id="lets-make-a-guessing-game">Let's Make a Guessing Game</h1>
+<div class="important">
+<h2 id="the-game">The Game</h2>
+<p>Your task is to make a guessing game where the computer comes up with a number, and you have to make guesses - with the computer telling you if you were too high, or too low.</p>
+<h2 id="example-session">Example Session</h2>
+<pre><code>$ stack exec -- runhaskell Module_1470214643_41323.hs
+&quot;Let&#39;s play the number guessing game&quot;
+&quot;Enter a number&quot;
+2
+&quot;Too low :(&quot;
+&quot;Enter a number&quot;
+8
+&quot;Too high :(&quot;
+&quot;Enter a number&quot;
+5
+&quot;Too high :(&quot;
+&quot;Enter a number&quot;
+4
+&quot;You win!&quot;</code></pre>
+</div>
 <h2 id="solution-toolbox">Solution Toolbox</h2>
-<p>In order to solve the problem the following toolbox of functions can be used:</p>
+<p>In order to solve the problem the following should be used:</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -1010,36 +1030,68 @@ Why is it a good idea to make side effects explicit?</code></pre>
 </tr>
 <tr class="even">
 <td align="left">main</td>
-<td align="left">You must define a <code>main</code> function if you want to be able to run your module</td>
+<td align="left">You must define a <code>main</code> function in your module</td>
 </tr>
 <tr class="odd">
 <td align="left">print</td>
 <td align="left">Lets you <code>print</code> things to the console</td>
 </tr>
 <tr class="even">
+<td align="left">System.Random</td>
+<td align="left">import System.Random to get access randomRIO</td>
+</tr>
+<tr class="odd">
 <td align="left">randomRIO</td>
 <td align="left">Generates a random number from a range as an IO action</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">readLn</td>
 <td align="left">read a value from the console as a number</td>
 </tr>
-<tr class="even">
-<td align="left">compare</td>
-<td align="left">compare two values as LT, EQ, or GT</td>
-</tr>
 <tr class="odd">
+<td align="left">compare</td>
+<td align="left"><code>compare x y</code> tells you if <code>x</code> is LT, EQ, or GT <code>y</code></td>
+</tr>
+<tr class="even">
 <td align="left">case</td>
 <td align="left">Dispatch on a value</td>
 </tr>
-<tr class="even">
-<td align="left">(&gt;&gt;)</td>
-<td align="left">Sequence two IO actions</td>
+<tr class="odd">
+<td align="left">do</td>
+<td align="left">Execute multiple IO actions</td>
 </tr>
 </tbody>
 </table>
-<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>
-import System.Random
+<h2 id="thinking-functionally">Thinking Functionally</h2>
+<p>Try to build the solution piece-by-piece. Examine how you can use recursion in conjunction with pattern-matching to keep re-running a procedure until a condition is satisfied.</p>
+<div class="important">
+<h2 id="solution">Solution</h2>
+<p>If you're having trouble coming up with the solution, then here are some hints!</p>
+<h3 id="main">Main</h3>
+<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>main :: IO ()
+main = do
+    print &quot;Let&#39;s play the number guessing game&quot;
+    n &lt;- randomRIO (1, 10)
+    game n
+</code></pre>
+<h3 id="game">Game</h3>
+<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>game :: Int -&gt; IO ()
+game n = do
+    print &quot;Enter a number&quot;
+    g &lt;- readLn
+    case compare g n
+      of LT -&gt; tooLow  n
+         GT -&gt; tooHigh n
+         EQ -&gt; print &quot;You win!&quot;
+</code></pre>
+<h3 id="too-low">Too Low</h3>
+<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>tooLow :: Int -&gt; IO ()
+tooLow n = do
+  print &quot;Too low :(&quot;
+  game n
+</code></pre>
+<h3 id="full-solution">Full Solution</h3>
+<pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>import System.Random
 
 main :: IO ()
 main = do
@@ -1051,11 +1103,22 @@ game :: Int -&gt; IO ()
 game n = do
     print &quot;Enter a number&quot;
     g &lt;- readLn
-    case compare g n of LT -&gt; print &quot;Too low :(&quot;  &gt;&gt; game n
-                        GT -&gt; print &quot;Too high :(&quot; &gt;&gt; game n
-                        EQ -&gt; print &quot;You win!&quot;
+    case compare g n
+      of LT -&gt; tooLow  n
+         GT -&gt; tooHigh n
+         EQ -&gt; print &quot;You win!&quot;
 
+tooLow :: Int -&gt; IO ()
+tooLow n = do
+  print &quot;Too low :(&quot;
+  game n
+
+tooHigh :: Int -&gt; IO ()
+tooHigh n = do
+  print &quot;Too high :(&quot;
+  game n
 </code></pre>
+</div>
 
 </div>
 </div>

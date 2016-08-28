@@ -6,56 +6,41 @@
 The Haskell ecosystem is large and interesting, it is held together more
 by convention than by dictation, with the current convention being that
 open source packages are made available through `cabal` on Hackage.
+On top of this distribution, there is a convenient tool provided by
+Commercial-Haskell called [Stack](https://docs.haskellstack.org/en/stable/README/).
+Stack builds off the existing ecosystem, but provides stable
+snapshot releases of compatible packages that makes it easy
+to install packages that play well together.
 
+## Stack
 
-## Cabal
+The easiest way for newcomers to get started with Haskell these days
+is by installing Stack via the steps outlined in the [Setup](#setup)
+chapter.
 
-Cabal is a library package, but "cabal" is often used to refer to the
-cabal executable provided by the "cabal-install" package.
-These packages are both provided by the Haskell Platform.
+Stack provides a plethora of functionality and you can get an
+inkling of this by invoking `stack --help`. However, for the purposes
+of this workshop you will only really require the use of `stack exec --ghci`.
 
-The premiere online Cabal package repository is [Hackage.](http://hackage.haskell.org/)
-
-Cabal provides mechanisms for download and installing packages
-from Hackage onto your system. It also provides a consistent
-way to structure, export, test, and package your own programs.
+The next steps to take would be the installation of libraries and programs
+via `stack install` and the creation of new stack projects via
+`stack new`.
 
 ```instruction
- 
 
-Install the hlint package from hackage.
 
-Use the `hlint` command-line program to to check for stylistic issues in one
-of your previous solutions.
+Install the pointfree package from stack.
+
+Use the `pointfree` command-line program to to check what the
+pointfree version of `\x -> \y -> x + y + 1` is.
+
+Did this seem pointless to you?
 ```
 
 ```{ .answer }
-Information about the hlint package can be found at
+$ pointfree '\x -> \y -> x + y + 1'
 
-* hackage.haskell.org/package/hlint
-* http://www.haskell.org/hoogle/?hoogle=hlint
-
-etc.
-
-The command used to install the hlint package is
-
-> cabal install hlint
-
-Although you may have to run
-
-> cabal update
-
-to ensure that your list of packages is up to date.
-
-Once you have the hlint tool installed you can run it like so:
-
-> hlint dragon.hs
-
-    dragon.hs:35:17: Warning: Redundant $
-    Found:
-      flip zip (map toLower text) $ dragon_points
-    Why not:
-      flip zip (map toLower text) dragon_points
+flip flip 1 . ((+) .) . (+)
 ```
 
 ```open

@@ -17,6 +17,11 @@ with a few trivial introductory exercises to get your fingers warmed up,
 then the meat - exercises that should be able to be solved using the material
 introduced up to that point (with help and hints available if needed).
 
+At the beginning of each chapter will be a small listing of terms, so that you
+know what you can expect to encounter throughout the text of the chapter.
+This isn't intended to function as a glossary, but simply give you a heads-up
+on the scope and let you know what's coming up!
+
 Each chapter will conclude with an open-question. This question should provide
 inspiration for further consideration of how harder problems could
 be solved using Haskell, and for more advanced attendees, can be attacked

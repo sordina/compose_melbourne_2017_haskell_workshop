@@ -9,7 +9,24 @@ The following exercises are intended to be used to warm up your fingers, rather 
 your brain. These should be run through quickly to get you used to using your
 development environment.
 
+The majority of your workflow should be performed by writing code in an editor,
+and testing it in GHCi. You will write the definitions in the editor and
+test them with simple expressions in GHCi.
+
 </div>
+
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Primitives        Prelude           Variables
+Literals          `let`             Definitions
+String            Tuples            Functions
+Invocation        Lists             Infix
+Cons              (:)               []
+Destructuring     Pattern-Matching `head`
+Partial           `length`         `map`
+Expressiveness
 
 ## Primitives
 
@@ -105,11 +122,25 @@ Define a variable containing a tuple.
 
 ## Functions
 
-Functions are a core part of Haskell. Function definitions look like this:
-
+Functions are a core part of Haskell. Function definition and invocation look like this:
 
 ~~~{data-language=haskell .nocheck} 
+-- Definition:
 myFunction x y ... = ...
+
+-- Invocation:
+... myFunction 1 2 ...
+~~~
+
+This is different to what you might be familiar from a c-familiy language such
+as Javascript:
+
+~~~{data-language=javascript .nocheck} 
+// Definition:
+function javascriptFunction(a,b ...) { ... }
+
+// Invocation:
+javascriptFunction(1,2)
 ~~~
 
 For example:
@@ -127,6 +158,14 @@ Define a function `myMultiply` that multiplies 3 numbers.
 
 ~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
 myMultiply x y z = x * y * z
+~~~
+
+```instruction
+Use your `myMultiply` function to multiply `4`, `5` and `6734`.
+```
+
+~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
+Prelude> myMultiply 4 5 6734
 ~~~
 
 ## Lists
@@ -149,6 +188,10 @@ contained in the [ADTs](#adts-algebraic-data-types) chapter.
 ```instruction
 Define a variable containing a list.
 ```
+
+~~~{.answer data-language=haskell data-filter=./resources/scripts/check.sh}
+myList = [1,2,3]
+~~~
 
 You can deconstruct a list by pattern matching the head and tail like so:
 
@@ -217,6 +260,7 @@ Some concrete examples of such a function may do the following:
 
 * Take a function that divides integers by two, list of ints, and returns a list of doubles.
 * Take a function that turns lowercase into uppercase characters, and a String, and returns a string in CAPS.
+  Such an uppercasing function can be found in the `Data.Char` module named `toUpper`.
 
 Things to consider:
 
@@ -226,6 +270,17 @@ Things to consider:
 ~~~{.answer data-language=haskell data-filter=./resources/scripts/check.sh}
 myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
+~~~
+
+Lists can be combine by using the `++` function. This is an infix function
+similar to `+`.
+
+```instruction
+Combine your list with itself to make it twice as good!
+```
+
+~~~{.answer data-language=haskell data-filter=./resources/scripts/check.sh}
+betterList = myList ++ myList
 ~~~
 
 ## Fun List Functions

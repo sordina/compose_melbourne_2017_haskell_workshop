@@ -171,6 +171,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 <p>Running on Day-Two of <a href="http://www.composeconference.org">Compose :: Melbourne.</a></p>
 <p>This intent of this workshop is to provide a working introduction to Haskell for programmers in Melbourne who have not yet used the language in anger.</p>
 <p>The workshop is split into chapters. The chapters will start with a few trivial introductory exercises to get your fingers warmed up, then the meat - exercises that should be able to be solved using the material introduced up to that point (with help and hints available if needed).</p>
+<p>At the beginning of each chapter will be a small listing of terms, so that you know what you can expect to encounter throughout the text of the chapter. This isn't intended to function as a glossary, but simply give you a heads-up on the scope and let you know what's coming up!</p>
 <p>Each chapter will conclude with an open-question. This question should provide inspiration for further consideration of how harder problems could be solved using Haskell, and for more advanced attendees, can be attacked instead of twiddling your thumbs after finishing the main exercise.</p>
 </div>
 
@@ -215,7 +216,8 @@ Leaving GHCi.</code></pre>
 <pre class="instruction"><code>Using GHCi...
 
 Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.</code></pre>
-<pre class="answer"><code>[Prelude] 42 * 13 * 3
+<pre class="answer"><code>-- Note that a baker&#39;s dozen is 13!
+[Prelude] 42 * 13 * 3
 1638</code></pre>
 <pre class="note"><code>If ghci is on your PATH, then you can invoke it directly,
 however, if you have just installed stack, then you will
@@ -253,7 +255,7 @@ Ok, modules loaded: Main.
 [*Main] &gt; main
 &quot;hello, world&quot;</code></pre>
 <p>Much better!</p>
-<pre class="real"><code>You can inspect a value (of function) in ghci with the `:info` command
+<pre class="real"><code>You can inspect a value (or function) in ghci with the `:info` command
 in order to find out a little about its type and definition:
 
 ghci&gt; :info main
@@ -322,43 +324,22 @@ What are some of the current issues with the Haskell ecosystem?</code></pre>
 
 <hr />
 <h1 id="ecosystem">Ecosystem</h1>
-<p>The Haskell ecosystem is large and interesting, it is held together more by convention than by dictation, with the current convention being that open source packages are made available through <code>cabal</code> on Hackage.</p>
-<h2 id="cabal">Cabal</h2>
-<p>Cabal is a library package, but &quot;cabal&quot; is often used to refer to the cabal executable provided by the &quot;cabal-install&quot; package. These packages are both provided by the Haskell Platform.</p>
-<p>The premiere online Cabal package repository is <a href="http://hackage.haskell.org/">Hackage.</a></p>
-<p>Cabal provides mechanisms for download and installing packages from Hackage onto your system. It also provides a consistent way to structure, export, test, and package your own programs.</p>
-<pre class="instruction"><code> 
+<p>The Haskell ecosystem is large and interesting, it is held together more by convention than by dictation, with the current convention being that open source packages are made available through <code>cabal</code> on Hackage. On top of this distribution, there is a convenient tool provided by Commercial-Haskell called <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>. Stack builds off the existing ecosystem, but provides stable snapshot releases of compatible packages that makes it easy to install packages that play well together.</p>
+<h2 id="stack">Stack</h2>
+<p>The easiest way for newcomers to get started with Haskell these days is by installing Stack via the steps outlined in the <a href="#setup">Setup</a> chapter.</p>
+<p>Stack provides a plethora of functionality and you can get an inkling of this by invoking <code>stack --help</code>. However, for the purposes of this workshop you will only really require the use of <code>stack exec --ghci</code>.</p>
+<p>The next steps to take would be the installation of libraries and programs via <code>stack install</code> and the creation of new stack projects via <code>stack new</code>.</p>
+<pre class="instruction"><code>
 
-Install the hlint package from hackage.
+Install the pointfree package from stack.
 
-Use the `hlint` command-line program to to check for stylistic issues in one
-of your previous solutions.</code></pre>
-<pre class="answer"><code>Information about the hlint package can be found at
+Use the `pointfree` command-line program to to check what the
+pointfree version of `\x -&gt; \y -&gt; x + y + 1` is.
 
-* hackage.haskell.org/package/hlint
-* http://www.haskell.org/hoogle/?hoogle=hlint
+Did this seem pointless to you?</code></pre>
+<pre class="answer"><code>$ pointfree &#39;\x -&gt; \y -&gt; x + y + 1&#39;
 
-etc.
-
-The command used to install the hlint package is
-
-&gt; cabal install hlint
-
-Although you may have to run
-
-&gt; cabal update
-
-to ensure that your list of packages is up to date.
-
-Once you have the hlint tool installed you can run it like so:
-
-&gt; hlint dragon.hs
-
-    dragon.hs:35:17: Warning: Redundant $
-    Found:
-      flip zip (map toLower text) $ dragon_points
-    Why not:
-      flip zip (map toLower text) dragon_points</code></pre>
+flip flip 1 . ((+) .) . (+)</code></pre>
 <pre class="open"><code>An open-ended question:
 
 How would you go about publishing your own package to Hackage?</code></pre>
@@ -376,7 +357,60 @@ How would you go about publishing your own package to Hackage?</code></pre>
 <h1 id="introduction">Introduction</h1>
 <div class="important">
 <p>The following exercises are intended to be used to warm up your fingers, rather than your brain. These should be run through quickly to get you used to using your development environment.</p>
+<p>The majority of your workflow should be performed by writing code in an editor, and testing it in GHCi. You will write the definitions in the editor and test them with simple expressions in GHCi.</p>
 </div>
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Primitives</td>
+<td align="left">Prelude</td>
+<td align="left">Variables</td>
+</tr>
+<tr class="even">
+<td align="left">Literals</td>
+<td align="left"><code>let</code></td>
+<td align="left">Definitions</td>
+</tr>
+<tr class="odd">
+<td align="left">String</td>
+<td align="left">Tuples</td>
+<td align="left">Functions</td>
+</tr>
+<tr class="even">
+<td align="left">Invocation</td>
+<td align="left">Lists</td>
+<td align="left">Infix</td>
+</tr>
+<tr class="odd">
+<td align="left">Cons</td>
+<td align="left">(:)</td>
+<td align="left">[]</td>
+</tr>
+<tr class="even">
+<td align="left">Destructuring</td>
+<td align="left">Pattern-Matching `</td>
+<td align="left">head`</td>
+</tr>
+<tr class="odd">
+<td align="left">Partial</td>
+<td align="left"><code>length</code> `</td>
+<td align="left">map`</td>
+</tr>
+<tr class="even">
+<td align="left">Expressiveness</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <h2 id="primitives">Primitives</h2>
 <p>Haskell comes pre-packaged with many primitives available in the <code>Prelude</code> module that is included by default, but you should at least make yourself familiar with the following types, and literal syntax:</p>
 <table>
@@ -450,14 +484,27 @@ myTupleTrio = (1,&quot;hello&quot;,3)
 <p>They can be used to group multiple, differently-typed (heterogeneous) values.</p>
 <pre class="instruction"><code>Define a variable containing a tuple.</code></pre>
 <h2 id="functions">Functions</h2>
-<p>Functions are a core part of Haskell. Function definitions look like this:</p>
-<pre class="nocheck" data-language="haskell"><code>myFunction x y ... = ...</code></pre>
+<p>Functions are a core part of Haskell. Function definition and invocation look like this:</p>
+<pre class="nocheck" data-language="haskell"><code>-- Definition:
+myFunction x y ... = ...
+
+-- Invocation:
+... myFunction 1 2 ...</code></pre>
+<p>This is different to what you might be familiar from a c-familiy language such as Javascript:</p>
+<pre class="nocheck" data-language="javascript"><code>// Definition:
+function javascriptFunction(a,b ...) { ... }
+
+// Invocation:
+javascriptFunction(1,2)</code></pre>
 <p>For example:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myAdd x y = x + y
 </code></pre>
 <p><code>myAdd</code> takes two numbers and returns the result of the addition of those two numbers.</p>
 <pre class="instruction"><code>Define a function `myMultiply` that multiplies 3 numbers.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
+</code></pre>
+<pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre>
+<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>Prelude&gt; myMultiply 4 5 6734
 </code></pre>
 <h2 id="lists">Lists</h2>
 <p>List are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
@@ -469,6 +516,8 @@ list3 = &quot;hello&quot; : &quot;world&quot; : []
 </code></pre>
 <p>More information about why lists can be used the way that they are is contained in the <a href="#adts-algebraic-data-types">ADTs</a> chapter.</p>
 <pre class="instruction"><code>Define a variable containing a list.</code></pre>
+<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myList = [1,2,3]
+</code></pre>
 <p>You can deconstruct a list by pattern matching the head and tail like so:</p>
 <pre class="nocheck" data-language="haskell"><code>f (x:xs) = ...</code></pre>
 <pre class="instruction"><code>Define a function to get the first element of a list.</code></pre>
@@ -502,7 +551,7 @@ and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
 <p>Some concrete examples of such a function may do the following:</p>
 <ul>
 <li>Take a function that divides integers by two, list of ints, and returns a list of doubles.</li>
-<li>Take a function that turns lowercase into uppercase characters, and a String, and returns a string in CAPS.</li>
+<li>Take a function that turns lowercase into uppercase characters, and a String, and returns a string in CAPS. Such an uppercasing function can be found in the <code>Data.Char</code> module named <code>toUpper</code>.</li>
 </ul>
 <p>Things to consider:</p>
 <ul>
@@ -511,6 +560,10 @@ and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
 </ul>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
+</code></pre>
+<p>Lists can be combine by using the <code>++</code> function. This is an infix function similar to <code>+</code>.</p>
+<pre class="instruction"><code>Combine your list with itself to make it twice as good!</code></pre>
+<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>betterList = myList ++ myList
 </code></pre>
 <h2 id="fun-list-functions">Fun List Functions</h2>
 <p>For your reading pleasure, here are some definintions of common functions:</p>
@@ -1073,6 +1126,23 @@ main = do
     print &quot;Let&#39;s play the number guessing game&quot;
     n &lt;- randomRIO (1, 10)
     game n
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=1 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; main :: IO ()
+~~~&gt; main = do
+~~~&gt;     print &quot;Let&#39;s play the number guessing game&quot;
+~~~&gt;     n &lt;- randomRIO (1, 10)
+~~~&gt;     game n
+
+Run from outside a project, using implicit global project config
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:4:10: Not in scope: ‘randomRIO’
+
+/tmp/haskell_workshop_check.hs:5:5: Not in scope: ‘game’
 </code></pre>
 <h3 id="game">Game</h3>
 <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>game :: Int -&gt; IO ()
@@ -1083,12 +1153,48 @@ game n = do
       of LT -&gt; tooLow  n
          GT -&gt; tooHigh n
          EQ -&gt; print &quot;You win!&quot;
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=2 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; game :: Int -&gt; IO ()
+~~~&gt; game n = do
+~~~&gt;     print &quot;Enter a number&quot;
+~~~&gt;     g &lt;- readLn
+~~~&gt;     case compare g n
+~~~&gt;       of LT -&gt; tooLow  n
+~~~&gt;          GT -&gt; tooHigh n
+~~~&gt;          EQ -&gt; print &quot;You win!&quot;
+~~~&gt; main = undefined
+
+Run from outside a project, using implicit global project config
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:6:16: Not in scope: ‘tooLow’
+
+/tmp/haskell_workshop_check.hs:7:16: Not in scope: ‘tooHigh’
 </code></pre>
 <h3 id="too-low">Too Low</h3>
 <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>tooLow :: Int -&gt; IO ()
 tooLow n = do
   print &quot;Too low :(&quot;
   game n
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=3 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; tooLow :: Int -&gt; IO ()
+~~~&gt; tooLow n = do
+~~~&gt;   print &quot;Too low :(&quot;
+~~~&gt;   game n
+~~~&gt; main = undefined
+
+Run from outside a project, using implicit global project config
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:4:3: Not in scope: ‘game’
 </code></pre>
 <h3 id="full-solution">Full Solution</h3>
 <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>import System.Random

@@ -56,6 +56,7 @@ Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.
 ```
 
 ```answer
+-- Note that a baker's dozen is 13!
 [Prelude] 42 * 13 * 3
 1638
 ```
@@ -121,7 +122,7 @@ Ok, modules loaded: Main.
 Much better!
 
 ```real
-You can inspect a value (of function) in ghci with the `:info` command
+You can inspect a value (or function) in ghci with the `:info` command
 in order to find out a little about its type and definition:
 
 ghci> :info main

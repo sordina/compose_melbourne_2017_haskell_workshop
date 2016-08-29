@@ -1,5 +1,21 @@
 # Monads
 
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Monad             Rules             Side-Effects
+Tainted           Function          IO
+Bind              (>>=)             Specialised
+main              getLine           Isomorphic
+Inside            Unwrapped         "and-then"
+return            lift              Vanilla
+Interleaved       do                <-
+DSL               Desugar           AI
+Pure              sequence          forever
+mapM              CQRS              Transform
+Compose           Explicit
+
 ## No seriously, what are Monads?
 
 A monad is just a bunch of rules. There are many, many analogies for
@@ -55,7 +71,10 @@ ultimately creating value of type `IO ()` that we assign to special
 variable called `main`.
 
 ```instruction
+
+
 Why can't one write untaint?
+
 If you could what problems would this cause?
 ```
 
@@ -115,7 +134,10 @@ putStrLn "One" >> putStrLn "Two" >> putStrLn "Three"
 ~~~
 
 ```instruction
+
+
 Write a program that prints something stupid, funny or rude.
+
 Make sure to use (>>) somewhere.
 ```
 
@@ -174,16 +196,20 @@ would look like without do-notation:
 ~~~
 
 ```instruction
+
+
 Write a program that asks for someone's first and second name,
 then complements them (or makes fun of them).
 
 For extra points ask for their age, and customize the complement
-(insult) depending on how old they are.
+(or insult) depending on how old they are.
 
 Do it with do-notation first, then "desugar" it into raw bind (>>=) calls
 ```
 
 ```instruction
+
+
 My father once told me about an "amazing AI" that his
 magician/programmer friend build, which could answer any yes/no
 question as well as a human.

@@ -296,11 +296,14 @@ instance Rateable Movie where
 </code></pre> <p>When we define a type class we write out the name and the types of the functions that we want associated with this type class. We also put a type variable in our definition which refers to whatever type may instance this type class later. We can use this type variable in the definitions below. At this point we can also define default definitions for the functions.</p> <p>We then define two new data types, <code>Beer</code> and <code>Movie</code> for which we add an &quot;instance declaration&quot; this is where we write the definitions of the type class functions specialized for beers of movies.</p> <p>We now know how to manually add type class definitions and we could add custom <code>Show</code> instances for each of our new datatypes. However this would be a bunch of boilerplate nonsense, so we can use the handy deriving directive to automatically add a <code>Show</code> instance for us.</p> <pre class="instruction"><code>Create your own Rateable type class and wacky Rating datatype.
 Then create datatypes and instances for something you have a
 strong opinion about, like cars or a political party.</code></pre> <pre class="instruction"><code>Add a review function to your type class that returns
-a short textual review.</code></pre> <pre class="instruction"><code>Add a Rateable instance for a native type, like String.</code></pre> <p>There are a few other cool things you can do with typeclasses that are not covered here. So if you want to know more, check out some of these other articles:</p> <p><a href="http://www.haskell.org/tutorial/classes.html" class="uri">http://www.haskell.org/tutorial/classes.html</a></p> </div> </div> <div class="chapter"> <div class="content"> <h1 id="monads">Monads</h1> <h2 id="no-seriously-what-are-monads">No seriously, what are Monads?</h2> <p>A monad is just a bunch of rules. There are many, many analogies for monads out there. Each of these analogies are useful, but can be obscuring on their own, they are just one view point. To effectively wield monads we must use many different view points together, each one revealing a little piece of the underlying structure of monads. Each view point becomes another tool in our mental toolbox.</p> <p>So there is no one magic-bullet analogy for monads, only many complementary ones.</p> <p>Haskell uses monads to represent side-effects. The simplist and most practical analogy is the &quot;tainted value&quot; analogy. In haskell the function that reads a file looks like this:</p> <pre class="nocheck" data-language="haskell"><code>readFile :: FilePath -&gt; IO String</code></pre> <p>This function can&apos;t return a normal string, because the return value has been tainted by side effects. So the IO monad is acting as a tag saying that the returned string must be treated specially.</p> <p>But an <code>IO String</code> is not very useful to us, because we want to actually do things with it. So Haskell, in its normal paternalistic style, allows us access the <code>String</code> inside an <code>IO String</code> only in a very careful way. We use an operation call bind <code>(&gt;&gt;=)</code> to access the string.</p> <pre class="nocheck" data-language="haskell"><code>(&gt;&gt;=) :: Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
+a short textual review.</code></pre> <pre class="instruction"><code>Add a Rateable instance for a native type, like String.</code></pre> <p>There are a few other cool things you can do with typeclasses that are not covered here. So if you want to know more, check out some of these other articles:</p> <p><a href="http://www.haskell.org/tutorial/classes.html" class="uri">http://www.haskell.org/tutorial/classes.html</a></p> </div> </div> <div class="chapter"> <div class="content"> <h1 id="monads">Monads</h1> <h2 id="lexicon">Lexicon</h2> <table> <thead> <tr class="header"> <th align="left">-----------</th> <th align="left">-------------</th> <th align="left">------------</th> </tr> </thead> <tbody> <tr class="odd"> <td align="left">Monad</td> <td align="left">Rules</td> <td align="left">Side-Effects</td> </tr> <tr class="even"> <td align="left">Tainted</td> <td align="left">Function</td> <td align="left">IO</td> </tr> <tr class="odd"> <td align="left">Bind</td> <td align="left">(&gt;&gt;=)</td> <td align="left">Specialised</td> </tr> <tr class="even"> <td align="left">main</td> <td align="left">getLine</td> <td align="left">Isomorphic</td> </tr> <tr class="odd"> <td align="left">Inside</td> <td align="left">Unwrapped</td> <td align="left">&quot;and-then&quot;</td> </tr> <tr class="even"> <td align="left">return</td> <td align="left">lift</td> <td align="left">Vanilla</td> </tr> <tr class="odd"> <td align="left">Interleaved</td> <td align="left">do</td> <td align="left">&lt;-</td> </tr> <tr class="even"> <td align="left">DSL</td> <td align="left">Desugar</td> <td align="left">AI</td> </tr> <tr class="odd"> <td align="left">Pure</td> <td align="left">sequence</td> <td align="left">forever</td> </tr> <tr class="even"> <td align="left">mapM</td> <td align="left">CQRS</td> <td align="left">Transform</td> </tr> <tr class="odd"> <td align="left">Compose</td> <td align="left">Explicit</td> <td align="left"></td> </tr> </tbody> </table> <h2 id="no-seriously-what-are-monads">No seriously, what are Monads?</h2> <p>A monad is just a bunch of rules. There are many, many analogies for monads out there. Each of these analogies are useful, but can be obscuring on their own, they are just one view point. To effectively wield monads we must use many different view points together, each one revealing a little piece of the underlying structure of monads. Each view point becomes another tool in our mental toolbox.</p> <p>So there is no one magic-bullet analogy for monads, only many complementary ones.</p> <p>Haskell uses monads to represent side-effects. The simplist and most practical analogy is the &quot;tainted value&quot; analogy. In haskell the function that reads a file looks like this:</p> <pre class="nocheck" data-language="haskell"><code>readFile :: FilePath -&gt; IO String</code></pre> <p>This function can&apos;t return a normal string, because the return value has been tainted by side effects. So the IO monad is acting as a tag saying that the returned string must be treated specially.</p> <p>But an <code>IO String</code> is not very useful to us, because we want to actually do things with it. So Haskell, in its normal paternalistic style, allows us access the <code>String</code> inside an <code>IO String</code> only in a very careful way. We use an operation call bind <code>(&gt;&gt;=)</code> to access the string.</p> <pre class="nocheck" data-language="haskell"><code>(&gt;&gt;=) :: Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b
 
 -- Here specialized for IO and String
 
-(&gt;&gt;=) :: IO String -&gt; (String -&gt; IO b) -&gt; IO b</code></pre> <p>This says the only way we can &quot;look inside&quot; an <code>IO String</code> is by providing a function that takes a <code>String</code> and returns some other new value that has also been tainted by the outside world. In other words we can only look at a value &quot;inside&quot; the <code>IO</code> monad if we promise to make sure our result will also be tainted.</p> <p>This means that if some code uses a value from the outside world, even deep inside, it cannot be hidden, it must be made explicit in the type. Tainting is a one way street, once you are tainted you can&apos;t be untainted. There is no function <code>untaint :: IO a -&gt; a</code>. One can&apos;t get an untainted value from a tainted one.</p> <p>In fact, in haskell, the very way we construct a useful program is by ultimately creating value of type <code>IO ()</code> that we assign to special variable called <code>main</code>.</p> <pre class="instruction"><code>Why can&apos;t one write untaint?
+(&gt;&gt;=) :: IO String -&gt; (String -&gt; IO b) -&gt; IO b</code></pre> <p>This says the only way we can &quot;look inside&quot; an <code>IO String</code> is by providing a function that takes a <code>String</code> and returns some other new value that has also been tainted by the outside world. In other words we can only look at a value &quot;inside&quot; the <code>IO</code> monad if we promise to make sure our result will also be tainted.</p> <p>This means that if some code uses a value from the outside world, even deep inside, it cannot be hidden, it must be made explicit in the type. Tainting is a one way street, once you are tainted you can&apos;t be untainted. There is no function <code>untaint :: IO a -&gt; a</code>. One can&apos;t get an untainted value from a tainted one.</p> <p>In fact, in haskell, the very way we construct a useful program is by ultimately creating value of type <code>IO ()</code> that we assign to special variable called <code>main</code>.</p> <pre class="instruction"><code>
+
+Why can&apos;t one write untaint?
+
 If you could what problems would this cause?</code></pre> <p>One thing that can be a little strange is the type of <code>getLine</code>. In imperative languages, functions of zero arguments make some sense. They can be thought of recipies or to-do lists. In haskell a total function of type <code>() -&gt; Foo</code> is isomorphic to a constant <code>Foo</code>. Because the function only has one input value and therefore only one possible output value.</p> <p>So let us return to <code>getLine</code>. In an imperative language it would look like <code>getLine :: () -&gt; String</code>. Our first problem is that the return value of this function is tainted by the outside world, so we need to use the <code>IO</code> monad, <code>getLine :: () -&gt; IO String</code>. Now because of the isomorphism between unit domian functions and constants we can just write <code>getLine :: IO String</code>. We call a constant of type <code>IO a</code> an &quot;IO action&quot;. Because it stands for a bunch of side effects that will be performed together.</p> <p>This will seem strange at first, because getLine isn&apos;t really a function -- it&apos;s just a constant value! But that&apos;s okay because while the <code>IO String</code> is a constant (i.e. there is only one distinct IO action that reads a line from the console) the value <em>inside</em> the monad is not constant. It can be different each time we look inside.</p> <pre class="nocheck" data-language="haskell"><code>&gt; getLine
 hello
 &quot;hello&quot;
@@ -315,7 +318,10 @@ Hello andy</code></pre> <h2 id="one-thing-leads-to-another">One thing leads to a
 
 putStrLn &quot;One&quot; &gt;&gt;= (\_ -&gt; putStrLn &quot;Two&quot;) &gt;&gt;= (\_ -&gt; putStrLn &quot;Three&quot;)</code></pre> <p>This pattern can be easily abstracted, it has been standardized as <code>(&gt;&gt;) :: IO a -&gt; IO b -&gt; IO b</code>. This can be read as &quot;and then&quot;.</p> <pre class="nocheck" data-language="haskell"><code>putStr &quot;Hello &quot; &gt;&gt; putStrLn &quot;World&quot;
 
-putStrLn &quot;One&quot; &gt;&gt; putStrLn &quot;Two&quot; &gt;&gt; putStrLn &quot;Three&quot;</code></pre> <pre class="instruction"><code>Write a program that prints something stupid, funny or rude.
+putStrLn &quot;One&quot; &gt;&gt; putStrLn &quot;Two&quot; &gt;&gt; putStrLn &quot;Three&quot;</code></pre> <pre class="instruction"><code>
+
+Write a program that prints something stupid, funny or rude.
+
 Make sure to use (&gt;&gt;) somewhere.</code></pre> <h2 id="monad-wars-iii-return-of-the-value">Monad Wars III: Return of the Value</h2> <p>We mentioned before that there is no way to untaint a value, once it has been tainted, we can make new tainted values from it, but never untainted ones. But that begs the question, can we choose to taint a value? Indeed we can, in fact, this is a fundamental operation of a Monad. In haskell it is confusingly called <code>return :: a -&gt; IO a</code>.</p> <p>A common pattern is to &quot;open up&quot; an <code>IO</code> with bind <code>(&gt;&gt;=)</code>, mess around with the contents then wrap it back up again with <code>return</code>. We have a function to help us with this called <code>lift</code>. Specialized for <code>IO</code> it has type <code>lift :: (a -&gt; b) -&gt; (IO a -&gt; IO b)</code>. We can use this to take a vanilla function and &quot;lift&quot; it into the IO monad. It works by unwrapping the IO monad calling our function and then wrapping the result back up again.</p> <pre class="instruction"><code>use return to write &apos;myLiftIO :: (a -&gt; b) -&gt; IO a -&gt; IO b&apos;</code></pre> <h2 id="do-it-do-it-good.">Do it, do it good.</h2> <p>Sometimes when you are doing a lot of ad-hoc interleaved IO, using bind and return all over the place can become a pain in the fingers. So haskell provides special syntax for using monads, called &quot;do notation&quot;.</p> <p>To use do notation, we start a &quot;do block&quot; with the keyword <code>do</code>. Inside a do block, statements can be written line by line and they are automatically joined using &quot;and then&quot; <code>(&gt;&gt;)</code>. This causes them to be run one after the other like in an imperative programming language. One can also easily unwrap monad values and bind them to a variable with using a left arrow &quot;&lt;-&quot; syntax.</p> <pre class="nocheck" data-language="haskell"><code>  main = do
     putStrLn &quot;Hello World&quot;
     putStrLn &quot;Enter your name: &quot;
@@ -324,13 +330,17 @@ Make sure to use (&gt;&gt;) somewhere.</code></pre> <h2 id="monad-wars-iii-retur
     putStrLn &quot;Hello World&quot; &gt;&gt;
     putStrLn &quot;Enter your name: &quot; &gt;&gt;
     getLine &gt;&gt;= (\ name -&gt;
-      putStrLn (&quot;Hello: &quot; ++ name))</code></pre> <pre class="instruction"><code>Write a program that asks for someone&apos;s first and second name,
+      putStrLn (&quot;Hello: &quot; ++ name))</code></pre> <pre class="instruction"><code>
+
+Write a program that asks for someone&apos;s first and second name,
 then complements them (or makes fun of them).
 
 For extra points ask for their age, and customize the complement
-(insult) depending on how old they are.
+(or insult) depending on how old they are.
 
-Do it with do-notation first, then &quot;desugar&quot; it into raw bind (&gt;&gt;=) calls</code></pre> <pre class="instruction"><code>My father once told me about an &quot;amazing AI&quot; that his
+Do it with do-notation first, then &quot;desugar&quot; it into raw bind (&gt;&gt;=) calls</code></pre> <pre class="instruction"><code>
+
+My father once told me about an &quot;amazing AI&quot; that his
 magician/programmer friend build, which could answer any yes/no
 question as well as a human.
 
@@ -345,7 +355,7 @@ Looks like it&apos;s time to write your super-dooper
 human-level AI and see if your friends can figure
 out how it works.</code></pre> <h2 id="stay-functional-san-diego">Stay Functional, San Diego</h2> <p>Even when we are programming with side effects, we still want our programs to follow functional principals. To stop our code ending up like C written in do-notation, there are some principals we can try to follow:</p> <ol style="list-style-type:decimal"> <li><p>Try to do most of the work inside pure functions.</p></li> <li><p>Don&apos;t create an IO action until the last possible moment.</p></li> <li><p>Be declarative, think of program as declaring a pipeline or specifying an interaction, instead of being a to-do list.</p></li> <li><p>Avoid mixing control, state and calculation. Instead abstract them into small composable pieces. For inspiration see the monad combinators in Control.Monad (e.g. <code>sequence</code>, <code>forever</code>, <code>mapM</code>).</p></li> </ol> <p>These principals are not specific to monads. They are applicable to all side-effect heavy programing problems. These principles can also be applied to imperative programs for great justice.</p> <p>A lot of patterns like reactive programming, dataflow programming and CQRS are consequences of following principals such as these.</p> <p>The pithy take-away is don&apos;t &quot;update, execute, update&quot;. Instead &quot;represent, transform, compose&quot;.</p> <pre class="open"><code>An open-ended question:
 
-Why is it a good idea to make side effects explicit?</code></pre> </div> </div> <div class="chapter"> <div class="content"> <hr> <h1 id="lets-make-a-guessing-game">Let&apos;s Make a Guessing Game</h1> <div class="important"> <h2 id="the-game">The Game</h2> <p>Your task is to make a guessing game where the computer comes up with a number, and you have to make guesses - with the computer telling you if you were too high, or too low.</p> <h2 id="example-session">Example Session</h2> <pre><code>$ stack exec -- runhaskell Module_1470214643_41323.hs
+Why is it a good idea to make side effects explicit?</code></pre> </div> </div> <div class="chapter"> <div class="content"> <hr> <h1 id="lets-make-a-guessing-game">Let&apos;s Make a Guessing Game</h1> <div class="important"> <h2 id="the-game">The Game</h2> <p>Your task is to make a guessing game where the computer comes up with a number, and you have to make guesses - with the computer telling you if you were too high, or too low.</p> <h2 id="lexicon">Lexicon</h2> <table> <thead> <tr class="header"> <th align="left">-----------</th> <th align="left">-------------</th> <th align="left">------------</th> </tr> </thead> <tbody> <tr class="odd"> <td align="left">Game</td> <td align="left">Stack</td> <td align="left">main</td> </tr> <tr class="even"> <td align="left">print</td> <td align="left">System.Random</td> <td align="left">randomRIO</td> </tr> <tr class="odd"> <td align="left">readLn</td> <td align="left">compare</td> <td align="left">case</td> </tr> <tr class="even"> <td align="left">do</td> <td align="left">Procedure</td> <td align="left"></td> </tr> </tbody> </table> <h2 id="example-session">Example Session</h2> <pre><code>$ stack exec -- runhaskell Module_1470214643_41323.hs
 &quot;Let&apos;s play the number guessing game&quot;
 &quot;Enter a number&quot;
 2
@@ -363,23 +373,6 @@ main = do
     print &quot;Let&apos;s play the number guessing game&quot;
     n &lt;- randomRIO (1, 10)
     game n
-
-Error compiling example:
-
-&gt; PANDOCTOR_COUNT=1 data_language=haskell data_filter=resources/scripts/check.sh
-
-~~~&gt; main :: IO ()
-~~~&gt; main = do
-~~~&gt;     print &quot;Let&apos;s play the number guessing game&quot;
-~~~&gt;     n &lt;- randomRIO (1, 10)
-~~~&gt;     game n
-
-Run from outside a project, using implicit global project config
-[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
-
-/tmp/haskell_workshop_check.hs:4:10: Not in scope: &#x2018;randomRIO&#x2019;
-
-/tmp/haskell_workshop_check.hs:5:5: Not in scope: &#x2018;game&#x2019;
 </code></pre> <h3 id="game">Game</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>game :: Int -&gt; IO ()
 game n = do
     print &quot;Enter a number&quot;
@@ -388,46 +381,10 @@ game n = do
       of LT -&gt; tooLow  n
          GT -&gt; tooHigh n
          EQ -&gt; print &quot;You win!&quot;
-
-Error compiling example:
-
-&gt; PANDOCTOR_COUNT=2 data_language=haskell data_filter=resources/scripts/check.sh
-
-~~~&gt; game :: Int -&gt; IO ()
-~~~&gt; game n = do
-~~~&gt;     print &quot;Enter a number&quot;
-~~~&gt;     g &lt;- readLn
-~~~&gt;     case compare g n
-~~~&gt;       of LT -&gt; tooLow  n
-~~~&gt;          GT -&gt; tooHigh n
-~~~&gt;          EQ -&gt; print &quot;You win!&quot;
-~~~&gt; main = undefined
-
-Run from outside a project, using implicit global project config
-[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
-
-/tmp/haskell_workshop_check.hs:6:16: Not in scope: &#x2018;tooLow&#x2019;
-
-/tmp/haskell_workshop_check.hs:7:16: Not in scope: &#x2018;tooHigh&#x2019;
 </code></pre> <h3 id="too-low">Too Low</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>tooLow :: Int -&gt; IO ()
 tooLow n = do
   print &quot;Too low :(&quot;
   game n
-
-Error compiling example:
-
-&gt; PANDOCTOR_COUNT=3 data_language=haskell data_filter=resources/scripts/check.sh
-
-~~~&gt; tooLow :: Int -&gt; IO ()
-~~~&gt; tooLow n = do
-~~~&gt;   print &quot;Too low :(&quot;
-~~~&gt;   game n
-~~~&gt; main = undefined
-
-Run from outside a project, using implicit global project config
-[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
-
-/tmp/haskell_workshop_check.hs:4:3: Not in scope: &#x2018;game&#x2019;
 </code></pre> <h3 id="full-solution">Full Solution</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>import System.Random
 
 main :: IO ()

@@ -11,6 +11,15 @@ Your task is to make a guessing game where the computer comes up with a number,
 and you have to make guesses - with the computer telling you if you were too
 high, or too low.
 
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Game              Stack             main
+print             System.Random     randomRIO
+readLn            compare           case
+do                Procedure
+
 ## Example Session
 
 ```

@@ -19,6 +19,22 @@ Algebraic Data Types are THE bread and butter of Haskell programs.
 
 But how does that help me?
 
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+ADT               Algebraic         Laziness
+Types             Modelling         Bool
+Enum              C++               Parameter
+Constructor       Recursive         Concrete
+Kind              *                 String
+Int               Maybe             []
+IO                (->)              Deriving
+data              Show              Type-Class
+List
+
+## Example
+
 An example of an ADT in Haskell:
 
 ~~~{data-language=haskell data-filter=./resources/scripts/check.sh}

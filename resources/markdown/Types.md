@@ -11,7 +11,20 @@ Answer:   You type it!
 In this chapter, we will go over the exercises from the introduction
 and add types to the examples.
 
-----
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Type              Signature         Inline
+Int               ::                Floating
+Variable          Synonym           String
+Tuple             Function          (,)
+C                 Argument          Curried
+Parentheses       Multiply          Lists
+Around-Fix        Prefix-Form       Deconstruction
+head              length            map
+
+## Signatures
 
 In Haskell, type signatures can be provided inline, or above definitions.
 
@@ -101,9 +114,9 @@ Give your previous tuple definition a type signature.
 The type signatures of functions in Haskell are a little different
 from how they look in the more familiar C family languages,
 but the syntax is very elegant, and will allow a higher-level of
-reasoning than less consistant forms.
+reasoning than less consistent forms.
 
-The syntax for a function type-signarure is of the form:
+The syntax for a function type-signature is of the form:
 
 ~~~{data-language=haskell .nocheck}
 {functionName} :: {argument} -> {result}
@@ -111,7 +124,7 @@ The syntax for a function type-signarure is of the form:
 
 The main idea is that functions in Haskell only ever take one
 argument. If you wish to define a function that takes more
-than one argument, then you should, infact, define a function
+than one argument, then you should, in fact, define a function
 that takes one argument, then returns another function.
 
 Luckily the syntax for doing this in Haskell looks identical
@@ -128,9 +141,11 @@ myMultiply :: Int -> (Int -> (Int -> Int))
 myMultiply x y z = x * y * z
 ~~~
 
-It is clear, that the function only takes one argument, then returns a function
+Now we can see that the function only takes one argument, then returns a function
 (that only takes one argument, and returns a function
 (that only takes one argument, that returns an Int.))
+
+This is known as currying.
 
 Fortunately, Haskell's function syntax is right-associative, allowing us to
 drop the parentheses:

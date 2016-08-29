@@ -9,6 +9,20 @@ that if something is a subclass, it has at least all of the features
 of its parent. Of course this is all intertwined with the sharing
 of data and state, and that's bad.
 
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Polymorphism      Object-Oriented   Inheritance
+Data              State             Type-Classes
+Functions         Context           =>
+Num               (+)               Show
+Read              String            return
+Dispatch          (::)              Definition
+Instance          Declaration
+
+## Functional Type-Classes
+
 In the functional world we get type classes, which is just
 controlled polymorphism without the baggage. They basically
 say, that I don't need to know exactly what type you'll call me with

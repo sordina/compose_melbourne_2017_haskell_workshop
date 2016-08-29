@@ -4,6 +4,19 @@
 Setup
 =====
 
+This section will help you get up and running so that you
+can participate in the workshop and complete the exercises.
+
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Stack             setup             GHCi
+Calculations      $PATH             Loading
+:reload           Redefine          GHC
+Compile           Optimisation      Install
+Pointfree         Ecosystem
+
 <div class="important">
 Ensure that you have the following programs installed and functioning correctly:
 
@@ -193,32 +206,6 @@ Compile and run hello-world.
 Linking main ...
 > ./main
 "hello friends"
-```
-
-## Stack {.important}
-
-You should have access to a the `stack` command if you have installed stack.
-
-Check that you have Stack by running:
-
-```shell
-stack --version
-```
-
-This should output something similar to:
-
-```text
-Version 1.1.2 x86_64 hpack-0.14.0
-```
-
-Stack can install packages by running `stack install PACKAGE_NAME`.
-
-```instruction
-Install the 'pointfree' package using stack.
-```
-
-```answer
-> stack install pointfree
 ```
 
 ```open

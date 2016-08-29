@@ -12,6 +12,13 @@ Stack builds off the existing ecosystem, but provides stable
 snapshot releases of compatible packages that makes it easy
 to install packages that play well together.
 
+## Lexicon
+
+-----------       -------------     ------------
+-----------       -------------     ------------
+Stack             install           pointfree
+ghci              new               Hackage
+
 ## Stack
 
 The easiest way for newcomers to get started with Haskell these days

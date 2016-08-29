@@ -186,6 +186,44 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Comp
 
 <hr />
 <h1 id="setup">Setup</h1>
+<p>This section will help you get up and running so that you can participate in the workshop and complete the exercises.</p>
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Stack</td>
+<td align="left">setup</td>
+<td align="left">GHCi</td>
+</tr>
+<tr class="even">
+<td align="left">Calculations</td>
+<td align="left">$PATH</td>
+<td align="left">Loading</td>
+</tr>
+<tr class="odd">
+<td align="left">:reload</td>
+<td align="left">Redefine</td>
+<td align="left">GHC</td>
+</tr>
+<tr class="even">
+<td align="left">Compile</td>
+<td align="left">Optimisation</td>
+<td align="left">Install</td>
+</tr>
+<tr class="odd">
+<td align="left">Pointfree</td>
+<td align="left">Ecosystem</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 <div class="important">
 <p>Ensure that you have the following programs installed and functioning correctly:</p>
 <h2 id="stack"><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a></h2>
@@ -297,15 +335,6 @@ Compile and run hello-world.</code></pre>
 Linking main ...
 &gt; ./main
 &quot;hello friends&quot;</code></pre>
-<h2 id="stack-1" class="important">Stack</h2>
-<p>You should have access to a the <code>stack</code> command if you have installed stack.</p>
-<p>Check that you have Stack by running:</p>
-<pre class="shell"><code>stack --version</code></pre>
-<p>This should output something similar to:</p>
-<pre class="text"><code>Version 1.1.2 x86_64 hpack-0.14.0</code></pre>
-<p>Stack can install packages by running <code>stack install PACKAGE_NAME</code>.</p>
-<pre class="instruction"><code>Install the &#39;pointfree&#39; package using stack.</code></pre>
-<pre class="answer"><code>&gt; stack install pointfree</code></pre>
 <pre class="open"><code>An open-ended question:
 
 Given that GHC is largely written in Haskell, how was GHC first compiled?</code></pre>
@@ -325,6 +354,28 @@ What are some of the current issues with the Haskell ecosystem?</code></pre>
 <hr />
 <h1 id="ecosystem">Ecosystem</h1>
 <p>The Haskell ecosystem is large and interesting, it is held together more by convention than by dictation, with the current convention being that open source packages are made available through <code>cabal</code> on Hackage. On top of this distribution, there is a convenient tool provided by Commercial-Haskell called <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>. Stack builds off the existing ecosystem, but provides stable snapshot releases of compatible packages that makes it easy to install packages that play well together.</p>
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Stack</td>
+<td align="left">install</td>
+<td align="left">pointfree</td>
+</tr>
+<tr class="even">
+<td align="left">ghci</td>
+<td align="left">new</td>
+<td align="left">Hackage</td>
+</tr>
+</tbody>
+</table>
 <h2 id="stack">Stack</h2>
 <p>The easiest way for newcomers to get started with Haskell these days is by installing Stack via the steps outlined in the <a href="#setup">Setup</a> chapter.</p>
 <p>Stack provides a plethora of functionality and you can get an inkling of this by invoking <code>stack --help</code>. However, for the purposes of this workshop you will only really require the use of <code>stack exec --ghci</code>.</p>
@@ -600,7 +651,59 @@ programming-language?</code></pre>
 <pre class="note.notitle"><code>Question: How do you create a great program?
 Answer:   You type it!</code></pre>
 <p>In this chapter, we will go over the exercises from the introduction and add types to the examples.</p>
-<hr />
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Type</td>
+<td align="left">Signature</td>
+<td align="left">Inline</td>
+</tr>
+<tr class="even">
+<td align="left">Int</td>
+<td align="left">::</td>
+<td align="left">Floating</td>
+</tr>
+<tr class="odd">
+<td align="left">Variable</td>
+<td align="left">Synonym</td>
+<td align="left">String</td>
+</tr>
+<tr class="even">
+<td align="left">Tuple</td>
+<td align="left">Function</td>
+<td align="left">(,)</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">Argument</td>
+<td align="left">Curried</td>
+</tr>
+<tr class="even">
+<td align="left">Parentheses</td>
+<td align="left">Multiply</td>
+<td align="left">Lists</td>
+</tr>
+<tr class="odd">
+<td align="left">Around-Fix</td>
+<td align="left">Prefix-Form</td>
+<td align="left">Deconstruction</td>
+</tr>
+<tr class="even">
+<td align="left">head</td>
+<td align="left">length</td>
+<td align="left">map</td>
+</tr>
+</tbody>
+</table>
+<h2 id="signatures">Signatures</h2>
 <p>In Haskell, type signatures can be provided inline, or above definitions.</p>
 <p>For example:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>x :: Int
@@ -637,10 +740,10 @@ myTuple = (&quot;The meaning of life&quot;, 42)
 </code></pre>
 <pre class="instruction"><code>Give your previous tuple definition a type signature.</code></pre>
 <h2 id="functions">Functions</h2>
-<p>The type signatures of functions in Haskell are a little different from how they look in the more familiar C family languages, but the syntax is very elegant, and will allow a higher-level of reasoning than less consistant forms.</p>
-<p>The syntax for a function type-signarure is of the form:</p>
+<p>The type signatures of functions in Haskell are a little different from how they look in the more familiar C family languages, but the syntax is very elegant, and will allow a higher-level of reasoning than less consistent forms.</p>
+<p>The syntax for a function type-signature is of the form:</p>
 <pre class="nocheck" data-language="haskell"><code>{functionName} :: {argument} -&gt; {result}</code></pre>
-<p>The main idea is that functions in Haskell only ever take one argument. If you wish to define a function that takes more than one argument, then you should, infact, define a function that takes one argument, then returns another function.</p>
+<p>The main idea is that functions in Haskell only ever take one argument. If you wish to define a function that takes more than one argument, then you should, in fact, define a function that takes one argument, then returns another function.</p>
 <p>Luckily the syntax for doing this in Haskell looks identical to defining a multi-argument function:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
 </code></pre>
@@ -648,7 +751,8 @@ myTuple = (&quot;The meaning of life&quot;, 42)
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; (Int -&gt; (Int -&gt; Int))
 myMultiply x y z = x * y * z
 </code></pre>
-<p>It is clear, that the function only takes one argument, then returns a function (that only takes one argument, and returns a function (that only takes one argument, that returns an Int.))</p>
+<p>Now we can see that the function only takes one argument, then returns a function (that only takes one argument, and returns a function (that only takes one argument, that returns an Int.))</p>
+<p>This is known as currying.</p>
 <p>Fortunately, Haskell's function syntax is right-associative, allowing us to drop the parentheses:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; Int -&gt; Int -&gt; Int
 myMultiply x y z = x * y * z
@@ -752,6 +856,64 @@ How many types could a type-checker check...
 </ul>
 <div class="collapse">
 <p>But how does that help me?</p>
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ADT</td>
+<td align="left">Algebraic</td>
+<td align="left">Laziness</td>
+</tr>
+<tr class="even">
+<td align="left">Types</td>
+<td align="left">Modelling</td>
+<td align="left">Bool</td>
+</tr>
+<tr class="odd">
+<td align="left">Enum</td>
+<td align="left">C++</td>
+<td align="left">Parameter</td>
+</tr>
+<tr class="even">
+<td align="left">Constructor</td>
+<td align="left">Recursive</td>
+<td align="left">Concrete</td>
+</tr>
+<tr class="odd">
+<td align="left">Kind</td>
+<td align="left">*</td>
+<td align="left">String</td>
+</tr>
+<tr class="even">
+<td align="left">Int</td>
+<td align="left">Maybe</td>
+<td align="left">[]</td>
+</tr>
+<tr class="odd">
+<td align="left">IO</td>
+<td align="left">(-&gt;)</td>
+<td align="left">Deriving</td>
+</tr>
+<tr class="even">
+<td align="left">data</td>
+<td align="left">Show</td>
+<td align="left">Type-Class</td>
+</tr>
+<tr class="odd">
+<td align="left">List</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
 <p>An example of an ADT in Haskell:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>data MyBool = MyTrue | MyFalse | MyNotSure
 
@@ -867,6 +1029,54 @@ What would the ADT for a Lisp-like language look like?</code></pre>
 <h1 id="typeclasses">Type Classes</h1>
 <p>A big part of writing clean reusable code is controlled polymorphism. We are like a carny at the roller-coaster, anybody can ride the roller coaster, but you must be at least this tall.</p>
 <p>In the object oriented world we use the inheritance heirachy, we know that if something is a subclass, it has at least all of the features of its parent. Of course this is all intertwined with the sharing of data and state, and that's bad.</p>
+<h2 id="lexicon">Lexicon</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">-----------</th>
+<th align="left">-------------</th>
+<th align="left">------------</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Polymorphism</td>
+<td align="left">Object-Oriented</td>
+<td align="left">Inheritance</td>
+</tr>
+<tr class="even">
+<td align="left">Data</td>
+<td align="left">State</td>
+<td align="left">Type-Classes</td>
+</tr>
+<tr class="odd">
+<td align="left">Functions</td>
+<td align="left">Context</td>
+<td align="left">=&gt;</td>
+</tr>
+<tr class="even">
+<td align="left">Num</td>
+<td align="left">(+)</td>
+<td align="left">Show</td>
+</tr>
+<tr class="odd">
+<td align="left">Read</td>
+<td align="left">String</td>
+<td align="left">return</td>
+</tr>
+<tr class="even">
+<td align="left">Dispatch</td>
+<td align="left">(::)</td>
+<td align="left">Definition</td>
+</tr>
+<tr class="odd">
+<td align="left">Instance</td>
+<td align="left">Declaration</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="functional-type-classes">Functional Type-Classes</h2>
 <p>In the functional world we get type classes, which is just controlled polymorphism without the baggage. They basically say, that I don't need to know exactly what type you'll call me with but you need to provide a bunch of functions for me to use.</p>
 <p>A function tells you what type classes it needs with a &quot;context&quot;, The context is the bit to the left of the double arrow &quot;=&gt;&quot;</p>
 <pre class="nocheck" data-language="haskell"><code>(+) :: Num a =&gt; a -&gt; a -&gt; a

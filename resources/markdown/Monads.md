@@ -150,6 +150,12 @@ can we choose to taint a value? Indeed we can, in fact,
 this is a fundamental operation of a Monad. In haskell
 it is confusingly called `return :: a -> IO a`.
 
+```note
+In recent versions of GHC (>= 7.10), Monads must also be
+Applicative, with the default implementation of `return`
+being Applicative's `pure`.
+```
+
 A common pattern is to "open up" an `IO` with bind `(>>=)`,
 mess around with the contents then wrap it back up again with
 `return`. We have a function to help us with this called `lift`.

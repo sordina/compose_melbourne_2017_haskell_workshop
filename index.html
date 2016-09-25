@@ -41,7 +41,7 @@ Press &quot;t&quot; to toggle showing the table of contents</code></pre>
 <p>If you would like to volunteer to help assist at the workshop, please send an email to the <script type="text/javascript">
 <!--
 h='&#x67;&#x6f;&#x6f;&#x67;&#108;&#x65;&#x67;&#114;&#x6f;&#x75;&#112;&#x73;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x63;&#x6f;&#x6d;&#112;&#x6f;&#x73;&#x65;&#x6d;&#x65;&#108;&#x2d;&#x61;&#100;&#x6d;&#x69;&#110;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'Compose :: Melbourne Committee'+'<\/'+'a'+'>');
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x43;&#x6f;&#x6d;&#112;&#x6f;&#x73;&#x65;&#32;&#58;&#58;&#32;&#x4d;&#x65;&#108;&#98;&#x6f;&#x75;&#114;&#110;&#x65;&#32;&#x43;&#x6f;&#x6d;&#x6d;&#x69;&#116;&#116;&#x65;&#x65;'+'<\/'+'a'+'>');
 // -->
 </script><noscript>&#x43;&#x6f;&#x6d;&#112;&#x6f;&#x73;&#x65;&#32;&#58;&#58;&#32;&#x4d;&#x65;&#108;&#98;&#x6f;&#x75;&#114;&#110;&#x65;&#32;&#x43;&#x6f;&#x6d;&#x6d;&#x69;&#116;&#116;&#x65;&#x65;&#32;&#40;&#x63;&#x6f;&#x6d;&#112;&#x6f;&#x73;&#x65;&#x6d;&#x65;&#108;&#x2d;&#x61;&#100;&#x6d;&#x69;&#110;&#32;&#x61;&#116;&#32;&#x67;&#x6f;&#x6f;&#x67;&#108;&#x65;&#x67;&#114;&#x6f;&#x75;&#112;&#x73;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;&#x29;</noscript>.</p>
 </div>
@@ -464,7 +464,7 @@ How would you go about publishing your own package to Hackage?</code></pre>
 </table>
 <h2 id="primitives">Primitives</h2>
 <p>Haskell comes pre-packaged with many primitives available in the <code>Prelude</code> module that is included by default, but you should at least make yourself familiar with the following types, and literal syntax:</p>
-<table>
+<table style="width:54%;">
 <colgroup>
 <col width="16%" />
 <col width="18%" />
@@ -1274,6 +1274,9 @@ Write a program that prints something stupid, funny or rude.
 Make sure to use (&gt;&gt;) somewhere.</code></pre>
 <h2 id="monad-wars-iii-return-of-the-value">Monad Wars III: Return of the Value</h2>
 <p>We mentioned before that there is no way to untaint a value, once it has been tainted, we can make new tainted values from it, but never untainted ones. But that begs the question, can we choose to taint a value? Indeed we can, in fact, this is a fundamental operation of a Monad. In haskell it is confusingly called <code>return :: a -&gt; IO a</code>.</p>
+<pre class="note"><code>In recent versions of GHC (&gt;= 7.10), Monads must also be
+Applicative, with the default implementation of `return`
+being Applicative&#39;s `pure`.</code></pre>
 <p>A common pattern is to &quot;open up&quot; an <code>IO</code> with bind <code>(&gt;&gt;=)</code>, mess around with the contents then wrap it back up again with <code>return</code>. We have a function to help us with this called <code>lift</code>. Specialized for <code>IO</code> it has type <code>lift :: (a -&gt; b) -&gt; (IO a -&gt; IO b)</code>. We can use this to take a vanilla function and &quot;lift&quot; it into the IO monad. It works by unwrapping the IO monad calling our function and then wrapping the result back up again.</p>
 <pre class="instruction"><code>use return to write &#39;myLiftIO :: (a -&gt; b) -&gt; IO a -&gt; IO b&#39;</code></pre>
 <h2 id="do-it-do-it-good.">Do it, do it good.</h2>
@@ -1394,46 +1397,7 @@ Why is it a good idea to make side effects explicit?</code></pre>
 </div>
 <h2 id="solution-toolbox">Solution Toolbox</h2>
 <p>In order to solve the problem the following should be used:</p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">Tool</td>
-<td align="left">Details</td>
-</tr>
-<tr class="even">
-<td align="left">main</td>
-<td align="left">You must define a <code>main</code> function in your module</td>
-</tr>
-<tr class="odd">
-<td align="left">print</td>
-<td align="left">Lets you <code>print</code> things to the console</td>
-</tr>
-<tr class="even">
-<td align="left">System.Random</td>
-<td align="left">import System.Random to get access randomRIO</td>
-</tr>
-<tr class="odd">
-<td align="left">randomRIO</td>
-<td align="left">Generates a random number from a range as an IO action</td>
-</tr>
-<tr class="even">
-<td align="left">readLn</td>
-<td align="left">read a value from the console as a number</td>
-</tr>
-<tr class="odd">
-<td align="left">compare</td>
-<td align="left"><code>compare x y</code> tells you if <code>x</code> is LT, EQ, or GT <code>y</code></td>
-</tr>
-<tr class="even">
-<td align="left">case</td>
-<td align="left">Dispatch on a value</td>
-</tr>
-<tr class="odd">
-<td align="left">do</td>
-<td align="left">Execute multiple IO actions</td>
-</tr>
-</tbody>
-</table>
+<p>--- | --- Tool | Details main | You must define a <code>main</code> function in your module print | Lets you <code>print</code> things to the console System.Random | import System.Random to get access randomRIO randomRIO | Generates a random number from a range as an IO action readLn | read a value from the console as a number compare | <code>compare x y</code> tells you if <code>x</code> is LT, EQ, or GT <code>y</code> case | Dispatch on a value do | Execute multiple IO actions</p>
 <h2 id="thinking-functionally">Thinking Functionally</h2>
 <p>Try to build the solution piece-by-piece. Examine how you can use recursion in conjunction with pattern-matching to keep re-running a procedure until a condition is satisfied.</p>
 <div class="important">

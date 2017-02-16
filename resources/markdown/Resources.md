@@ -21,14 +21,14 @@ on exercises as they appear in the workshop.
 In order to run the programs written during this workshop you will need a Haskell
 installation. The easiest way to get up and running is to install Stack.
 
-## [A Copy of the Workshop Github Project](https://github.com/composeconference/compose_haskell_workshop)
+## [A Copy of the Workshop Github Project](https://github.com/sordina/alt_dot_net_haskell_workshop)
 
 The exercises in the project are available in runnable form in the workshop source.
 
 You can grab the source from GitHub:
 
 ```shell
-git clone https://github.com/composeconference/compose_haskell_workshop.git
+git clone https://github.com/sordina/alt_dot_net_haskell_workshop
 ```
 
 

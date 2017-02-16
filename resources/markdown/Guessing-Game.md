@@ -69,7 +69,7 @@ If you're having trouble coming up with the solution, then here are some hints!
 
 ### Main
 
-~~~{ data-language=haskell data-filter=resources/scripts/check.sh .answer}
+~~~{ data-language=haskell .answer}
 main :: IO ()
 main = do
     print "Let's play the number guessing game"
@@ -79,7 +79,7 @@ main = do
 
 ### Game
 
-~~~{ data-language=haskell data-filter=resources/scripts/check.sh .answer}
+~~~{ data-language=haskell .answer}
 game :: Int -> IO ()
 game n = do
     print "Enter a number"
@@ -92,7 +92,7 @@ game n = do
 
 ### Too Low
 
-~~~{ data-language=haskell data-filter=resources/scripts/check.sh .answer}
+~~~{ data-language=haskell .answer}
 tooLow :: Int -> IO ()
 tooLow n = do
   print "Too low :("

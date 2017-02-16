@@ -1,9 +1,9 @@
 
 
-Compose :: Melbourne 2016 Haskell Workshop
-==========================================
+Alt .Net Haskell Workshop 2017
+==============================
 
-A three-hour workshop intended to introduce Haskell to newcomers to functional-programming.
+A one-day workshop intended to introduce Haskell to newcomers to the Alt .Net community and friends!
 
 ## How to Build
 
@@ -14,6 +14,10 @@ If you wish to contribute to the materials for the workshop you will need the fo
 * [Pandoctor](https://github.com/sordina/pandoctor)
 
 Then you can build the workshop by issuing the command `make`.
+
+## How to Publish
+
+Ensure that you have the desired repository set to origin, then run `make publish`.
 
 ## Links
 

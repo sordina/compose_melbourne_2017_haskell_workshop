@@ -104,6 +104,19 @@ function javascriptFunction(a,b ...) { ... }
 javascriptFunction(1,2)</code></pre> <p>For example:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myAdd x y = x + y
 </code></pre> <p><code>myAdd</code> takes two numbers and returns the result of the addition of those two numbers.</p> <pre class="instruction"><code>Define a function `myMultiply` that multiplies 3 numbers.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
 </code></pre> <pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>Prelude&gt; myMultiply 4 5 6734
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=7 data_language=haskell data_filter=./resources/scripts/check.sh
+
+~~~&gt; Prelude&gt; myMultiply 4 5 6734
+~~~&gt; main = undefined
+
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:1:1: error:
+    Parse error: naked expression at top level
+    Perhaps you intended to use TemplateHaskell
 </code></pre> <h2 id="lists">Lists</h2> <p>List are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p> <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p> <p>List literals look like:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>list1 = [1,2,3]
 list2 = 1 : 2 : []
 list3 = &quot;hello&quot; : &quot;world&quot; : []
@@ -375,6 +388,24 @@ main = do
     print &quot;Let&apos;s play the number guessing game&quot;
     n &lt;- randomRIO (1, 10)
     game n
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=1 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; main :: IO ()
+~~~&gt; main = do
+~~~&gt;     print &quot;Let&apos;s play the number guessing game&quot;
+~~~&gt;     n &lt;- randomRIO (1, 10)
+~~~&gt;     game n
+
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:4:10: error:
+    Variable not in scope: randomRIO :: (Integer, Integer) -&gt; IO t0
+
+/tmp/haskell_workshop_check.hs:5:5: error:
+    Variable not in scope: game :: t0 -&gt; IO ()
 </code></pre> <h3 id="game">Game</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>game :: Int -&gt; IO ()
 game n = do
     print &quot;Enter a number&quot;
@@ -383,10 +414,47 @@ game n = do
       of LT -&gt; tooLow  n
          GT -&gt; tooHigh n
          EQ -&gt; print &quot;You win!&quot;
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=2 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; game :: Int -&gt; IO ()
+~~~&gt; game n = do
+~~~&gt;     print &quot;Enter a number&quot;
+~~~&gt;     g &lt;- readLn
+~~~&gt;     case compare g n
+~~~&gt;       of LT -&gt; tooLow  n
+~~~&gt;          GT -&gt; tooHigh n
+~~~&gt;          EQ -&gt; print &quot;You win!&quot;
+~~~&gt; main = undefined
+
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:6:16: error:
+    Variable not in scope: tooLow :: Int -&gt; IO ()
+
+/tmp/haskell_workshop_check.hs:7:16: error:
+    Variable not in scope: tooHigh :: Int -&gt; IO ()
 </code></pre> <h3 id="too-low">Too Low</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>tooLow :: Int -&gt; IO ()
 tooLow n = do
   print &quot;Too low :(&quot;
   game n
+
+Error compiling example:
+
+&gt; PANDOCTOR_COUNT=3 data_language=haskell data_filter=resources/scripts/check.sh
+
+~~~&gt; tooLow :: Int -&gt; IO ()
+~~~&gt; tooLow n = do
+~~~&gt;   print &quot;Too low :(&quot;
+~~~&gt;   game n
+~~~&gt; main = undefined
+
+[1 of 1] Compiling Main             ( /tmp/haskell_workshop_check.hs, /tmp/haskell_workshop_check.o )
+
+/tmp/haskell_workshop_check.hs:4:3: error:
+    Variable not in scope: game :: Int -&gt; IO ()
 </code></pre> <h3 id="full-solution">Full Solution</h3> <pre class="answer" data-language="haskell" data-filter="resources/scripts/check.sh"><code>import System.Random
 
 main :: IO ()

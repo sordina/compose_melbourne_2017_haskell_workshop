@@ -47,6 +47,8 @@ stack ghci
 
 Use the 64-bit installer from <https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows>.
 
+Provided you use the 64-bit version, you shouldn't need to worry about the PATH issues.
+
 Then run the following in `Cmd`:
 
 ```shell

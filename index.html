@@ -231,8 +231,15 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
 <p>This should output something similar to:</p>
 <pre><code>Version 1.1.2 x86_64 hpack-0.14.0</code></pre>
 <p>Otherwise, install it!</p>
+<h3 id="linux-and-os-x">Linux and OS X:</h3>
 <pre class="shell"><code>curl -sSL https://get.haskellstack.org/ | sh
 stack setup
+stack ghci
+&gt; 1 + 1</code></pre>
+<h3 id="windows">Windows:</h3>
+<p>Use the 64-bit installer from <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows" class="uri">https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows</a>.</p>
+<p>Then run the following in <code>Cmd</code>:</p>
+<pre class="shell"><code>stack setup
 stack ghci
 &gt; 1 + 1</code></pre>
 <p>This should output:</p>
@@ -613,8 +620,7 @@ myMap f (x:xs) = f x : myMap f xs
 </code></pre>
 <p>Lists can be combine by using the <code>++</code> function. This is an infix function similar to <code>+</code>.</p>
 <pre class="instruction"><code>Combine your list with itself to make it twice as good!</code></pre>
-<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>betterList = myList ++ myList
-</code></pre>
+<pre class="answer" data-language="haskell"><code>betterList = myList ++ myList</code></pre>
 <h2 id="fun-list-functions">Fun List Functions</h2>
 <p>For your reading pleasure, here are some definintions of common functions:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myFilter f []     = []

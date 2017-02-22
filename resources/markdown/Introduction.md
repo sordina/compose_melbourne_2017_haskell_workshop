@@ -279,7 +279,7 @@ similar to `+`.
 Combine your list with itself to make it twice as good!
 ```
 
-~~~{.answer data-language=haskell data-filter=./resources/scripts/check.sh}
+~~~{.answer data-language=haskell }
 betterList = myList ++ myList
 ~~~
 

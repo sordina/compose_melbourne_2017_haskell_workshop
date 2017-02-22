@@ -34,8 +34,22 @@ This should output something similar to:
 
 Otherwise, install it!
 
+### Linux and OS X:
+
 ```shell
 curl -sSL https://get.haskellstack.org/ | sh
+stack setup
+stack ghci
+> 1 + 1
+```
+
+### Windows:
+
+Use the 64-bit installer from <https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows>.
+
+Then run the following in `Cmd`:
+
+```shell
 stack setup
 stack ghci
 > 1 + 1

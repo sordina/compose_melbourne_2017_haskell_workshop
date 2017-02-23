@@ -9,7 +9,7 @@ Welcome to the Melbourne Alt .Net 2017 Haskell Workshop.
 
 Running on Saturday 25/02/2017 at [SEEK](https://www.seek.com.au/).
 
-This intent of this workshop is to provide a working introduction to Haskell
+The intent of this workshop is to provide a working introduction to Haskell
 for programmers in Melbourne who have not yet used the language in anger.
 
 The workshop is split into chapters. The chapters will start

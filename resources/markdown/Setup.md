@@ -43,6 +43,8 @@ stack ghci
 > 1 + 1
 ```
 
+_(If mktemp fails, modify the script, or download stack binary manually.)_
+
 ### Windows:
 
 Use the 64-bit installer from <https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows>.

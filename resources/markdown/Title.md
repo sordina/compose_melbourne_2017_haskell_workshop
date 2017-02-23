@@ -20,7 +20,7 @@ Press "t" to toggle showing the table of contents
 
 </div>
 
-<div class="center nopad"> ![Workshop](resources/images/ComposeConference-Melbourne-02.png) </div>
+<div class="center nopad"> ![Workshop](resources/images/altnet.png) </div>
 
 Outcomes include...
 

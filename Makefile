@@ -1,9 +1,9 @@
 
 #
-# Compose :: Melbourne 2016 Haskell Workshop
+# Melbourne Alt .Net Haskell Workshop 2017
 #
-# * http://composeconference.github.io/compose_haskell_workshop/
-# * https://github.com/composeconference/compose_haskell_workshop
+# * https://sordina.github.io/alt_dot_net_haskell_workshop/
+# * https://github.com/sordina/alt_dot_net_haskell_workshop
 #
 
 WHITELIST := 'Makefile\|resources/'
@@ -21,10 +21,10 @@ html:
 	@ cat  resources/html/footer.html                           >> index.html
 
 .PHONY: standalone
-standalone: compose_melbourne_2016_haskell_workshop_standalone.html
+standalone: melbourne_alt_dot_net_haskell_workshop_2017.html
 
-compose_melbourne_2016_haskell_workshop_standalone.html: html
-	inliner -m 'index.html' > compose_melbourne_2016_haskell_workshop_standalone.html
+melbourne_alt_dot_net_haskell_workshop_2017.html: html
+	inliner -m 'index.html' > melbourne_alt_dot_net_haskell_workshop_2017.html
 
 display: html
 	@ ./resources/scripts/chromereload index.html

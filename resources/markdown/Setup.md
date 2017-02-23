@@ -40,7 +40,13 @@ Otherwise, install it!
 curl -sSL https://get.haskellstack.org/ | sh
 stack setup
 stack ghci
-> 1 + 1
+Prelude> 1 + 1
+```
+
+```note
+"Prelude>" at the start of a line is a prompt.
+
+Prelude refers to the default values and functions available.
 ```
 
 _(If mktemp fails, modify the script, or download stack binary manually.)_
@@ -56,7 +62,7 @@ Then run the following in `Cmd`:
 ```shell
 stack setup
 stack ghci
-> 1 + 1
+Prelude> 1 + 1
 ```
 
 This should output:
@@ -70,14 +76,18 @@ You can use GHCi to perform calculations other than just "1 + 1".
 
 Here is an example session:
 
-[Prelude] > 1 + 2 + 3
+Prelude> 1 + 2 + 3
 6
-[Prelude] > 100 / 2
+Prelude> 100 / 2
 50.0
-[Prelude] > 6 ^ 7
+Prelude> 6 ^ 7
 279936
-[Prelude] > ^D
+Prelude> ^D
 Leaving GHCi.
+```
+
+```note
+"^D" refers to holding CONTROL and typing "d".
 ```
 
 ```instruction
@@ -88,7 +98,7 @@ Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.
 
 ```answer
 -- Note that a baker's dozen is 13!
-[Prelude] 42 * 13 * 3
+Prelude> 42 * 13 * 3
 1638
 ```
 
@@ -128,7 +138,7 @@ Loading package integer-gmp ... linking ... done.
 Loading package base ... linking ... done.
 [1 of 1] Compiling Main             ( test.hs, interpreted )
 Ok, modules loaded: Main.
-[*Main] > main
+Prelude> main
 "hello world"
 ```
 
@@ -143,10 +153,10 @@ Now, back in GHCi, you can reload the program without exiting the
 REPL (Read Eval Print Loop):
 
 ```shell
-[*Main] > :reload
+Prelude> :reload
 [1 of 1] Compiling Main             ( test.hs, interpreted )
 Ok, modules loaded: Main.
-[*Main] > main
+Prelude> main
 "hello, world"
 ```
 
@@ -156,13 +166,13 @@ Much better!
 You can inspect a value (or function) in ghci with the `:info` command
 in order to find out a little about its type and definition:
 
-ghci> :info main
+Prelude> :info main
 main :: IO ()   -- Defined at test.hs:1:1
 
 If you just wish to see the type of an expresison, you can use
 the `:type` command:
 
-ghci> :type main
+Prelude> :type main
 main :: IO ()
 ```
 

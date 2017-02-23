@@ -235,7 +235,10 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
 <pre class="shell"><code>curl -sSL https://get.haskellstack.org/ | sh
 stack setup
 stack ghci
-&gt; 1 + 1</code></pre>
+Prelude&gt; 1 + 1</code></pre>
+<pre class="note"><code>&quot;Prelude&gt;&quot; at the start of a line is a prompt.
+
+Prelude refers to the default values and functions available.</code></pre>
 <p><em>(If mktemp fails, modify the script, or download stack binary manually.)</em></p>
 <h3 id="windows">Windows:</h3>
 <p>Use the 64-bit installer from <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows" class="uri">https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows</a>.</p>
@@ -243,7 +246,7 @@ stack ghci
 <p>Then run the following in <code>Cmd</code>:</p>
 <pre class="shell"><code>stack setup
 stack ghci
-&gt; 1 + 1</code></pre>
+Prelude&gt; 1 + 1</code></pre>
 <p>This should output:</p>
 <pre><code>2</code></pre>
 </div>
@@ -251,19 +254,20 @@ stack ghci
 
 Here is an example session:
 
-[Prelude] &gt; 1 + 2 + 3
+Prelude&gt; 1 + 2 + 3
 6
-[Prelude] &gt; 100 / 2
+Prelude&gt; 100 / 2
 50.0
-[Prelude] &gt; 6 ^ 7
+Prelude&gt; 6 ^ 7
 279936
-[Prelude] &gt; ^D
+Prelude&gt; ^D
 Leaving GHCi.</code></pre>
+<pre class="note"><code>&quot;^D&quot; refers to holding CONTROL and typing &quot;d&quot;.</code></pre>
 <pre class="instruction"><code>Using GHCi...
 
 Calculate the price of 42-bakers-dozens of eggs at $3 per-egg.</code></pre>
 <pre class="answer"><code>-- Note that a baker&#39;s dozen is 13!
-[Prelude] 42 * 13 * 3
+Prelude&gt; 42 * 13 * 3
 1638</code></pre>
 <pre class="note"><code>If ghci is on your PATH, then you can invoke it directly,
 however, if you have just installed stack, then you will
@@ -289,28 +293,28 @@ Loading package integer-gmp ... linking ... done.
 Loading package base ... linking ... done.
 [1 of 1] Compiling Main             ( test.hs, interpreted )
 Ok, modules loaded: Main.
-[*Main] &gt; main
+Prelude&gt; main
 &quot;hello world&quot;</code></pre>
 <p>... Unfortunately there is a bug in the program, so in your editor you make the change required to print &quot;hello, world&quot; with the mandated comma:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>main = print &quot;hello, world&quot;
 </code></pre>
 <p>Now, back in GHCi, you can reload the program without exiting the REPL (Read Eval Print Loop):</p>
-<pre class="shell"><code>[*Main] &gt; :reload
+<pre class="shell"><code>Prelude&gt; :reload
 [1 of 1] Compiling Main             ( test.hs, interpreted )
 Ok, modules loaded: Main.
-[*Main] &gt; main
+Prelude&gt; main
 &quot;hello, world&quot;</code></pre>
 <p>Much better!</p>
 <pre class="real"><code>You can inspect a value (or function) in ghci with the `:info` command
 in order to find out a little about its type and definition:
 
-ghci&gt; :info main
+Prelude&gt; :info main
 main :: IO ()   -- Defined at test.hs:1:1
 
 If you just wish to see the type of an expresison, you can use
 the `:type` command:
 
-ghci&gt; :type main
+Prelude&gt; :type main
 main :: IO ()</code></pre>
 <pre class="instruction"><code>
 
@@ -515,10 +519,14 @@ ghci&gt; 42
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myVariable = 2
 </code></pre>
 <p>Variable names should start with a lowercase letter and contain no spaces, or special characters, besides underscores, numbers, and <code>'</code>.</p>
-<pre class="real"><code>If you wish to define a variable inside GHCi, you have to prefix
-the definition with &quot;let&quot;... For example:
+<!--
+```real
+If you wish to define a variable inside GHCi, you have to prefix
+the definition with "let"... For example:
 
-[Prelude] &gt; let myName = &quot;Simon&quot;</code></pre>
+[Prelude] > let myName = "Simon"
+```
+-->
 <p>Some examples of variable names are:</p>
 <ul>
 <li><code>a</code></li>
@@ -529,7 +537,7 @@ the definition with &quot;let&quot;... For example:
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>x = &quot;hello&quot;
 </code></pre>
 <pre class="instruction"><code>What is an example of an invalid variable name?</code></pre>
-<pre class="answer nocheck" data-language="haskell"><code>invalid-variable = 123</code></pre>
+<pre class="answer nocheck" data-language="haskell"><code>InvalidVariable = 123</code></pre>
 <p>String literals look familiar:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myString = &quot;hello world&quot;
 </code></pre>

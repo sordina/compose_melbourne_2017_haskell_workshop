@@ -63,14 +63,17 @@ Variables can be defined at the top-level (no-indentation):
 myVariable = 2
 ~~~
 
-Variable names should start with a lowercase letter and contain no spaces, or special characters, besides underscores, numbers, and `'`.
+Variable names should start with a lowercase letter and contain no spaces, or
+special characters, besides underscores, numbers, and `'`.
 
+<!--
 ```real
 If you wish to define a variable inside GHCi, you have to prefix
 the definition with "let"... For example:
 
 [Prelude] > let myName = "Simon"
 ```
+-->
 
 Some examples of variable names are:
 
@@ -91,7 +94,7 @@ What is an example of an invalid variable name?
 ```
 
 ~~~{ data-language=haskell .answer .nocheck }
-invalid-variable = 123
+InvalidVariable = 123
 ~~~
 
 String literals look familiar:

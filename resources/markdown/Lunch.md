@@ -3,11 +3,6 @@
 
 # Lunch Break
 
-
-<div class="center important">
-
-Lunch is provided courtesy of [ThoughtWorks](http://www.thoughtworks.com/)
+Lunch is provided courtesy of [SEEK.](https://www.seek.com.au/)
 
 <div class="center"> ![Chicken Dinner](resources/images/chicken.png) </div>
-
-</div>

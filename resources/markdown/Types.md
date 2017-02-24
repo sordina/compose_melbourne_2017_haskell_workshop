@@ -85,7 +85,7 @@ type String = [Char]
 ```instruction
  
 
-Give your string variable from the previous chapter a type-signature.
+Give your "myString" variable from the previous chapter a type-signature.
 ```
 
 ~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
@@ -107,14 +107,14 @@ myTuple = ("The meaning of life", 42)
 ~~~
 
 ```instruction
-Give your previous tuple definition a type signature.
+Give your previous "myTuplePair" definition a type signature.
 ```
 
 ## Functions
 
 The type signatures of functions in Haskell are a little different
 from how they look in the more familiar C family languages,
-but the syntax is very elegant, and will allow a higher-level of
+but the syntax is very elegant and will allow a higher-level of
 reasoning than less consistent forms.
 
 The syntax for a function type-signature is of the form:
@@ -127,6 +127,7 @@ The main idea is that functions in Haskell only ever take one
 argument. If you wish to define a function that takes more
 than one argument, then you should, in fact, define a function
 that takes one argument, then returns another function.
+
 
 Luckily the syntax for doing this in Haskell looks identical
 to defining a multi-argument function:
@@ -156,16 +157,19 @@ myMultiply :: Int -> Int -> Int -> Int
 myMultiply x y z = x * y * z
 ~~~
 
-```instruction
- 
+... and the syntax for function-application works well with this idea too!
 
-Define a function `myMultiply` that multiplies 4 numbers.
-Give your function a type-signature
+```instruction
+
+
+Define a "myMultiplyB" function that multiplies 4 numbers.
+
+Make sure to give your function a type-signature.
 ```
 
 ~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
-myMultiply :: Int -> Int -> Int -> Int -> Int
-myMultiply w x y z = w * x * y * z
+myMultiplyB :: Int -> Int -> Int -> Int -> Int
+myMultiplyB w x y z = w * x * y * z
 ~~~
 
 ## Lists
@@ -181,9 +185,14 @@ list1 = [1,2,3]
 list2 = 1 : 2 : []
 list3 = "hello" : "world" : []
 
-list1A :: ([]) Int
+list1A :: ([]) Int -- Very rarely used syntax!
 list1A = [1]
 ~~~
+
+```note
+Comments in Haskell start with "--" for single-line,
+and "{- ... -}" for multi-line.
+```
 
 List type signatures are special in that the type-constructor is "Around"-fix.
 This is not generally possible, and lists are a special case in that regard.

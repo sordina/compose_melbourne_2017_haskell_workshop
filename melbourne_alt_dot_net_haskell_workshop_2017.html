@@ -158,20 +158,21 @@ x = 3
 myFloat = 1.1
 </code></pre> </div> <h2 id="type-synonyms">Type Synonyms</h2> <p>In Haskell, we can give type-expressions an alias (or synonym) by using the <code>type</code> keyword. This allows you to cut down the verbosity and chance of errors in your code when you have type expressions that would otherwise be repeated frequently.</p> <p>An example of this is the <code>String</code> type-synonym, which is defined as follows:</p> <pre class="nocheck" data-language="haskell"><code>type String = [Char]</code></pre> <pre class="instruction"><code> 
 
-Give your string variable from the previous chapter a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myString :: String
+Give your &quot;myString&quot; variable from the previous chapter a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myString :: String
 myString = &quot;Hello Haskell&quot;
 </code></pre> <h2 id="tuples">Tuples</h2> <p>Tuple type signatures look the same as the tuples themselves, with types in place of the data.</p> <p>For example, if you had a tuple of a String and an Int, the type would look as follows:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myTuple :: (String, Int)
 myTuple = (&quot;The meaning of life&quot;, 42)
-</code></pre> <pre class="instruction"><code>Give your previous tuple definition a type signature.</code></pre> <h2 id="functions">Functions</h2> <p>The type signatures of functions in Haskell are a little different from how they look in the more familiar C family languages, but the syntax is very elegant, and will allow a higher-level of reasoning than less consistent forms.</p> <p>The syntax for a function type-signature is of the form:</p> <pre class="nocheck" data-language="haskell"><code>{functionName} :: {argument} -&gt; {result}</code></pre> <p>The main idea is that functions in Haskell only ever take one argument. If you wish to define a function that takes more than one argument, then you should, in fact, define a function that takes one argument, then returns another function.</p> <p>Luckily the syntax for doing this in Haskell looks identical to defining a multi-argument function:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
+</code></pre> <pre class="instruction"><code>Give your previous &quot;myTuplePair&quot; definition a type signature.</code></pre> <h2 id="functions">Functions</h2> <p>The type signatures of functions in Haskell are a little different from how they look in the more familiar C family languages, but the syntax is very elegant and will allow a higher-level of reasoning than less consistent forms.</p> <p>The syntax for a function type-signature is of the form:</p> <pre class="nocheck" data-language="haskell"><code>{functionName} :: {argument} -&gt; {result}</code></pre> <p>The main idea is that functions in Haskell only ever take one argument. If you wish to define a function that takes more than one argument, then you should, in fact, define a function that takes one argument, then returns another function.</p> <p>Luckily the syntax for doing this in Haskell looks identical to defining a multi-argument function:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
 </code></pre> <p>However, the distinction becomes clear with the type-signature:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; (Int -&gt; (Int -&gt; Int))
 myMultiply x y z = x * y * z
 </code></pre> <p>Now we can see that the function only takes one argument, then returns a function (that only takes one argument, and returns a function (that only takes one argument, that returns an Int.))</p> <p>This is known as currying.</p> <p>Fortunately, Haskell&apos;s function syntax is right-associative, allowing us to drop the parentheses:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; Int -&gt; Int -&gt; Int
 myMultiply x y z = x * y * z
-</code></pre> <pre class="instruction"><code> 
+</code></pre> <p>... and the syntax for function-application works well with this idea too!</p> <pre class="instruction"><code>
 
-Define a function `myMultiply` that multiplies 4 numbers.
-Give your function a type-signature</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; Int -&gt; Int -&gt; Int -&gt; Int
-myMultiply w x y z = w * x * y * z
+Define a &quot;myMultiplyB&quot; function that multiplies 4 numbers.
+
+Make sure to give your function a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiplyB :: Int -&gt; Int -&gt; Int -&gt; Int -&gt; Int
+myMultiplyB w x y z = w * x * y * z
 </code></pre> <h2 id="lists">Lists</h2> <p>List type-signatures look like:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>list1 :: [Int]
 list2 :: [Int]
 list3 :: [String]
@@ -180,9 +181,10 @@ list1 = [1,2,3]
 list2 = 1 : 2 : []
 list3 = &quot;hello&quot; : &quot;world&quot; : []
 
-list1A :: ([]) Int
+list1A :: ([]) Int -- Very rarely used syntax!
 list1A = [1]
-</code></pre> <p>List type signatures are special in that the type-constructor is &quot;Around&quot;-fix. This is not generally possible, and lists are a special case in that regard.</p> <p>If you find you need to, you can use the list type in prefix-form, as per variable <code>list1A</code>.</p> <pre class="instruction"><code>Define a list variable and give it a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myList :: [Int]
+</code></pre> <pre class="note"><code>Comments in Haskell start with &quot;--&quot; for single-line,
+and &quot;{- ... -}&quot; for multi-line.</code></pre> <p>List type signatures are special in that the type-constructor is &quot;Around&quot;-fix. This is not generally possible, and lists are a special case in that regard.</p> <p>If you find you need to, you can use the list type in prefix-form, as per variable <code>list1A</code>.</p> <pre class="instruction"><code>Define a list variable and give it a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myList :: [Int]
 myList = [1,2,3]
 </code></pre> <pre class="instruction"><code>Give your `head` deconstructor function a type-signature.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myHead :: [a] -&gt; a
 myHead (x:xs) = x

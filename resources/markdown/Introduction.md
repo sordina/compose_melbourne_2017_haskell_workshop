@@ -170,7 +170,7 @@ myMultiply x y z = x * y * z
 Use your `myMultiply` function to multiply `4`, `5` and `6734`.
 ```
 
-~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
+~~~{data-language=haskell .answer }
 Prelude> myMultiply 4 5 6734
 ~~~
 
@@ -272,8 +272,9 @@ because each line "matches" the "pattern" of its arguments.
 ```instruction
 
 
-Define a function that takes a function from a to b,
-and a list of 'a', and returns a list of 'b's.
+Define a function "myMap" that takes a function-argument and a list,
+and returns a new list containing the result of the function-argument
+applied to each element of the list-argument.
 ```
 
 Some concrete examples of such a function may do the following:
@@ -292,13 +293,15 @@ myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
 ~~~
 
+### Combining Lists
+
 Lists can be combined by using the `++` function. This is an infix function
 similar to `+`.
 
 ```instruction
 
 
-Define a new "betterList" combining your list with itself
+Define a new "betterList" combining your "myList" list with itself
 to make it twice as good!
 ```
 

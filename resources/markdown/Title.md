@@ -14,7 +14,6 @@ If you wish to attend on the day, then [please register via Eventbrite.](https:/
 <div class="important">
 
 ~~~{.note .notitle}
-Press "o" to toggle only showing the most important content
 Press "t" to toggle showing the table of contents
 ~~~
 

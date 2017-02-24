@@ -27,6 +27,7 @@ head              length            map
 ## Signatures
 
 In Haskell, type signatures can be provided inline, or above definitions.
+Primitive types generally start with a capital letter.
 
 For example:
 

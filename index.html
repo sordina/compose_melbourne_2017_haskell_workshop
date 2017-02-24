@@ -22,8 +22,7 @@
 <p>If you wish to attend on the day, then <a href="https://www.eventbrite.com/e/haskell-workshop-tickets-31769054096">please register via Eventbrite.</a></p>
 </div>
 <div class="important">
-<pre class="note notitle"><code>Press &quot;o&quot; to toggle only showing the most important content
-Press &quot;t&quot; to toggle showing the table of contents</code></pre>
+<pre class="note notitle"><code>Press &quot;t&quot; to toggle showing the table of contents</code></pre>
 </div>
 <div class="center nopad">
 <img src="resources/images/altnet.png" alt="Workshop" />
@@ -581,8 +580,7 @@ javascriptFunction(1,2)</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
 </code></pre>
 <pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre>
-<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>Prelude&gt; myMultiply 4 5 6734
-</code></pre>
+<pre class="answer" data-language="haskell"><code>Prelude&gt; myMultiply 4 5 6734</code></pre>
 <h2 id="lists">Lists</h2>
 <p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
 <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p>
@@ -631,8 +629,9 @@ because each line &quot;matches&quot; the &quot;pattern&quot; of its arguments.<
 <h3 id="define-mymap">Define <code>myMap</code></h3>
 <pre class="instruction"><code>
 
-Define a function that takes a function from a to b,
-and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
+Define a function &quot;myMap&quot; that takes a function-argument and a list,
+and returns a new list containing the result of the function-argument
+applied to each element of the list-argument.</code></pre>
 <p>Some concrete examples of such a function may do the following:</p>
 <ul>
 <li>Take a function that divides integers by two, list of ints, and returns a list of doubles.</li>
@@ -646,10 +645,11 @@ and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
 </code></pre>
+<h3 id="combining-lists">Combining Lists</h3>
 <p>Lists can be combined by using the <code>++</code> function. This is an infix function similar to <code>+</code>.</p>
 <pre class="instruction"><code>
 
-Define a new &quot;betterList&quot; combining your list with itself
+Define a new &quot;betterList&quot; combining your &quot;myList&quot; list with itself
 to make it twice as good!</code></pre>
 <pre class="answer" data-language="haskell"><code>betterList = myList ++ myList</code></pre>
 <h2 id="fun-list-functions">Fun List Functions</h2>
@@ -740,7 +740,7 @@ Answer:   You type it!</code></pre>
 </tbody>
 </table>
 <h2 id="signatures">Signatures</h2>
-<p>In Haskell, type signatures can be provided inline, or above definitions.</p>
+<p>In Haskell, type signatures can be provided inline, or above definitions. Primitive types generally start with a capital letter.</p>
 <p>For example:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>x :: Int
 x = 3

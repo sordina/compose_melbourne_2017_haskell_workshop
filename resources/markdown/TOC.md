@@ -26,7 +26,7 @@ Guessing-Game   |[Guessing-Game](#lets-make-a-guessing-game)        Let's Make a
 ; Moar          |[~ MOAR!! ~](#moar)                                Awesome Extras!                       ~
 ; Testing       |[Testing](#testing)                                Testing with QuickCheck               1h
 ; Algebra       |[Algebra](#symbolic-differentiation)               Symbolic Mathematics                  30m
-; Web-Site      |[Web-Site](#website)                               Making a Web-Site with Scotty         30m
+Web-Site        |[Web-Site](#website)                               Making a Web-Site with Scotty         30m
 ; Compression   |[Compression](#compression)                        Compression                           1h
 ; Appendix      |[Appendix](#appendix)                              Appendix                              ~
                 |------------------------------------------         ---------------------------------     -------

@@ -112,6 +112,11 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
 <td align="left">Let's Make a Guessing Game</td>
 <td align="left">1h</td>
 </tr>
+<tr class="odd">
+<td align="left"><a href="#website">Web-Site</a></td>
+<td align="left">Making a Web-Site with Scotty</td>
+<td align="left">30m</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1126,10 +1131,13 @@ show :: Show a =&gt; a -&gt; String</code></pre>
 <p><code>show</code> can turn any &quot;Showable&quot; type into a string. this is analogous to the <code>toString()</code> method in Java.</p>
 <pre class="instruction"><code>Define a function that adds one to everything in a list.
 What is the type of this function?</code></pre>
+<pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>incrementer :: Num a =&gt; [a] -&gt; [a]
+incrementer l = map (+1) l
+</code></pre>
+<p>Unlike most other languages, with some kind of type driven function dispatch (e.g. methods, overloading). Haskell can also use the <em>return</em> type of the function to choose functionality, this can take a little getting used to, but it is powerful.</p>
 <pre class="nocheck" data-language="haskell"><code>read :: Read a =&gt; String -&gt; a
 
 incrementAndshow :: (Num a, Show a) =&gt; a -&gt; String</code></pre>
-<p>Unlike most other languages, with some kind of type driven function dispatch (e.g. methods, overloading). Haskell can also use the <em>return</em> type of the function to choose functionality, this can take a little getting used to, but it is powerful.</p>
 <p><code>read</code> turns a string into a value of another type, although we don't know what this is yet. It depends, for example on the type of the function that you are passing the result of read into.</p>
 <p><code>incrementAndShow</code> demonstrates a function that uses two type classes in its context.</p>
 <pre class="instruction"><code>In ghci, convert a string to an integer using read, then covert
@@ -1317,7 +1325,7 @@ Make sure to use (&gt;&gt;) somewhere.</code></pre>
 <pre class="note"><code>In recent versions of GHC (&gt;= 7.10), Monads must also be
 Applicative, with the default implementation of `return`
 being Applicative&#39;s `pure`.</code></pre>
-<p>A common pattern is to &quot;open up&quot; an <code>IO</code> with bind <code>(&gt;&gt;=)</code>, mess around with the contents then wrap it back up again with <code>return</code>. We have a function to help us with this called <code>lift</code>. Specialized for <code>IO</code> it has type <code>lift :: (a -&gt; b) -&gt; (IO a -&gt; IO b)</code>. We can use this to take a vanilla function and &quot;lift&quot; it into the IO monad. It works by unwrapping the IO monad calling our function and then wrapping the result back up again.</p>
+<p>A common pattern is to &quot;open up&quot; an <code>IO</code> with bind <code>(&gt;&gt;=)</code>, mess around with the contents then wrap it back up again with <code>return</code>. We have a function to help us with this called <code>liftM</code>. Specialized for <code>IO</code> it has type <code>liftM :: (a -&gt; b) -&gt; (IO a -&gt; IO b)</code>. We can use this to take a vanilla function and &quot;lift&quot; it into the IO monad. It works by unwrapping the IO monad calling our function and then wrapping the result back up again.</p>
 <pre class="instruction"><code>use return to write &#39;myLiftIO :: (a -&gt; b) -&gt; IO a -&gt; IO b&#39;</code></pre>
 <h2 id="do-it-do-it-good.">Do it, do it good.</h2>
 <p>Sometimes when you are doing a lot of ad-hoc interleaved IO, using bind and return all over the place can become a pain in the fingers. So haskell provides special syntax for using monads, called &quot;do notation&quot;.</p>
@@ -1336,7 +1344,7 @@ being Applicative&#39;s `pure`.</code></pre>
 <pre class="instruction"><code>
 
 Write a program that asks for someone&#39;s first and second name,
-then complements them (or makes fun of them).
+then compliments them (or makes fun of them).
 
 For extra points ask for their age, and customize the complement
 (or insult) depending on how old they are.
@@ -1437,7 +1445,48 @@ Why is it a good idea to make side effects explicit?</code></pre>
 </div>
 <h2 id="solution-toolbox">Solution Toolbox</h2>
 <p>In order to solve the problem the following should be used:</p>
-<p>--- | --- Tool | Details main | You must define a <code>main</code> function in your module print | Lets you <code>print</code> things to the console System.Random | import System.Random to get access randomRIO randomRIO | Generates a random number from a range as an IO action readLn | read a value from the console as a number compare | <code>compare x y</code> tells you if <code>x</code> is LT, EQ, or GT <code>y</code> case | Dispatch on a value do | Execute multiple IO actions</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tool</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">main</td>
+<td align="left">You must define a <code>main</code> function in your module</td>
+</tr>
+<tr class="even">
+<td align="left">print</td>
+<td align="left">Lets you <code>print</code> things to the console</td>
+</tr>
+<tr class="odd">
+<td align="left">System.Random</td>
+<td align="left">import System.Random to get access randomRIO</td>
+</tr>
+<tr class="even">
+<td align="left">randomRIO</td>
+<td align="left">Generates a random number from a range as an IO action</td>
+</tr>
+<tr class="odd">
+<td align="left">readLn</td>
+<td align="left">read a value from the console as a number</td>
+</tr>
+<tr class="even">
+<td align="left">compare</td>
+<td align="left"><code>compare x y</code> tells you if <code>x</code> is LT, EQ, or GT <code>y</code></td>
+</tr>
+<tr class="odd">
+<td align="left">case</td>
+<td align="left">Dispatch on a value</td>
+</tr>
+<tr class="even">
+<td align="left">do</td>
+<td align="left">Execute multiple IO actions</td>
+</tr>
+</tbody>
+</table>
 <h2 id="thinking-functionally">Thinking Functionally</h2>
 <p>Try to build the solution piece-by-piece. Examine how you can use recursion in conjunction with pattern-matching to keep re-running a procedure until a condition is satisfied.</p>
 <div class="important">
@@ -1492,6 +1541,79 @@ tooHigh n = do
   game n
 </code></pre>
 </div>
+
+</div>
+</div>
+
+
+
+
+<div class='chapter'>
+<div class='content'>
+
+<h1 id="website">Making a Web-Site with Scotty</h1>
+<p>The Haskell library <a href="http://hackage.haskell.org/package/scotty">Scotty</a> is similar to the ruby web-library <a href="http://www.sinatrarb.com/">Sinatra</a>.</p>
+<div class="center">
+<div class="figure">
+<img src="resources/images/scotty.png" alt="Beam me Up" />
+<p class="caption">Beam me Up</p>
+</div>
+</div>
+<p>Scotty can be installed by using the following Stack command:</p>
+<pre class="shell"><code>&gt; stack install scotty</code></pre>
+<p>Scotty's behaviour is based around <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> verbs and routes.</p>
+<p>For example - A simple Hello-World website:</p>
+<pre class="nocheck" data-language="haskell"><code>{-# LANGUAGE OverloadedStrings #-}
+
+import Web.Scotty
+import Data.Monoid
+
+main = scotty 3000 $ do
+  get &quot;/:word&quot; $ do
+    beam &lt;- param &quot;word&quot;
+    html $ mconcat [&quot;&lt;h1&gt;Scotty, &quot;, beam, &quot; me up!&lt;/h1&gt;&quot;]</code></pre>
+<pre class="note"><code>The &quot;LANGUAGE&quot; line is a pragma, instructing the compiler to
+allow string literals to be of types other than &quot;String&quot;.</code></pre>
+<p>If we inspect the type of <code>get</code> in GHCi we see this:</p>
+<pre class="ghci"><code>&gt; import Web.Scotty
+&gt; :info get
+get :: RoutePattern -&gt; ActionM () -&gt; ScottyM ()</code></pre>
+<p>The ActionM Monad allows us to perform any IO action we desire, such as printing to the console, reading files, etc - through the use of the liftIO function.</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>{-# LANGUAGE OverloadedStrings #-}
+
+import Web.Scotty
+import Control.Monad.IO.Class
+import Data.Monoid
+
+myRoute = get &quot;/hello&quot; $ do
+  liftIO $ putStrLn &quot;about to return hello!&quot;
+  html &quot;Hi!&quot;
+</code></pre>
+<pre class="instruction"><code>Modify this simple website to show the current time.</code></pre>
+<pre class="hint"><code>Install the &quot;time&quot; package and &quot;import Data.Time.Clock&quot;.
+Use &quot;show&quot; to convert the time to a String.
+Use the pack function from &quot;import Data.Text.Lazy (pack)&quot;.
+&quot;pack&quot; can convert Strings to Text.</code></pre>
+<pre class="answer"><code>First install the &quot;time&quot; package.
+
+Then define your route as:
+
+import Data.Time.Clock
+import Data.Text.Lazy (pack)
+
+myTimeRoute = get &quot;/time&quot; $ do
+  t &lt;- liftIO getCurrentTime
+  html $ pack $ show t
+
+-- You can find a full file in the scaffold/website folder.</code></pre>
+<pre class="instruction"><code>
+
+Modify this simple website to output the answers from the
+other chapters in this workshop!</code></pre>
+<pre class="open"><code>An open question:
+
+What features do the more advanced Haskell web-frameworks include
+that Scotty lacks?</code></pre>
 
 </div>
 </div>

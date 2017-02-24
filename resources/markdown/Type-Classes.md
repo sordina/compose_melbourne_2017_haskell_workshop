@@ -50,16 +50,21 @@ Define a function that adds one to everything in a list.
 What is the type of this function?
 ```
 
-~~~{data-language=haskell .nocheck}
-read :: Read a => String -> a
-
-incrementAndshow :: (Num a, Show a) => a -> String
+~~~{data-language=haskell .answer data-filter=./resources/scripts/check.sh}
+incrementer :: Num a => [a] -> [a]
+incrementer l = map (+1) l
 ~~~
 
 Unlike most other languages, with some kind of type driven
 function dispatch (e.g. methods, overloading). Haskell can also
 use the _return_ type of the function to choose functionality,
 this can take a little getting used to, but it is powerful.
+
+~~~{data-language=haskell .nocheck}
+read :: Read a => String -> a
+
+incrementAndshow :: (Num a, Show a) => a -> String
+~~~
 
 `read` turns a string into a value of another type,
 although we don't know what this is yet. It depends,

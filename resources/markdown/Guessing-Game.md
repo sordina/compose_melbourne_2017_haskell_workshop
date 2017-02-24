@@ -45,8 +45,8 @@ $ stack exec -- runhaskell Module_1470214643_41323.hs
 
 In order to solve the problem the following should be used:
 
----           | ---
 Tool          | Details
+---           | ---
 main          | You must define a `main` function in your module
 print         | Lets you `print` things to the console
 System.Random | import System.Random to get access randomRIO

@@ -158,8 +158,8 @@ being Applicative's `pure`.
 
 A common pattern is to "open up" an `IO` with bind `(>>=)`,
 mess around with the contents then wrap it back up again with
-`return`. We have a function to help us with this called `lift`.
-Specialized for `IO` it has type `lift :: (a -> b) -> (IO a -> IO b)`.
+`return`. We have a function to help us with this called `liftM`.
+Specialized for `IO` it has type `liftM :: (a -> b) -> (IO a -> IO b)`.
 We can use this to take a vanilla function and "lift" it into the
 IO monad. It works by unwrapping the IO monad calling our function
 and then wrapping the result back up again.

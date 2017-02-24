@@ -39,8 +39,8 @@ document.onkeypress = function(e) {
 	var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
 	if (charCode) {
 		var key = String.fromCharCode(charCode)
-		     if(key === "t") { respond_to_toc_change() }
-		else if(key === "o") { respond_to_expand_change() }
+		if(key === "t") { respond_to_toc_change() }
+		// else if(key === "o") { respond_to_expand_change() }
 	}
 }
 
@@ -59,7 +59,7 @@ var expand_widget       = document.createElement('span')
 expand_widget.innerHTML = "expand"
 expand_widget.className = "expand-content"
 expand_widget.id        = "expand-content"
-document.body.appendChild(expand_widget)
+// document.body.appendChild(expand_widget)
 
 expand_widget.onclick = respond_to_expand_change
 toc_widget.onclick    = respond_to_toc_change

@@ -1359,15 +1359,15 @@ Looks like it&#39;s time to write your super-dooper
 human-level AI and see if your friends can figure
 out how it works.</code></pre>
 <h2 id="stay-functional-san-diego">Stay Functional, San Diego</h2>
-<p>Even when we are programming with side effects, we still want our programs to follow functional principals. To stop our code ending up like C written in do-notation, there are some principals we can try to follow:</p>
+<p>Even when we are programming with side effects, we still want our programs to follow functional principles. To stop our code ending up like C written in do-notation, there are some principles we can try to follow:</p>
 <ol style="list-style-type: decimal">
 <li><p>Try to do most of the work inside pure functions.</p></li>
 <li><p>Don't create an IO action until the last possible moment.</p></li>
 <li><p>Be declarative, think of program as declaring a pipeline or specifying an interaction, instead of being a to-do list.</p></li>
 <li><p>Avoid mixing control, state and calculation. Instead abstract them into small composable pieces. For inspiration see the monad combinators in Control.Monad (e.g. <code>sequence</code>, <code>forever</code>, <code>mapM</code>).</p></li>
 </ol>
-<p>These principals are not specific to monads. They are applicable to all side-effect heavy programing problems. These principles can also be applied to imperative programs for great justice.</p>
-<p>A lot of patterns like reactive programming, dataflow programming and CQRS are consequences of following principals such as these.</p>
+<p>These principles are not specific to monads. They are applicable to all side-effect heavy programing problems. These principles can also be applied to imperative programs for great justice.</p>
+<p>A lot of patterns like reactive programming, dataflow programming and CQRS are consequences of following principles such as these.</p>
 <p>The pithy take-away is don't &quot;update, execute, update&quot;. Instead &quot;represent, transform, compose&quot;.</p>
 <pre class="open"><code>An open-ended question:
 

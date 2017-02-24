@@ -205,7 +205,7 @@ would look like without do-notation:
 
 
 Write a program that asks for someone's first and second name,
-then complements them (or makes fun of them).
+then compliments them (or makes fun of them).
 
 For extra points ask for their age, and customize the complement
 (or insult) depending on how old they are.
@@ -235,9 +235,9 @@ out how it works.
 ## Stay Functional, San Diego
 
 Even when we are programming with side effects, we still
-want our programs to follow functional principals. To stop our code
+want our programs to follow functional principles. To stop our code
 ending up like C written in do-notation, there are some
-principals we can try to follow:
+principles we can try to follow:
 
   1. Try to do most of the work inside pure functions.
 
@@ -250,12 +250,12 @@ principals we can try to follow:
      them into small composable pieces. For inspiration see the monad
      combinators in Control.Monad (e.g. `sequence`, `forever`, `mapM`).
 
-These principals are not specific to monads. They are applicable to
+These principles are not specific to monads. They are applicable to
 all side-effect heavy programing problems. These principles can
 also be applied to imperative programs for great justice.
 
 A lot of patterns like reactive programming, dataflow programming and CQRS
-are consequences of following principals such as these.
+are consequences of following principles such as these.
 
 The pithy take-away is don't "update, execute, update". Instead "represent,
 transform, compose".

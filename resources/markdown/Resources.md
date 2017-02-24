@@ -75,3 +75,7 @@ Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell
 ## [Haskell Programming from First Principles](http://haskellbook.com/)
 
 The latest and greatest comprehensive text for learning Haskell.
+
+## [Programming in Haskell](http://www.cs.nott.ac.uk/~pszgmh/pih.html)
+
+Another well renowned and modern resource for learning Haskell.

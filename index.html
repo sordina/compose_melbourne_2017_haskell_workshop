@@ -153,6 +153,8 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
 <p>Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell.</p>
 <h2 id="haskell-programming-from-first-principles"><a href="http://haskellbook.com/">Haskell Programming from First Principles</a></h2>
 <p>The latest and greatest comprehensive text for learning Haskell.</p>
+<h2 id="programming-in-haskell"><a href="http://www.cs.nott.ac.uk/~pszgmh/pih.html">Programming in Haskell</a></h2>
+<p>Another well renowned and modern resource for learning Haskell.</p>
 
 </div>
 </div>
@@ -236,10 +238,16 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x4
 stack setup
 stack ghci
 Prelude&gt; 1 + 1</code></pre>
-<pre class="note"><code>&quot;Prelude&gt;&quot; at the start of a line is a prompt.
+<pre class="note"><code>&quot;Prelude&gt; &quot; at the start of a line is a prompt.
 
-Prelude refers to the default values and functions available.</code></pre>
-<p><em>(If mktemp fails, modify the script, or download stack binary manually.)</em></p>
+Prelude refers to the default values and functions available.
+
+As a convention, anything that starts a line with &quot;&gt; &quot; is a
+prompt and if you&#39;re copying and pasting code you should
+exclude the &quot;&gt; &quot; and copy to the right of it!</code></pre>
+<!-- [Thanks @borsboom](https://github.com/commercialhaskell/stack/issues/3021#event-974900197)
+_(If mktemp fails, modify the script, or download stack binary manually.)_
+-->
 <h3 id="windows">Windows:</h3>
 <p>Use the 64-bit installer from <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows" class="uri">https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows</a>.</p>
 <p>Provided you use the 64-bit version, you shouldn't need to worry about the PATH issues.</p>
@@ -459,13 +467,13 @@ How would you go about publishing your own package to Hackage?</code></pre>
 </tr>
 <tr class="even">
 <td align="left">Destructuring</td>
-<td align="left">Pattern-Matching `</td>
-<td align="left">head`</td>
+<td align="left">Pattern-Matching</td>
+<td align="left">head</td>
 </tr>
 <tr class="odd">
 <td align="left">Partial</td>
-<td align="left"><code>length</code> `</td>
-<td align="left">map`</td>
+<td align="left">length</td>
+<td align="left">map</td>
 </tr>
 <tr class="even">
 <td align="left">Expressiveness</td>
@@ -475,35 +483,35 @@ How would you go about publishing your own package to Hackage?</code></pre>
 </tbody>
 </table>
 <h2 id="primitives">Primitives</h2>
-<p>Haskell comes pre-packaged with many primitives available in the <code>Prelude</code> module that is included by default, but you should at least make yourself familiar with the following types, and literal syntax:</p>
-<table style="width:54%;">
+<p>Haskell comes pre-packaged with many primitives available in the <code>Prelude</code> module that is included by default. You don't need to know them all right now, but you should at least make yourself familiar with the following types, and literal syntax:</p>
+<table style="width:52%;">
 <colgroup>
+<col width="18%" />
 <col width="16%" />
-<col width="18%" />
-<col width="18%" />
+<col width="17%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">What?</th>
 <th align="left">Type</th>
+<th align="left">What?</th>
 <th align="left">Literal Syntax</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Machine Ints</td>
 <td align="left">Int</td>
+<td align="left">Machine Ints</td>
 <td align="left">42</td>
 </tr>
 <tr class="even">
-<td align="left">Strings</td>
 <td align="left">String, [Char]</td>
+<td align="left">Strings</td>
 <td align="left">&quot;Hello World&quot;</td>
 </tr>
 <tr class="odd">
-<td align="left">Booleans</td>
 <td align="left">Bool</td>
-<td align="left">True , False</td>
+<td align="left">Booleans</td>
+<td align="left">True, False</td>
 </tr>
 </tbody>
 </table>
@@ -526,6 +534,8 @@ the definition with "let"... For example:
 
 [Prelude] > let myName = "Simon"
 ```
+
+(Not anymore!!)
 -->
 <p>Some examples of variable names are:</p>
 <ul>
@@ -574,7 +584,7 @@ javascriptFunction(1,2)</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>Prelude&gt; myMultiply 4 5 6734
 </code></pre>
 <h2 id="lists">Lists</h2>
-<p>List are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
+<p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
 <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p>
 <p>List literals look like:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>list1 = [1,2,3]
@@ -585,8 +595,8 @@ list3 = &quot;hello&quot; : &quot;world&quot; : []
 <pre class="instruction"><code>Define a variable containing a list.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myList = [1,2,3]
 </code></pre>
-<p>You can deconstruct a list by pattern matching the head and tail like so:</p>
-<pre class="nocheck" data-language="haskell"><code>f (x:xs) = ...</code></pre>
+<p>You can deconstruct a list by pattern matching the head and tail as in the case of this function definition:</p>
+<pre class="nocheck" data-language="haskell"><code>f (x:xs) = something something ...</code></pre>
 <pre class="instruction"><code>Define a function to get the first element of a list.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myHead (x:xs) = x -- This is a partial function, Beware!
 </code></pre>
@@ -595,7 +605,11 @@ list3 = &quot;hello&quot; : &quot;world&quot; : []
 called with an empty list.
 
 In Haskell we generally wish to avoid defining partial functions.</code></pre>
-<pre class="instruction"><code>Define a variable containing the first element of your list.</code></pre>
+<pre class="instruction"><code>
+
+Define a variable containing the first element of your list.
+
+Make use of your myHead function in the definition!</code></pre>
 <pre class="answer nocheck" data-language="haskell"><code>myFirstElement = myHead myList</code></pre>
 <h3 id="define-length">Define Length</h3>
 <pre class="instruction"><code>Define a function that takes a list and returns the length.</code></pre>
@@ -605,14 +619,18 @@ myLength (x:xs) = ...</code></pre>
 <p>Things to consider:</p>
 <ul>
 <li>What is the length of an empty list? (the base case)</li>
-<li>What is the length of xs?</li>
+<li>What is the length of something with an additional element?</li>
+<li>What is the length of xs? Can you use a function for this?</li>
 </ul>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myLength []     = 0
 myLength (x:xs) = 1 + myLength xs
 </code></pre>
+<pre class="note"><code>Repeated definitions with different argument structures,
+such as myLength, is called &quot;pattern-matching&quot;. This is
+because each line &quot;matches&quot; the &quot;pattern&quot; of its arguments.</code></pre>
 <h3 id="define-mymap">Define <code>myMap</code></h3>
 <pre class="instruction"><code>
-  
+
 Define a function that takes a function from a to b,
 and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
 <p>Some concrete examples of such a function may do the following:</p>
@@ -628,11 +646,14 @@ and a list of &#39;a&#39;, and returns a list of &#39;b&#39;s.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
 </code></pre>
-<p>Lists can be combine by using the <code>++</code> function. This is an infix function similar to <code>+</code>.</p>
-<pre class="instruction"><code>Combine your list with itself to make it twice as good!</code></pre>
+<p>Lists can be combined by using the <code>++</code> function. This is an infix function similar to <code>+</code>.</p>
+<pre class="instruction"><code>
+
+Define a new &quot;betterList&quot; combining your list with itself
+to make it twice as good!</code></pre>
 <pre class="answer" data-language="haskell"><code>betterList = myList ++ myList</code></pre>
 <h2 id="fun-list-functions">Fun List Functions</h2>
-<p>For your reading pleasure, here are some definintions of common functions:</p>
+<p>For your reading pleasure, here are some definintions of other common functions:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myFilter f []     = []
 myFilter f (x:xs) = if f x then x : myFilter f xs
                            else     myFilter f xs

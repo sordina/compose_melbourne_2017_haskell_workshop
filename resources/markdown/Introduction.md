@@ -24,25 +24,26 @@ Literals          `let`             Definitions
 String            Tuples            Functions
 Invocation        Lists             Infix
 Cons              (:)               []
-Destructuring     Pattern-Matching `head`
-Partial           `length`         `map`
+Destructuring     Pattern-Matching  head
+Partial           length            map
 Expressiveness
 
 ## Primitives
 
 Haskell comes pre-packaged with many primitives available in the `Prelude` module
-that is included by default, but you should at least make yourself familiar with
+that is included by default. You don't need to know them all right now,
+but you should at least make yourself familiar with
 the following types, and literal syntax:
 
------------- -------------  --------------
-What?        Type           Literal Syntax
------------- -------------  --------------
-Machine Ints Int            42
+-------------  ------------ --------------
+Type           What?        Literal Syntax
+-------------  ------------ --------------
+Int            Machine Ints 42
 
-Strings      String, [Char] "Hello World"
+String, [Char] Strings      "Hello World"
 
-Booleans     Bool           True  , False
------------- -------------  --------------
+Bool           Booleans     True, False
+-------------  ------------ --------------
 
 ```real
 You can type any literal directly into GHCi in order to have it echoed
@@ -73,6 +74,8 @@ the definition with "let"... For example:
 
 [Prelude] > let myName = "Simon"
 ```
+
+(Not anymore!!)
 -->
 
 Some examples of variable names are:
@@ -173,7 +176,8 @@ Prelude> myMultiply 4 5 6734
 
 ## Lists
 
-List are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).
+Lists are a commonly used data-structure in Haskell. Everything in a list has
+the same type (they are homogeneous).
 
 Lists are built using the infix data-constructor `(:)` (pronounced "cons"). They also have a compact notation using `[...]`.
 
@@ -196,10 +200,11 @@ Define a variable containing a list.
 myList = [1,2,3]
 ~~~
 
-You can deconstruct a list by pattern matching the head and tail like so:
+You can deconstruct a list by pattern matching the head and tail as in the case
+of this function definition:
 
 ~~~{data-language=haskell .nocheck}
-f (x:xs) = ...
+f (x:xs) = something something ...
 ~~~
 
 ```instruction
@@ -220,7 +225,11 @@ In Haskell we generally wish to avoid defining partial functions.
 ```
 
 ```instruction
+
+
 Define a variable containing the first element of your list.
+
+Make use of your myHead function in the definition!
 ```
 
 ~~~{.answer data-language=haskell .nocheck} 
@@ -243,18 +252,26 @@ myLength (x:xs) = ...
 Things to consider:
 
 * What is the length of an empty list? (the base case)
-* What is the length of xs?
+* What is the length of something with an additional element?
+* What is the length of xs? Can you use a function for this?
 
 ~~~{.answer data-language=haskell data-filter=./resources/scripts/check.sh}
 myLength []     = 0
 myLength (x:xs) = 1 + myLength xs
 ~~~
 
+
+```note
+Repeated definitions with different argument structures,
+such as myLength, is called "pattern-matching". This is
+because each line "matches" the "pattern" of its arguments.
+```
+
 ### Define `myMap`
 
 ```instruction
 
-  
+
 Define a function that takes a function from a to b,
 and a list of 'a', and returns a list of 'b's.
 ```
@@ -275,11 +292,14 @@ myMap f [] = []
 myMap f (x:xs) = f x : myMap f xs
 ~~~
 
-Lists can be combine by using the `++` function. This is an infix function
+Lists can be combined by using the `++` function. This is an infix function
 similar to `+`.
 
 ```instruction
-Combine your list with itself to make it twice as good!
+
+
+Define a new "betterList" combining your list with itself
+to make it twice as good!
 ```
 
 ~~~{.answer data-language=haskell }
@@ -288,7 +308,7 @@ betterList = myList ++ myList
 
 ## Fun List Functions
 
-For your reading pleasure, here are some definintions of common functions:
+For your reading pleasure, here are some definintions of other common functions:
 
 ~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
 myFilter f []     = []

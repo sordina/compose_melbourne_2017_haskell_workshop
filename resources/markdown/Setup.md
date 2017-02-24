@@ -44,12 +44,18 @@ Prelude> 1 + 1
 ```
 
 ```note
-"Prelude>" at the start of a line is a prompt.
+"Prelude> " at the start of a line is a prompt.
 
 Prelude refers to the default values and functions available.
+
+As a convention, anything that starts a line with "> " is a
+prompt and if you're copying and pasting code you should
+exclude the "> " and copy to the right of it!
 ```
 
+<!-- [Thanks @borsboom](https://github.com/commercialhaskell/stack/issues/3021#event-974900197)
 _(If mktemp fails, modify the script, or download stack binary manually.)_
+-->
 
 ### Windows:
 

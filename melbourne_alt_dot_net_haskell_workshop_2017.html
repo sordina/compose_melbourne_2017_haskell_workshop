@@ -107,7 +107,14 @@ function javascriptFunction(a,b ...) { ... }
 // Invocation:
 javascriptFunction(1,2)</code></pre> <p>For example:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myAdd x y = x + y
 </code></pre> <p><code>myAdd</code> takes two numbers and returns the result of the addition of those two numbers.</p> <pre class="instruction"><code>Define a function `myMultiply` that multiplies 3 numbers.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
-</code></pre> <pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre> <pre class="answer" data-language="haskell"><code>Prelude&gt; myMultiply 4 5 6734</code></pre> <h2 id="lists">Lists</h2> <p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p> <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p> <p>List literals look like:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>list1 = [1,2,3]
+</code></pre> <pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre> <pre class="answer" data-language="haskell"><code>Prelude&gt; myMultiply 4 5 6734</code></pre> <pre class="note"><code>There is also an inline-function lambda-syntax:
+
+ \{args...} -&gt; {value}
+
+Here is an example of an &quot;addOne&quot; function:
+
+ Prelude&gt; (\x -&gt; x + 1) 2
+ 3</code></pre> <h2 id="lists">Lists</h2> <p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p> <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p> <p>List literals look like:</p> <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>list1 = [1,2,3]
 list2 = 1 : 2 : []
 list3 = &quot;hello&quot; : &quot;world&quot; : []
 </code></pre> <p>More information about why lists can be used the way that they are is contained in the <a href="#adts-algebraic-data-types">ADTs</a> chapter.</p> <pre class="instruction"><code>Define a variable containing a list.</code></pre> <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myList = [1,2,3]

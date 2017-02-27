@@ -174,6 +174,17 @@ Use your `myMultiply` function to multiply `4`, `5` and `6734`.
 Prelude> myMultiply 4 5 6734
 ~~~
 
+```note
+There is also an inline-function lambda-syntax:
+
+	\{args...} -> {value}
+
+Here is an example of an "addOne" function:
+
+	Prelude> (\x -> x + 1) 2
+	3
+```
+
 ## Lists
 
 Lists are a commonly used data-structure in Haskell. Everything in a list has

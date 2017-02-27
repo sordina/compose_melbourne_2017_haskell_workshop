@@ -596,6 +596,14 @@ javascriptFunction(1,2)</code></pre>
 </code></pre>
 <pre class="instruction"><code>Use your `myMultiply` function to multiply `4`, `5` and `6734`.</code></pre>
 <pre class="answer" data-language="haskell"><code>Prelude&gt; myMultiply 4 5 6734</code></pre>
+<pre class="note"><code>There is also an inline-function lambda-syntax:
+
+	\{args...} -&gt; {value}
+
+Here is an example of an &quot;addOne&quot; function:
+
+	Prelude&gt; (\x -&gt; x + 1) 2
+	3</code></pre>
 <h2 id="lists">Lists</h2>
 <p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
 <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p>

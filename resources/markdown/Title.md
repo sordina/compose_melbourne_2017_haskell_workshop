@@ -17,6 +17,7 @@ If you wish to attend on the day, then [please register via Eventbrite.](https:/
 Press "t" to toggle showing the table of contents
 ~~~
 
+
 </div>
 
 <div class="center nopad"> ![Workshop](resources/images/altnet.png) </div>

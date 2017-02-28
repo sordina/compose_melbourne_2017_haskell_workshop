@@ -28,8 +28,8 @@ Each view point becomes another tool in our mental toolbox.
 So there is no one magic-bullet analogy for monads, only many complementary
 ones.
 
-Haskell uses monads to represent side-effects. The simplist and most
-practical analogy is the "tainted value" analogy. In haskell the function
+Haskell uses monads to represent side-effects. The simplest and most
+practical analogy is the "tainted value" analogy. In Haskell the function
 that reads a file looks like this:
 
 ~~~{data-language=haskell .nocheck}
@@ -76,6 +76,21 @@ variable called `main`.
 Why can't one write untaint?
 
 If you could what problems would this cause?
+```
+
+```note
+Aside from "tainting" another way to think about the
+"IO" type is as little side-effectful imperative programs.
+
+You can create a new program that sends the output of one
+of these programs into the input of another one using
+the ">>=" function.
+
+Just like all other values in Haskell, these IO values can
+be passed around, duplicated, put in lists, etc. The
+interesting thing is that the only way that they can actually
+run is by assigning one to a "main" function.
+(or calling one from GHCi)...
 ```
 
 One thing that can be a little strange is the type of `getLine`.

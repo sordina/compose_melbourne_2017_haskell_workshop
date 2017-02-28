@@ -591,6 +591,14 @@ javascriptFunction(1,2)</code></pre>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myAdd x y = x + y
 </code></pre>
 <p><code>myAdd</code> takes two numbers and returns the result of the addition of those two numbers.</p>
+<pre class="note"><code>If you wish to use another function application as an
+argument, then you will usually have to enclose it in
+a pair of parentheses.
+
+For example:
+
+Prelude&gt; myAdd (myAdd 5 4) 3
+12</code></pre>
 <pre class="instruction"><code>Define a function `myMultiply` that multiplies 3 numbers.</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply x y z = x * y * z
 </code></pre>
@@ -604,6 +612,20 @@ Here is an example of an &quot;addOne&quot; function:
 
 	Prelude&gt; (\x -&gt; x + 1) 2
 	3</code></pre>
+<h2 id="importing-modules">Importing Modules</h2>
+<p>Some functions that you may wish to use aren't part of the Prelude, so you will have to import the modules which they reside in.</p>
+<p>This can be done in both your source-code, and GHCi with the <code>import</code> keyword, although the imports in your source have to be close to the top of the file.</p>
+<pre class="nocheck" data-language="haskell"><code>import Data.Char                  -- Access to all Data.Char functions
+import Data.Char as DCH           -- Name the import for later use
+import qualified Data.Char as D   -- Only allow qualified references
+import Data.Char (toUpper)        -- Only import a set of functions
+import Data.Char hiding (isDigit) -- Hide certain functions</code></pre>
+<p>Try using <a href="https://www.haskell.org/hoogle/">Hoogle</a> to search for functions and the modules where they live!</p>
+<pre class="note"><code>An example of using module imports:
+
+Prelude&gt; import Data.Char (toUpper)
+Prelude&gt; reverse (map toUpper &quot;hello&quot;)
+&quot;OLLEH&quot;</code></pre>
 <h2 id="lists">Lists</h2>
 <p>Lists are a commonly used data-structure in Haskell. Everything in a list has the same type (they are homogeneous).</p>
 <p>Lists are built using the infix data-constructor <code>(:)</code> (pronounced &quot;cons&quot;). They also have a compact notation using <code>[...]</code>.</p>
@@ -816,6 +838,11 @@ myString = &quot;Hello Haskell&quot;
 myTuple = (&quot;The meaning of life&quot;, 42)
 </code></pre>
 <pre class="instruction"><code>Give your previous &quot;myTuplePair&quot; definition a type signature.</code></pre>
+<h2 id="type-variables">Type-Variables</h2>
+<p>Most primitive-types in a type-signature are expressed with upper-case names. However, if you want to indicate that a type is repeated in a signature, but don't want to lock down what the type is, then you can use a lower-case type-variable.</p>
+<p>For example, if we wanted a tuple to have the same type of element in each position, then we could write the following:</p>
+<pre class="nocheck" data-language="haskell"><code>... (a,a) ...</code></pre>
+<p>This becomes especially important in the context of functions!</p>
 <h2 id="functions">Functions</h2>
 <p>The type signatures of functions in Haskell are a little different from how they look in the more familiar C family languages, but the syntax is very elegant and will allow a higher-level of reasoning than less consistent forms.</p>
 <p>The syntax for a function type-signature is of the form:</p>
@@ -828,6 +855,10 @@ myTuple = (&quot;The meaning of life&quot;, 42)
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>myMultiply :: Int -&gt; (Int -&gt; (Int -&gt; Int))
 myMultiply x y z = x * y * z
 </code></pre>
+<pre class="note"><code>If you ask for info of your multiply function before
+giving it a type-signature, you will see references to
+&quot; Num =&gt; &quot;... Ignore that for now, we will cover it in
+the type-classes chapter!</code></pre>
 <p>Now we can see that the function only takes one argument, then returns a function (that only takes one argument, and returns a function (that only takes one argument, that returns an Int.))</p>
 <p>This is known as currying.</p>
 <p>Fortunately, Haskell's function syntax is right-associative, allowing us to drop the parentheses:</p>
@@ -1165,7 +1196,10 @@ What would the ADT for a Lisp-like language look like?</code></pre>
 show :: Show a =&gt; a -&gt; String</code></pre>
 <p>In the above example, we have <code>(+)</code>. It can work for any type that is a number. There are built in types for numbers and you can also define your own.</p>
 <p><code>show</code> can turn any &quot;Showable&quot; type into a string. this is analogous to the <code>toString()</code> method in Java.</p>
-<pre class="instruction"><code>Define a function that adds one to everything in a list.
+<pre class="instruction"><code>
+
+Define a function that adds one to everything in a list.
+
 What is the type of this function?</code></pre>
 <pre class="answer" data-language="haskell" data-filter="./resources/scripts/check.sh"><code>incrementer :: Num a =&gt; [a] -&gt; [a]
 incrementer l = map (+1) l
@@ -1176,16 +1210,25 @@ incrementer l = map (+1) l
 incrementAndshow :: (Num a, Show a) =&gt; a -&gt; String</code></pre>
 <p><code>read</code> turns a string into a value of another type, although we don't know what this is yet. It depends, for example on the type of the function that you are passing the result of read into.</p>
 <p><code>incrementAndShow</code> demonstrates a function that uses two type classes in its context.</p>
-<pre class="instruction"><code>In ghci, convert a string to an integer using read, then covert
+<pre class="instruction"><code>
+
+Convert a string to an integer using read, then covert
 a string into a list of integers using read.
 
-(Hint: use (::) to add a type to an expression)
+Hints:
 
-If you just type &#39;read &quot;1&quot;&#39; in ghci you get an
-error, why is this?</code></pre>
-<pre class="instruction"><code>Define `incrementAndShow` which adds one to a number and
+* Use (::) to add a type to an expression inline
+* If you want to know the format required for your string,
+  then try showing the value you would like to end up with.
+
+If you just type &#39;read &quot;1&quot;&#39; in ghci you get an error, why is this?</code></pre>
+<pre class="instruction"><code>
+
+Define `incrementAndShow` which adds one to a number and
 coverts it to a string.
+
 What is they type of this function?
+
 How did haskell infer your context?</code></pre>
 <h1 id="defining-your-own-type-classes">Defining Your Own Type Classes</h1>
 <p>Let's define a type class of things that can be rated, as in 1 to 5 stars or awesome to lame.</p>
@@ -1311,7 +1354,7 @@ a short textual review.</code></pre>
 <h2 id="no-seriously-what-are-monads">No seriously, what are Monads?</h2>
 <p>A monad is just a bunch of rules. There are many, many analogies for monads out there. Each of these analogies are useful, but can be obscuring on their own, they are just one view point. To effectively wield monads we must use many different view points together, each one revealing a little piece of the underlying structure of monads. Each view point becomes another tool in our mental toolbox.</p>
 <p>So there is no one magic-bullet analogy for monads, only many complementary ones.</p>
-<p>Haskell uses monads to represent side-effects. The simplist and most practical analogy is the &quot;tainted value&quot; analogy. In haskell the function that reads a file looks like this:</p>
+<p>Haskell uses monads to represent side-effects. The simplest and most practical analogy is the &quot;tainted value&quot; analogy. In Haskell the function that reads a file looks like this:</p>
 <pre class="nocheck" data-language="haskell"><code>readFile :: FilePath -&gt; IO String</code></pre>
 <p>This function can't return a normal string, because the return value has been tainted by side effects. So the IO monad is acting as a tag saying that the returned string must be treated specially.</p>
 <p>But an <code>IO String</code> is not very useful to us, because we want to actually do things with it. So Haskell, in its normal paternalistic style, allows us access the <code>String</code> inside an <code>IO String</code> only in a very careful way. We use an operation call bind <code>(&gt;&gt;=)</code> to access the string.</p>
@@ -1328,6 +1371,18 @@ a short textual review.</code></pre>
 Why can&#39;t one write untaint?
 
 If you could what problems would this cause?</code></pre>
+<pre class="note"><code>Aside from &quot;tainting&quot; another way to think about the
+&quot;IO&quot; type is as little side-effectful imperative programs.
+
+You can create a new program that sends the output of one
+of these programs into the input of another one using
+the &quot;&gt;&gt;=&quot; function.
+
+Just like all other values in Haskell, these IO values can
+be passed around, duplicated, put in lists, etc. The
+interesting thing is that the only way that they can actually
+run is by assigning one to a &quot;main&quot; function.
+(or calling one from GHCi)...</code></pre>
 <p>One thing that can be a little strange is the type of <code>getLine</code>. In imperative languages, functions of zero arguments make some sense. They can be thought of recipies or to-do lists. In haskell a total function of type <code>() -&gt; Foo</code> is isomorphic to a constant <code>Foo</code>. Because the function only has one input value and therefore only one possible output value.</p>
 <p>So let us return to <code>getLine</code>. In an imperative language it would look like <code>getLine :: () -&gt; String</code>. Our first problem is that the return value of this function is tainted by the outside world, so we need to use the <code>IO</code> monad, <code>getLine :: () -&gt; IO String</code>. Now because of the isomorphism between unit domian functions and constants we can just write <code>getLine :: IO String</code>. We call a constant of type <code>IO a</code> an &quot;IO action&quot;. Because it stands for a bunch of side effects that will be performed together.</p>
 <p>This will seem strange at first, because getLine isn't really a function -- it's just a constant value! But that's okay because while the <code>IO String</code> is a constant (i.e. there is only one distinct IO action that reads a line from the console) the value <em>inside</em> the monad is not constant. It can be different each time we look inside.</p>

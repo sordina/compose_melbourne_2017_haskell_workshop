@@ -110,6 +110,22 @@ myTuple = ("The meaning of life", 42)
 Give your previous "myTuplePair" definition a type signature.
 ```
 
+## Type-Variables
+
+Most primitive-types in a type-signature are expressed with upper-case
+names. However, if you want to indicate that a type is repeated
+in a signature, but don't want to lock down what the type is, then
+you can use a lower-case type-variable.
+
+For example, if we wanted a tuple to have the same type of element
+in each position, then we could write the following:
+
+~~~{data-language=haskell .nocheck}
+... (a,a) ...
+~~~
+
+This becomes especially important in the context of functions!
+
 ## Functions
 
 The type signatures of functions in Haskell are a little different
@@ -128,7 +144,6 @@ argument. If you wish to define a function that takes more
 than one argument, then you should, in fact, define a function
 that takes one argument, then returns another function.
 
-
 Luckily the syntax for doing this in Haskell looks identical
 to defining a multi-argument function:
 
@@ -142,6 +157,13 @@ However, the distinction becomes clear with the type-signature:
 myMultiply :: Int -> (Int -> (Int -> Int))
 myMultiply x y z = x * y * z
 ~~~
+
+```note
+If you ask for info of your multiply function before
+giving it a type-signature, you will see references to
+" Num => "... Ignore that for now, we will cover it in
+the type-classes chapter!
+```
 
 Now we can see that the function only takes one argument, then returns a function
 (that only takes one argument, and returns a function

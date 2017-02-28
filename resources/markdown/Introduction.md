@@ -157,6 +157,17 @@ myAdd x y = x + y
 
 `myAdd` takes two numbers and returns the result of the addition of those two numbers.
 
+```note
+If you wish to use another function application as an
+argument, then you will usually have to enclose it in
+a pair of parentheses.
+
+For example:
+
+Prelude> myAdd (myAdd 5 4) 3
+12
+```
+
 
 ```instruction
 Define a function `myMultiply` that multiplies 3 numbers.
@@ -183,6 +194,33 @@ Here is an example of an "addOne" function:
 
 	Prelude> (\x -> x + 1) 2
 	3
+```
+
+## Importing Modules
+
+Some functions that you may wish to use aren't part of the Prelude, so you will have
+to import the modules which they reside in.
+
+This can be done in both your source-code, and GHCi with the `import` keyword, although
+the imports in your source have to be close to the top of the file.
+
+~~~{data-language=haskell .nocheck}
+import Data.Char                  -- Access to all Data.Char functions
+import Data.Char as DCH           -- Name the import for later use
+import qualified Data.Char as D   -- Only allow qualified references
+import Data.Char (toUpper)        -- Only import a set of functions
+import Data.Char hiding (isDigit) -- Hide certain functions
+~~~
+
+Try using [Hoogle](https://www.haskell.org/hoogle/) to search for functions and
+the modules where they live!
+
+```note
+An example of using module imports:
+
+Prelude> import Data.Char (toUpper)
+Prelude> reverse (map toUpper "hello")
+"OLLEH"
 ```
 
 ## Lists

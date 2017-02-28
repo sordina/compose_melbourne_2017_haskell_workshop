@@ -46,7 +46,10 @@ own.
 this is analogous to the `toString()` method in Java.
 
 ```instruction
+
+
 Define a function that adds one to everything in a list.
+
 What is the type of this function?
 ```
 
@@ -75,19 +78,28 @@ passing the result of read into.
 type classes in its context.
 
 ```instruction
-In ghci, convert a string to an integer using read, then covert
+
+
+Convert a string to an integer using read, then covert
 a string into a list of integers using read.
 
-(Hint: use (::) to add a type to an expression)
+Hints:
 
-If you just type 'read "1"' in ghci you get an
-error, why is this?
+* Use (::) to add a type to an expression inline
+* If you want to know the format required for your string,
+  then try showing the value you would like to end up with.
+
+If you just type 'read "1"' in ghci you get an error, why is this?
 ```
 
 ```instruction
+
+
 Define `incrementAndShow` which adds one to a number and
 coverts it to a string.
+
 What is they type of this function?
+
 How did haskell infer your context?
 ```
 

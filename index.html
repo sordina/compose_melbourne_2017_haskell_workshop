@@ -574,6 +574,23 @@ myTupleTrio = (1,&quot;hello&quot;,3)
 </code></pre>
 <p>They can be used to group multiple, differently-typed (heterogeneous) values.</p>
 <pre class="instruction"><code>Define a variable containing a tuple.</code></pre>
+<h2 id="branching">Branching</h2>
+<p>In order to decide to make a decision in Haskell you can branch in many different ways. Two simple ways are with <code>if</code> statements, and <code>case</code> statements.</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>sunny = True
+
+umbrellasToBring =
+  if sunny
+    then 1
+    else 0
+
+kindOfBagRequired =
+  case umbrellasToBring
+    of 0 -&gt; &quot;satchel&quot;
+       1 -&gt; &quot;backpack&quot;
+       x -&gt; &quot;duffle&quot;
+</code></pre>
+<p>Another way to perform branching is with <code>pattern-matching</code> which we will discuss shortly.</p>
+<p>It's worth noting that Haskell is white-space sensitive. In general, you can add a new-line and indent in-order to continue an expression, however there are several gotchas. See the <a href="https://en.wikibooks.org/wiki/Haskell/Indentation">indentation page on the wiki</a> for more information.</p>
 <h2 id="functions">Functions</h2>
 <p>Functions are a core part of Haskell. Function definition and invocation look like this:</p>
 <pre class="nocheck" data-language="haskell"><code>-- Definition:
@@ -612,6 +629,63 @@ Here is an example of an &quot;addOne&quot; function:
 
 	Prelude&gt; (\x -&gt; x + 1) 2
 	3</code></pre>
+<h2 id="pattern-matching">Pattern Matching</h2>
+<p>One fairly unique feature of ML family languages like Haskell is a dedicated syntax for &quot;pattern-matching&quot;. Pattern matching is the practice of deconstructing and dispatching on a value at the time of assignment. Deconstruction and dispatching are orthogonal features, but they are often used together. Deconstruction can take the place of a great deal of &quot;accessor-function&quot; style programming, while dispatching can replace many conditional-branching constructs.</p>
+<h3 id="deconstruction">Deconstruction</h3>
+<p>Drawing on our <code>tuple</code> example, here is a definition that gets the second element of a tuple:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>getSecondElement (e1,e2) = e2
+</code></pre>
+<p>This would be equivalent to:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>-- `snd` gets the second element of a tuple.
+getSecondElementEquiv t = snd t
+</code></pre>
+<h3 id="dispatch">Dispatch</h3>
+<p>Dispatching on a boolean argument instead of using an if statement:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>multiplyByFiveIfTrue x True  = x * 5
+multiplyByFiveIfTrue x False = x
+</code></pre>
+<p>This would be equivalent to:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>multiplyByFiveIfTrue x b  =
+  if b then x * 5
+       else x
+</code></pre>
+<p>Another interesting use-case for dispatch is numbers!</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>-- http://mathworld.wolfram.com/AckermannFunction.html
+ackermann 0 y = y + 1
+ackermann x 0 = ackermann (x-1) 1
+ackermann x y = ackermann (x-1) (ackermann x (y-1))
+</code></pre>
+<h3 id="combining-deconstruction-and-dispatch">Combining Deconstruction and Dispatch</h3>
+<p>Here is an example combining both deconstruction and dispatch, but taking a tuple argument with a number in the first position and a boolean in the second. The number is used in the definition, and the boolean is used to dispatch:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>multiplyByFiveIfTrueTuple (x,True)  = x * 5
+multiplyByFiveIfTrueTuple (x,False) = x
+</code></pre>
+<p>This would be equivalent to:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>multiplyByFiveIfTrueTupleEquiv t =
+  if (snd t) then (fst t) * 5
+             else (fst t)
+</code></pre>
+<p>While you can use pattern-matching in function-definitions, you can also use it wherever you bind a value, such as case-statements, where and let blocks, and do-notation. You don't have to use pattern-matching in all cases, and sometimes it's easier to just use an <code>if</code> statement. That's fine! Pattern-matching simply looks a little cleaner in some cases.</p>
+<h2 id="local-definitions-with-let-and-where">Local Definitions with <code>let</code> and <code>where</code></h2>
+<p>If you wish to create local variable definitions in order to simplify your functions or reduce computation, then you can use <code>let</code> bindings:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>amountOfCatFoodLet =
+  let
+    days = 21
+    servingsPerDay = 2
+    numberOfCats = 3
+    numberOfServings = numberOfCats * servingsPerDay * days
+    servingSize = 100 -- grams
+  in numberOfServings * servingSize
+</code></pre>
+<p>Or with <code>where</code> bindings:</p>
+<pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>amountOfCatFoodWhere = numberOfServings * servingSize
+  where
+    days = 21
+    servingsPerDay = 2
+    numberOfCats = 3
+    numberOfServings = numberOfCats * servingsPerDay * days
+    servingSize = 100 -- grams
+</code></pre>
 <h2 id="importing-modules">Importing Modules</h2>
 <p>Some functions that you may wish to use aren't part of the Prelude, so you will have to import the modules which they reside in.</p>
 <p>This can be done in both your source-code, and GHCi with the <code>import</code> keyword, although the imports in your source have to be close to the top of the file.</p>
@@ -802,8 +876,16 @@ Answer:   You type it!</code></pre>
 </tr>
 </tbody>
 </table>
+<h2 id="types-1">Types</h2>
+<p>In Haskell, values have associated types. What this means is that any particular value can have its type reasoned about statically. But what is a type? There are primitive types, type-builders, and user-defined types. These make available a parallel language for expressing, reasoning about, and constraining different types. The value-level language and the type-level language are linked in several different ways. One is that through &quot;inference&quot; the types of your expressions have to &quot;make sense&quot;. Another way is the explicit type-signatures that you can give you values.</p>
 <h2 id="signatures">Signatures</h2>
-<p>In Haskell, type signatures can be provided inline, or above definitions. Primitive types generally start with a capital letter.</p>
+<p>Type signatures can be provided inline, or above definitions. Primitive types generally start with a capital letter. The general format goes something like this:</p>
+<pre data-language="haskell"><code>value :: { signature }
+value { definition }</code></pre>
+<p>In English, you can read this as...</p>
+<blockquote>
+<p>value is of type { signature }...</p>
+</blockquote>
 <p>For example:</p>
 <pre data-language="haskell" data-filter="./resources/scripts/check.sh"><code>x :: Int
 x = 3

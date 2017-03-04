@@ -24,10 +24,32 @@ Parentheses       Multiply          Lists
 Around-Fix        Prefix-Form       Deconstruction
 head              length            map
 
+## Types
+
+In Haskell, values have associated types. What this means is that any
+particular value can have its type reasoned about statically. But
+what is a type? There are primitive types, type-builders, and user-defined
+types. These make available a parallel language for expressing, reasoning
+about, and constraining different types. The value-level language
+and the type-level language are linked in several different ways.
+One is that through "inference" the types of your expressions have to
+"make sense". Another way is the explicit type-signatures that you
+can give you values.
+
 ## Signatures
 
-In Haskell, type signatures can be provided inline, or above definitions.
-Primitive types generally start with a capital letter.
+Type signatures can be provided inline, or above definitions.
+Primitive types generally start with a capital letter. The general format
+goes something like this:
+
+~~~{ data-language=haskell }
+value :: { signature }
+value { definition }
+~~~
+
+In English, you can read this as...
+
+> value is of type { signature }...
 
 For example:
 

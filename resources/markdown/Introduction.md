@@ -126,6 +126,34 @@ They can be used to group multiple, differently-typed (heterogeneous) values.
 Define a variable containing a tuple.
 ```
 
+## Branching
+
+In order to decide to make a decision in Haskell you can branch in many different
+ways. Two simple ways are with `if` statements, and `case` statements.
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+sunny = True
+
+umbrellasToBring =
+  if sunny
+    then 1
+    else 0
+
+kindOfBagRequired =
+  case umbrellasToBring
+    of 0 -> "satchel"
+       1 -> "backpack"
+       x -> "duffle"
+~~~
+
+Another way to perform branching is with `pattern-matching` which we will discuss
+shortly.
+
+It's worth noting that Haskell is white-space sensitive. In general, you can
+add a new-line and indent in-order to continue an expression, however there are
+several gotchas. See the [indentation page on the wiki](https://en.wikibooks.org/wiki/Haskell/Indentation)
+for more information.
+
 ## Functions
 
 Functions are a core part of Haskell. Function definition and invocation look like this:
@@ -195,6 +223,115 @@ Here is an example of an "addOne" function:
 	Prelude> (\x -> x + 1) 2
 	3
 ```
+
+## Pattern Matching
+
+One fairly unique feature of ML family languages like Haskell is a dedicated
+syntax for "pattern-matching". Pattern matching is the practice of deconstructing
+and dispatching on a value at the time of assignment. Deconstruction and
+dispatching are orthogonal features, but they are often used together.
+Deconstruction can take the place of a great deal of "accessor-function" style
+programming, while dispatching can replace many conditional-branching constructs.
+
+### Deconstruction
+
+Drawing on our `tuple` example, here is a definition that gets the second element
+of a tuple:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+getSecondElement (e1,e2) = e2
+~~~
+
+This would be equivalent to:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+-- `snd` gets the second element of a tuple.
+getSecondElementEquiv t = snd t
+~~~
+
+### Dispatch
+
+Dispatching on a boolean argument instead of using an if statement:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+multiplyByFiveIfTrue x True  = x * 5
+multiplyByFiveIfTrue x False = x
+~~~
+
+This would be equivalent to:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+multiplyByFiveIfTrue x b  =
+  if b then x * 5
+       else x
+~~~
+
+Another interesting use-case for dispatch is numbers!
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+-- http://mathworld.wolfram.com/AckermannFunction.html
+ackermann 0 y = y + 1
+ackermann x 0 = ackermann (x-1) 1
+ackermann x y = ackermann (x-1) (ackermann x (y-1))
+~~~
+
+
+### Combining Deconstruction and Dispatch
+
+Here is an example combining both deconstruction and dispatch, but
+taking a tuple argument with a number in the first position
+and a boolean in the second. The number is used in the definition,
+and the boolean is used to dispatch:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+multiplyByFiveIfTrueTuple (x,True)  = x * 5
+multiplyByFiveIfTrueTuple (x,False) = x
+~~~
+
+This would be equivalent to:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+multiplyByFiveIfTrueTupleEquiv t =
+  if (snd t) then (fst t) * 5
+             else (fst t)
+~~~
+
+While you can use pattern-matching in function-definitions, you can
+also use it wherever you bind a value, such as case-statements,
+where and let blocks, and do-notation. You don't have to use
+pattern-matching in all cases, and sometimes it's easier to just
+use an `if` statement. That's fine! Pattern-matching simply looks
+a little cleaner in some cases.
+
+## Local Definitions with `let` and `where`
+
+If you wish to create local variable definitions in order
+to simplify your functions or reduce computation, then
+you can use `let` bindings:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+amountOfCatFoodLet =
+  let
+    days = 21
+    servingsPerDay = 2
+    numberOfCats = 3
+    numberOfServings = numberOfCats * servingsPerDay * days
+    servingSize = 100 -- grams
+  in numberOfServings * servingSize
+~~~
+
+Or with `where` bindings:
+
+~~~{data-language=haskell data-filter=./resources/scripts/check.sh}
+amountOfCatFoodWhere = numberOfServings * servingSize
+  where
+    days = 21
+    servingsPerDay = 2
+    numberOfCats = 3
+    numberOfServings = numberOfCats * servingsPerDay * days
+    servingSize = 100 -- grams
+~~~
+
 
 ## Importing Modules
 

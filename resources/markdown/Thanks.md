@@ -6,8 +6,7 @@
 We hope you've had a great time today and learned something useful!
 
 We couldn't have put this together without the help of our volunteers,
-the venue and food from SEEK, and the Alt .Net Meetup group for inviting everyone
-along too!
+and RMIT for providing the venue!
 
 Thanks a lot for coming along today and if you've developed a taste for Haskell
 then please consider coming along to the

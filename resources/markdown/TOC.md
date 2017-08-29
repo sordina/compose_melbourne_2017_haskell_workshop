@@ -15,7 +15,7 @@ Welcome         |[Welcome](#welcome)                                Motivation, 
 Setup           |[Setup](#setup)                                    Setting up your Haskell environment   15m
 Ecosystem       |[Ecosystem](#ecosystem)                            Resources and Community               30m
 Introduction    |[Introduction](#introduction)                      Introductory Exercises                30m
-Lunch           |[~ Lunch Break ~](#lunch-break)                    Pizza -> IO Nomnomnomnomnom           1h
+; Lunch         |[~ Lunch Break ~](#lunch-break)                    Pizza -> IO Nomnomnomnomnom           1h
 Types           |[Types](#types)                                    The Haskell Type System               30m
 ADTs            |[ADTs](#adts-algebraic-data-types)                 Modelling with data in Haskell        1h
 Type-Classes    |[Type-Classes](#typeclasses)                       Polymorphism, FP style                30m

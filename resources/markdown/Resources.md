@@ -72,6 +72,10 @@ This is a good place to ask some more advanced questions or start a flame-war.
 
 Learn You a Haskell (For Great Good) is a wonderful introductory text on Haskell.
 
+## [Learn you a Haskell - In a Nutshell](https://gist.github.com/mikehaertl/3258427)
+
+A compressed Gist of Learn You a Haskell!
+
 ## [Haskell Programming from First Principles](http://haskellbook.com/)
 
 The latest and greatest comprehensive text for learning Haskell.
